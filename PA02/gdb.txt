@@ -1,0 +1,120 @@
+Breakpoint 1 at 0x40056c: file pa02.c, line 12.
+The program is not being run.
+Starting program: /home/shay/b/mgorantl/ECE264/problems/ECE264Assignments/Fall2014/PA02/pa02 
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffe4c8) at pa02.c:14
+warning: Source file is more recent than executable.
+14	    printf("Welcome to PA02.\n"
+26	    const char * s1 = "Hello World!";
+27	    const char * s2 = "";
+28	    const char * s3 = "foo";
+31	    printf("my_strlen(\"%s\") = %d\n", s1, (int) my_strlen(s1));
+32	    printf("my_strlen(\"%s\") = %d\n", s2, (int) my_strlen(s2));
+33	    printf("my_strlen(\"%s\") = %d\n", s3, (int) my_strlen(s3));
+36	    printf("my_countchar(\"%s\", 'l') = %d\n", s1, (int) my_countchar(s1, 'l'));
+37	    printf("my_countchar(\"%s\", 'o') = %d\n", s2, (int) my_countchar(s2, 'o'));
+38	    printf("my_countchar(\"%s\", 'o') = %d\n", s3, (int) my_countchar(s3, 'o'));
+41	    printf("my_strchr(\"%s\", 'l') = %s\n", s1, my_strchr(s1, 'l'));
+42	    printf("my_strchr(\"%s\", 'o') = %s\n", s2, my_strchr(s2, 'o'));
+my_strchr (str=0x40101d "", ch=111) at answer02.c:125
+125		int index = 0; // Used as an Index to loop through the whole string	        
+133	      	while(index <= (int)my_strlen(str))
+my_strlen (str=0x40101d "") at answer02.c:92
+92		size_t string_len = 0; // Used to mesaure the length of the string
+94		int index = 0 ; // Used for the index of the 'str' array 		
+96		while(str[index] !='\0')
+102	 return(string_len);
+103	}
+my_strchr (str=0x40101d "", ch=111) at answer02.c:135
+135			if(str[index] == ch)
+140	 		index += 1;
+133	      	while(index <= (int)my_strlen(str))
+143		return(NULL);
+$1 = 0x40101d ""
+144	}
+main (argc=1, argv=0x7fffffffe4c8) at pa02.c:43
+43	    printf("my_strchr(\"%s\", '\\0') = %s\n", s3, my_strchr(s3, '\0'));
+my_strchr (str=0x40101e "foo", ch=0) at answer02.c:125
+125		int index = 0; // Used as an Index to loop through the whole string	        
+133	      	while(index <= (int)my_strlen(str))
+135			if(str[index] == ch)
+140	 		index += 1;
+133	      	while(index <= (int)my_strlen(str))
+135			if(str[index] == ch)
+140	 		index += 1;
+133	      	while(index <= (int)my_strlen(str))
+135			if(str[index] == ch)
+140	 		index += 1;
+133	      	while(index <= (int)my_strlen(str))
+135			if(str[index] == ch)
+137				return (char *)(&str[index]);			
+$2 = 0
+$3 = 0x40101e "foo"
+144	}
+$4 = 0x401021 ""
+main (argc=1, argv=0x7fffffffe4c8) at pa02.c:46
+46	    printf("my_strstr(\"%s\", \"World\") = %s\n", s1, my_strstr(s1, "World"));
+41	    printf("my_strchr(\"%s\", 'l') = %s\n", s1, my_strchr(s1, 'l'));
+42	    printf("my_strchr(\"%s\", 'o') = %s\n", s2, my_strchr(s2, 'o'));
+43	    printf("my_strchr(\"%s\", '\\0') = %s\n", s3, my_strchr(s3, '\0'));
+44	
+45	    // -- my_strstr, should be: "World!", "Hello World!", "(null)"
+46	    printf("my_strstr(\"%s\", \"World\") = %s\n", s1, my_strstr(s1, "World"));
+47	    printf("my_strstr(\"%s\", \"\") = %s\n", s1, my_strstr(s1, ""));
+48	    printf("my_strstr(\"%s\", \"hello\") = %s\n", s1, my_strstr(s1, "hello"));
+49	
+50	    // -- my_strcpy. For this function you need a buffer where you
+my_strstr (haystack=0x401010 "Hello World!", needle=0x4010c6 "World") at answer02.c:173
+173		int mindex = 0 ; //Index for the Main String
+174		int subindex = 0; // Index for the Sub-String Needle	
+178		if((int)my_strlen(needle) == 0)
+185		while(haystack[mindex] != '\0')
+187			while((haystack[mindex] == needle[subindex])&&(needle[subindex] != '\0'))
+198			subindex = 0; // Re-initialize substring Index if not found in the string.
+199			mindex += 1;  // Incrementing the 'haystack' string index
+187			while((haystack[mindex] == needle[subindex])&&(needle[subindex] != '\0'))
+198			subindex = 0; // Re-initialize substring Index if not found in the string.
+199			mindex += 1;  // Incrementing the 'haystack' string index
+187			while((haystack[mindex] == needle[subindex])&&(needle[subindex] != '\0'))
+198			subindex = 0; // Re-initialize substring Index if not found in the string.
+199			mindex += 1;  // Incrementing the 'haystack' string index
+187			while((haystack[mindex] == needle[subindex])&&(needle[subindex] != '\0'))
+198			subindex = 0; // Re-initialize substring Index if not found in the string.
+199			mindex += 1;  // Incrementing the 'haystack' string index
+187			while((haystack[mindex] == needle[subindex])&&(needle[subindex] != '\0'))
+198			subindex = 0; // Re-initialize substring Index if not found in the string.
+199			mindex += 1;  // Incrementing the 'haystack' string index
+187			while((haystack[mindex] == needle[subindex])&&(needle[subindex] != '\0'))
+198			subindex = 0; // Re-initialize substring Index if not found in the string.
+199			mindex += 1;  // Incrementing the 'haystack' string index
+187			while((haystack[mindex] == needle[subindex])&&(needle[subindex] != '\0'))
+189				mindex+= 1;
+190				subindex += 1;
+$5 = 0
+$6 = 7
+192				if(needle[subindex] == '\0')
+189				mindex+= 1;
+190				subindex += 1;
+192				if(needle[subindex] == '\0')
+189				mindex+= 1;
+190				subindex += 1;
+192				if(needle[subindex] == '\0')
+189				mindex+= 1;
+190				subindex += 1;
+192				if(needle[subindex] == '\0')
+189				mindex+= 1;
+190				subindex += 1;
+192				if(needle[subindex] == '\0')
+194					return((char*)(&haystack[mindex - subindex]));			
+$7 = 0x401016 "World!"
+No symbol "str" in current context.
+203	} 
+main (argc=1, argv=0x7fffffffe4c8) at pa02.c:47
+47	    printf("my_strstr(\"%s\", \"\") = %s\n", s1, my_strstr(s1, ""));
+48	    printf("my_strstr(\"%s\", \"hello\") = %s\n", s1, my_strstr(s1, "hello"));
+54	    my_strcpy(buffer, s1);
+55	    printf("my_strcpy(buffer, \"%s\"), buffer = \"%s\"\n", s1, buffer);
+57	    my_strcpy(buffer, s2);
+Continuing.
+
+Program exited normally.
