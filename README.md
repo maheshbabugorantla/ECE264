@@ -1,4 +1,3 @@
-ECE264PA01
-==========
+This is Respositiory Contains all the Solutions for the ECE264 Assignments Fall2014
 
-ECE264 First Assignment on Basic Array Operations
+
