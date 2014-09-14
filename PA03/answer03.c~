@@ -15,7 +15,7 @@ char * strcat_ex(char** dest, int * n, const char * src)
 		free(*dest);
 		*dest = new_dest; // memcpy(*dest,new_dest,*n)
 		strcpy((char*)*dest,src);
-		//free(new_dest);
+		free(new_dest);
 	}
 
 	else
