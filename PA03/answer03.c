@@ -1,5 +1,5 @@
 #include"answer03.h"
-
+#include<stdio.h>
 
 char * strcat_ex(char** dest, int * n, const char * src)
 {
@@ -17,6 +17,7 @@ char * strcat_ex(char** dest, int * n, const char * src)
 		if(*dest == NULL)
 		{
 			new_dest_string = malloc(sizeof(char)*(1 + 2*(strlen(src))));
+			new_dest_string[0] = '\0';
 			*n = (1 + 2*(strlen(src)));
 			 //strcpy(new_dest_string,*dest); // This doesn't work because *dest is not a string
 			 // free(*dest); // Is freeing an Invalid Pointer
@@ -25,6 +26,7 @@ char * strcat_ex(char** dest, int * n, const char * src)
 		else
 		{		
 			new_dest_string = malloc(sizeof(char)*(1 + 2*(strlen(*dest) + strlen(src))));
+			new_dest_string[0] = '\0';	
 			*n = (1 + 2*(strlen(*dest) + strlen(src)));
 			strcpy(new_dest_string,*dest);
 			free(*dest);
@@ -54,7 +56,7 @@ char** explode(const char* str, const char* delims,int* arrLen)
 
 	// This Below loop is used find out how many delimiters are in the string 'delims'
 
-	while(str[str_index] != '\0' && (str_index < *arrLen))
+	while(str[str_index] != '\0')
 	{
 		if(strchr(delims,str[str_index]) != NULL)
 		{
@@ -64,46 +66,40 @@ char** explode(const char* str, const char* delims,int* arrLen)
 		str_index++;
 	}
 
-	str_index = 0;  // Reinitializing the Main String Index
-
 	char** strArr = malloc((num_delim + 1) * sizeof(char*)); // This Allocates spaces to create (num_delim + 1) strings.
 
-	int strArr_count = 0;
+	int strArr_count = 0; // Flag for the no.of strings that can be accomodated in strArr
 	
-	int last_ind = 0;	
+	int last_ind = 0; // Used to get the position where a character is last found.	
 		
-	while(strArr_count < (num_delim + 1) && (str_index < *arrLen))
+	int i = 0; // Index to check the strlen of str
+	
+	for(i = 0; i<= strlen(str);i++)	
 	{
-		if(strchr(delims,str[str_index]) != NULL)
+		if(strchr(delims,str[i]) != NULL)
 		{
-			if(str_index > last_ind)
+			if(i > last_ind)
 			{
-				*strArr = malloc(sizeof(char)*(str_index - last_ind + 2));
-				memcpy(*strArr,&str[last_ind],(str_index - last_ind + 1)); 
-       
-	      			strArr_count += 1; // Flag to exit the loop of all the memory is utilised
-	 			strArr += 1; // Increments to the Next Row
+				 strArr[strArr_count] = malloc(sizeof(char)*(i - last_ind + 1));
+				 memcpy(strArr[strArr_count],&str[last_ind],(i - last_ind)); 
+       				 strArr[strArr_count][i - last_ind] = '\0';
+	      			 strArr_count += 1; // Flag to exit the loop if all the memory is utilised
 			}
 
-			last_ind = str_index;	
-			str_index++;
+			last_ind = i;	
 			last_ind++;
-		}
-
-		else
-		{
-			str_index += 1;
-		} 	
-	
+		} 
 	}
 
+	
+	*arrLen = num_delim + 1;
 
 	return(strArr);
 }	
 		
 		
 
-/*char* implode(char** strArr,int len,char* glue)
+char* implode(char** strArr,int len,char* glue)
 {
 	char* str;
 
@@ -117,7 +113,7 @@ char** explode(const char* str, const char* delims,int* arrLen)
 	}
 
 	str = malloc(sizeof(char)*(1 + 2*length));
-
+	str[0] = '\0';
 	strcpy(str,*strArr_dup)
 	strcat(str,glue);	
 
@@ -129,8 +125,23 @@ char** explode(const char* str, const char* delims,int* arrLen)
 	}
 					
 	return(str);
-}*/
+} 
 
 
+
+void sortStringArray(char ** arrString, int len)
+{
+
+}
+
+void sortStringCharacters(char* str)
+{
+
+}
+
+void destroyStringArray(char * * strArr, int len)
+{
+
+}
 
 
