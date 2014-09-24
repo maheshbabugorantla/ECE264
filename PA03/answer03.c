@@ -114,70 +114,91 @@ char** explode(const char* str, const char* delims,int* arrLen)
 char* implode(char** strArr,int len,const char* glue)
 {
 	char* str;
+	int n;
+	
+	int length=0; // Length of the Resulting Imploded String
+	int i = 0; // 'contains the no.of strings in strArr
 
-	//char** strArr_dup = strArr;
-	//int length = 0; // The Possible size of the output 
-
-
-	// This loop is used to find the length of the resulting string after adding all the strings in strArr
-	/*while(*strArr != '\0')
+	for(i = 0;i<len; ++i)
 	{
-		length = strlen(*strArr);
-		strArr++;
+		length+= strlen(strArr[i]);
+		length+=strlen(glue);
 	}
 
+	i = 0;
 
-
-	strArr = strArr[0];
-
-	str = malloc(sizeof(char)*(1 + 2*length));
-	str[0] = '\0';
-	strcpy(str,*strArr_dup);
-	strcat(str,glue);	
-
-	while(*strArr_dup != '\0')
-	{
-		strcpy(str,*strArr_dup + 1);
-		strcat(str,glue);
-		strArr_dup++;		
-	}*/
-		
-	int i = 0;
+	//if(length==0){ ++length; }   // otherwise we will malloc size 0
 	
-	int length = 10;
+	/*str = malloc(length*sizeof(char));
+	str[0] = '\0';
+	strcpy(str,strArr[0]);
+	for(i = 1; i < len; ++i)
+	{
+		n = 0;
+		strcat_ex(&str, &n,glue);   // changes strcat to strcat_ex
+		strcat_ex(&str, &n,strArr[i]);      // same here
+	}*/
 
 	str = malloc(sizeof(char)*(length));
 	
-	for(i= 0; i < len;i++)
+	str[0] = '\0';
+
+	strcpy(str,strArr[0]); 
+
+	for(i = 1; i < len;i++)
 	{
-		if(i == (len - 1))
-		{
-			strcat_ex(&str,&length,strArr[i]);
-		}
-		else
-		{	
-			strcat_ex(&str,&length,strArr[i]);			
-			strcat_ex(&str,&length,glue);						
-		}			
+		n = strlen(glue);
+		strcat_ex(&str,&n,glue);
+		n = strlen(strArr[i]);			
+		strcat_ex(&str,&n,strArr[i]);															
 	}
+	
 	return(str);
 } 
+
+
+int strComp(const void *a, const void *b)
+{
+	const char * const * str1 = (const char **) a;
+	const char * const * str2 = (const char **) b;
+	return strcmp(*str1,*str2);
+}
 
 
 
 void sortStringArray(char ** arrString, int len)
 {
-	
+	qsort(arrString,len,sizeof(char*),strComp);	
 }
+
+
+int charComp(const void *a , const void *b)
+{
+
+	const char *ch1 = (const char*)a;
+	const char *ch2 = (const char*)b;
+
+	if(*ch1 < *ch2){ return (-1);}
+	if(*ch1 > *ch2){ return (1); }	
+	return(0);		
+}	
 
 void sortStringCharacters(char* str)
 {
-
+	qsort(str,strlen(str),sizeof(char),charComp);
 }
 
 void destroyStringArray(char * * strArr, int len)
 {
 
+	int strIndex = 0;
+
+	for(strIndex = 0; strIndex < len; strIndex++)
+	{
+		free(strArr[strIndex]);
+	}
+		
+	free(strArr); 
 }
 
 
