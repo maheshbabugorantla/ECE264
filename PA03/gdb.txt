@@ -1,0 +1,219 @@
+No symbol "overwrite" in current context.
+Breakpoint 1 at 0x401055: file pa03.c, line 87.
+Starting program: /home/mahesh/Documents/ECE264/ECE264Assignments/GITHUB/ECE264/PA03/pa03 
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffde78) at pa03.c:90
+90		char** strArr2 = explode("100 224 147 80", " ",&length);
+91		char * str = implode(strArr, length,", ");
+
+Program received signal SIGSEGV, Segmentation fault.
+strlen () at ../sysdeps/x86_64/strlen.S:106
+106	../sysdeps/x86_64/strlen.S: No such file or directory.
+A debugging session is active.
+
+	Inferior 1 [process 2879] will be killed.
+
+Quit anyway? (y or n) No symbol "overwrite" in current context.
+Breakpoint 1 at 0x400b69: file answer03.c, line 116.
+Starting program: /home/mahesh/Documents/ECE264/ECE264Assignments/GITHUB/ECE264/PA03/pa03 
+
+Breakpoint 1, implode (strArr=0x603030, len=4, glue=0x401334 ", ") at answer03.c:119
+119		int length = 0; // Length of the Resulting Imploded String
+120		int i = 0; // 'contains the no.of strings in strArr
+122		for(i = 0;i<len; ++i)
+124			length+=strlen(strArr[i]);
+
+Program received signal SIGSEGV, Segmentation fault.
+strlen () at ../sysdeps/x86_64/strlen.S:106
+106	../sysdeps/x86_64/strlen.S: No such file or directory.
+A debugging session is active.
+
+	Inferior 1 [process 2885] will be killed.
+
+Quit anyway? (y or n) No symbol "overwrite" in current context.
+Breakpoint 1 at 0x400b69: file answer03.c, line 116.
+Starting program: /home/mahesh/Documents/ECE264/ECE264Assignments/GITHUB/ECE264/PA03/pa03 
+
+Breakpoint 1, implode (strArr=0x603030, len=4, glue=0x4012d4 ", ") at answer03.c:120
+120		int i = 0; // 'contains the no.of strings in strArr
+146		strcat_ex(&str,&n,strArr[0]); 
+
+Program received signal SIGSEGV, Segmentation fault.
+strlen () at ../sysdeps/x86_64/strlen.S:106
+106	../sysdeps/x86_64/strlen.S: No such file or directory.
+
+Program terminated with signal SIGSEGV, Segmentation fault.
+The program no longer exists.
+Starting program: /home/mahesh/Documents/ECE264/ECE264Assignments/GITHUB/ECE264/PA03/pa03 
+
+Breakpoint 1, implode (strArr=0x603030, len=4, glue=0x4012d4 ", ") at answer03.c:120
+120		int i = 0; // 'contains the no.of strings in strArr
+146		strcat_ex(&str,&n,strArr[0]); 
+strcat_ex (dest=0x7fffffffdce8, n=0x7fffffffdce0, src=0x303031 <error: Cannot access memory at address 0x303031>) at answer03.c:14
+14		if((*dest == NULL) ||( *n < (1 + strlen(src) + strlen(*dest))))
+
+Program received signal SIGSEGV, Segmentation fault.
+strlen () at ../sysdeps/x86_64/strlen.S:106
+106	../sysdeps/x86_64/strlen.S: No such file or directory.
+The program being debugged has been started already.
+Start it from the beginning? (y or n) Starting program: /home/mahesh/Documents/ECE264/ECE264Assignments/GITHUB/ECE264/PA03/pa03 
+
+Breakpoint 1, implode (strArr=0x603030, len=4, glue=0x4012d4 ", ") at answer03.c:120
+120		int i = 0; // 'contains the no.of strings in strArr
+146		strcat_ex(&str,&n,strArr[0]); 
+strcat_ex (dest=0x7fffffffdce8, n=0x7fffffffdce0, src=0x303031 <error: Cannot access memory at address 0x303031>) at answer03.c:14
+14		if((*dest == NULL) ||( *n < (1 + strlen(src) + strlen(*dest))))
+$1 = 0x422068736568614d <error: Cannot access memory at address 0x422068736568614d>
+The program being debugged has been started already.
+Start it from the beginning? (y or n) Program not restarted.
+A debugging session is active.
+
+	Inferior 1 [process 2975] will be killed.
+
+Quit anyway? (y or n) No symbol "overwrite" in current context.
+Breakpoint 1 at 0x400b69: file answer03.c, line 116.
+The program is not being run.
+Starting program: /home/mahesh/Documents/ECE264/ECE264Assignments/GITHUB/ECE264/PA03/pa03 
+
+Breakpoint 1, implode (strArr=0x603030, len=4, glue=0x4012d4 ", ") at answer03.c:116
+116		char* str = NULL;
+120		int i = 0; // 'contains the no.of strings in strArr
+146		strcat_ex(&str,&n,strArr[0]); 
+strcat_ex (dest=0x7fffffffdce8, n=0x7fffffffdce0, src=0x303031 <error: Cannot access memory at address 0x303031>) at answer03.c:14
+14		if((*dest == NULL) ||( *n < (1 + strlen(src) + strlen(*dest))))
+$1 = 0x0
+16			if(*dest == NULL)
+18				new_dest_string = malloc(sizeof(char)*(1 + 2*(strlen(src))));
+
+Program received signal SIGSEGV, Segmentation fault.
+strlen () at ../sysdeps/x86_64/strlen.S:106
+106	../sysdeps/x86_64/strlen.S: No such file or directory.
+No symbol "src" in current context.
+The program being debugged has been started already.
+Start it from the beginning? (y or n) Starting program: /home/mahesh/Documents/ECE264/ECE264Assignments/GITHUB/ECE264/PA03/pa03 
+
+Breakpoint 1, implode (strArr=0x603030, len=4, glue=0x4012d4 ", ") at answer03.c:116
+116		char* str = NULL;
+120		int i = 0; // 'contains the no.of strings in strArr
+146		strcat_ex(&str,&n,strArr[0]); 
+strcat_ex (dest=0x7fffffffdce8, n=0x7fffffffdce0, src=0x303031 <error: Cannot access memory at address 0x303031>) at answer03.c:14
+14		if((*dest == NULL) ||( *n < (1 + strlen(src) + strlen(*dest))))
+16			if(*dest == NULL)
+18				new_dest_string = malloc(sizeof(char)*(1 + 2*(strlen(src))));
+
+Program received signal SIGSEGV, Segmentation fault.
+strlen () at ../sysdeps/x86_64/strlen.S:106
+106	../sysdeps/x86_64/strlen.S: No such file or directory.
+The program being debugged has been started already.
+Start it from the beginning? (y or n) Starting program: /home/mahesh/Documents/ECE264/ECE264Assignments/GITHUB/ECE264/PA03/pa03 
+
+Breakpoint 1, implode (strArr=0x603030, len=4, glue=0x4012d4 ", ") at answer03.c:116
+116		char* str = NULL;
+120		int i = 0; // 'contains the no.of strings in strArr
+146		strcat_ex(&str,&n,strArr[0]); 
+strcat_ex (dest=0x7fffffffdce8, n=0x7fffffffdce0, src=0x303031 <error: Cannot access memory at address 0x303031>) at answer03.c:14
+14		if((*dest == NULL) ||( *n < (1 + strlen(src) + strlen(*dest))))
+16			if(*dest == NULL)
+18				new_dest_string = malloc(sizeof(char)*(1 + 2*(strlen(src))));
+$2 = 0x303031 <error: Cannot access memory at address 0x303031>
+The program being debugged has been started already.
+Start it from the beginning? (y or n) Starting program: /home/mahesh/Documents/ECE264/ECE264Assignments/GITHUB/ECE264/PA03/pa03 
+
+Breakpoint 1, implode (strArr=0x603030, len=4, glue=0x4012d4 ", ") at answer03.c:116
+116		char* str = NULL;
+120		int i = 0; // 'contains the no.of strings in strArr
+146		strcat_ex(&str,&n,strArr[0]); 
+$3 = 0x303031 <error: Cannot access memory at address 0x303031>
+A debugging session is active.
+
+	Inferior 1 [process 3012] will be killed.
+
+Quit anyway? (y or n) No symbol "overwrite" in current context.
+Breakpoint 1 at 0x401023: file pa03.c, line 86.
+Starting program: /home/mahesh/Documents/ECE264/ECE264Assignments/GITHUB/ECE264/PA03/pa03 
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffde78) at pa03.c:86
+86		int k = 0;
+88		int len3 = 0;		
+90		char** strArr4 = explode( "aaaaa", "a",&len3);
+explode (str=0x401385 "aaaaa", delims=0x401383 "a", arrLen=0x7fffffffdd18) at answer03.c:54
+54		int num_delim = 0; // No. of delimiters in the string 'delims'
+55		int str_index = 0; // String Index
+59		while(str[str_index] != '\0')
+61			if(strchr(delims,str[str_index]) != NULL)
+63				num_delim += 1;
+66			str_index++;
+59		while(str[str_index] != '\0')
+61			if(strchr(delims,str[str_index]) != NULL)
+63				num_delim += 1;
+66			str_index++;
+59		while(str[str_index] != '\0')
+61			if(strchr(delims,str[str_index]) != NULL)
+63				num_delim += 1;
+66			str_index++;
+59		while(str[str_index] != '\0')
+61			if(strchr(delims,str[str_index]) != NULL)
+63				num_delim += 1;
+66			str_index++;
+59		while(str[str_index] != '\0')
+61			if(strchr(delims,str[str_index]) != NULL)
+63				num_delim += 1;
+66			str_index++;
+59		while(str[str_index] != '\0')
+69		char** strArr = malloc((num_delim + 1) * sizeof(char*)); // This Allocates spaces to create (num_delim + 1) strings.
+71		int strArr_count = 0; // Flag for the no.of strings that can be accomodated in strArr
+73		int last_ind = 0; // Used to get the position where a character is last found.	
+75		int i = 0; // Index to check the strlen of str
+77		while(i <= strlen(str))	
+$1 = 0x401385 "aaaaa"
+79			if(strchr(delims,str[i]) == NULL) 
+86				if(i > last_ind)
+95				i++;	
+96				last_ind = i;	
+77		while(i <= strlen(str))	
+79			if(strchr(delims,str[i]) == NULL) 
+86				if(i > last_ind)
+95				i++;	
+96				last_ind = i;	
+77		while(i <= strlen(str))	
+79			if(strchr(delims,str[i]) == NULL) 
+86				if(i > last_ind)
+95				i++;	
+96				last_ind = i;	
+77		while(i <= strlen(str))	
+79			if(strchr(delims,str[i]) == NULL) 
+86				if(i > last_ind)
+95				i++;	
+96				last_ind = i;	
+77		while(i <= strlen(str))	
+79			if(strchr(delims,str[i]) == NULL) 
+86				if(i > last_ind)
+95				i++;	
+96				last_ind = i;	
+77		while(i <= strlen(str))	
+79			if(strchr(delims,str[i]) == NULL) 
+86				if(i > last_ind)
+95				i++;	
+96				last_ind = i;	
+77		while(i <= strlen(str))	
+102		*arrLen = num_delim + 1; // No.of Strings that are Returned.
+104		return(strArr);
+$2 = 6
+$3 = 5
+$4 = 0x0
+105	}	
+main (argc=1, argv=0x7fffffffde78) at pa03.c:91
+91		printf("String1 is %s\n\n",strArr4[0]);
+93		for(k = 0;k < len3;k++)
+95			free(strArr4[k]);
+93		for(k = 0;k < len3;k++)
+95			free(strArr4[k]);
+
+Program received signal SIGSEGV, Segmentation fault.
+__GI___libc_free (mem=0x61726f4720756261) at malloc.c:2929
+2929	malloc.c: No such file or directory.
+A debugging session is active.
+
+	Inferior 1 [process 3843] will be killed.
+
+Quit anyway? (y or n) 

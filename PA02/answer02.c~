@@ -166,8 +166,7 @@ int my_atoi(const char* str)
 {
 	int ret = 0; // Used to get the integer in the first part of the string 
 	int flag = 0; // Used to Check if the number is 'Negative"
-	
-	while(my_isspace(*str)) str++;
+	 while(my_isspace(*str)) str++;
 	
 	if(*str == '-')
 		{	

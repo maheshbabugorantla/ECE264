@@ -80,39 +80,71 @@ int main(int argc, char** argv)
 	}	
 
 	free(strArr1);		
+
+	// Test Case 3
+
+	int k = 0;
 	
+	int len3 = 0;		
+	
+	char** strArr4 = explode( "aaaaa", "a",&len3);
+
+	for( k = 0;k < 5;k++)
+	{	 
+		printf("String%d is %s\n\n",k,strArr4[k]);
+	}
+
+	for(k = 0;k < len3;k++)
+	{
+		free(strArr4[k]);
+	}	
+
+	free(strArr4);		
+
+
+	// Test Case 4
+
+	strArr4 = explode("The\nTuring test","Tt",&len3);
+	
+	for( k = 0;k < 5;k++)
+	{	 
+		printf("String%d is %s\n\n",k,strArr4[k]);
+	}
+
+	for(k = 0;k < len3;k++)
+	{
+		free(strArr4[k]);
+	}	
+
+	free(strArr4);			
 
 	
  	/******************************************** IMPLODE FUNCTION *******************************************/	
 
 
-	/*int length;
+	int length;
 	char** strArr2 = explode("100 224 147 80", " ",&length);
-	char * str = implode(strArr, length,", ");
+	char * str = implode(strArr2, length,", ");
 	
 	printf(" The Glued String is %s\n\n",str);
 
-	int k = 0;
+	free(str);
+
+	destroyStringArray(strArr2,length);
 	
-	for(k = 0; k < length; k++)
-	{
-		free(strArr2[k]);
-	}
-	
-	free(strArr2); */
 	
 	
 	/******************************************** sortStringArray FUNCTION *******************************************/
 
 	int len;
-	char * * strArr2 = explode("lady beatle brew", " ", &len);
-	sortStringArray(strArr2, len);
+	char * * strArr3 = explode("lady beatle brew", " ", &len);
+	sortStringArray(strArr3, len);
 	//char * str = implode(strArr, len, " ");
-	printf("String1: %s\n",strArr2[0]); // beatle brew lady
-	printf("String2: %s\n",strArr2[1]); // beatle brew lady
-	printf("String3: %s\n",strArr2[2]); // beatle brew lady		
+	printf("String1: %s\n",strArr3[0]); // beatle brew lady
+	printf("String2: %s\n",strArr3[1]); // beatle brew lady
+	printf("String3: %s\n",strArr3[2]); // beatle brew lady		
 
-	destroyStringArray(strArr2,len);
+	destroyStringArray(strArr3,len);
 
 
 	/******************************************** sortStringCharacters FUNCTION *******************************************/
