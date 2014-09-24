@@ -1,4 +1,5 @@
 #include"answer03.h"
+#include<string.h>
 
 char * strcat_ex(char** dest, int * n, const char * src)
 {
@@ -55,12 +56,6 @@ char** explode(const char* str, const char* delims,int* arrLen)
 
 	// This Below loop is used find out how many delimiters are in the string 'delims'
 
-
-	/*if(str == NULL)
-	{
-		return(str);
-	} */
-
 	while(str[str_index] != '\0')
 	{
 		if(strchr(delims,str[str_index]) != NULL)
@@ -88,7 +83,7 @@ char** explode(const char* str, const char* delims,int* arrLen)
 		
 		else
 		{		
-			if(i > last_ind)
+			//if(i > last_ind)
 			{
 				 strArr[strArr_count] = malloc(sizeof(char)*(i - last_ind + 1));
 				 memcpy(strArr[strArr_count],&str[last_ind],(i - last_ind)); 
@@ -106,6 +101,8 @@ char** explode(const char* str, const char* delims,int* arrLen)
 	
 	*arrLen = num_delim + 1; // No.of Strings that are Returned.
 
+
+	
 	return(strArr);
 }	
 		
@@ -113,44 +110,19 @@ char** explode(const char* str, const char* delims,int* arrLen)
 
 char* implode(char** strArr,int len,const char* glue)
 {
-	char* str;
+	char* str = NULL;
 	int n;
+
+	int i = 0; // Contains the no.of strings in strArr
+
+	strcat_ex(&str,&n,strArr[i]); // Add the First String of strArr to str 
+
 	
-	int length=0; // Length of the Resulting Imploded String
-	int i = 0; // 'contains the no.of strings in strArr
-
-	for(i = 0;i<len; ++i)
-	{
-		length+= strlen(strArr[i]);
-		length+=strlen(glue);
-	}
-
-	i = 0;
-
-	//if(length==0){ ++length; }   // otherwise we will malloc size 0
-	
-	/*str = malloc(length*sizeof(char));
-	str[0] = '\0';
-	strcpy(str,strArr[0]);
-	for(i = 1; i < len; ++i)
-	{
-		n = 0;
-		strcat_ex(&str, &n,glue);   // changes strcat to strcat_ex
-		strcat_ex(&str, &n,strArr[i]);      // same here
-	}*/
-
-	str = malloc(sizeof(char)*(length));
-	
-	str[0] = '\0';
-
-	strcpy(str,strArr[0]); 
-
 	for(i = 1; i < len;i++)
 	{
-		n = strlen(glue);
-		strcat_ex(&str,&n,glue);
-		n = strlen(strArr[i]);			
-		strcat_ex(&str,&n,strArr[i]);															
+		strcat_ex(&str,&n,glue); // Add the 'glue' string to the 'str' string
+		strcat_ex(&str,&n,strArr[i]); // Add the 'strArr[i]' to the 'str' String    
+															
 	}
 	
 	return(str);
