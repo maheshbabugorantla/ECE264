@@ -1,5 +1,4 @@
 #include"answer03.h"
-#include<stdio.h>
 
 char * strcat_ex(char** dest, int * n, const char * src)
 {
@@ -56,6 +55,12 @@ char** explode(const char* str, const char* delims,int* arrLen)
 
 	// This Below loop is used find out how many delimiters are in the string 'delims'
 
+
+	/*if(str == NULL)
+	{
+		return(str);
+	} */
+
 	while(str[str_index] != '\0')
 	{
 		if(strchr(delims,str[str_index]) != NULL)
@@ -74,56 +79,87 @@ char** explode(const char* str, const char* delims,int* arrLen)
 		
 	int i = 0; // Index to check the strlen of str
 	
-	for(i = 0; i<= strlen(str);i++)	
+	while(i <= strlen(str))	
 	{
-		if(strchr(delims,str[i]) != NULL)
+		if(strchr(delims,str[i]) == NULL) 
 		{
+			i++;
+		}
+		
+		else
+		{		
 			if(i > last_ind)
 			{
 				 strArr[strArr_count] = malloc(sizeof(char)*(i - last_ind + 1));
 				 memcpy(strArr[strArr_count],&str[last_ind],(i - last_ind)); 
        				 strArr[strArr_count][i - last_ind] = '\0';
 	      			 strArr_count += 1; // Flag to exit the loop if all the memory is utilised
-			}
 
+			}
+			
+			i++;	
 			last_ind = i;	
-			last_ind++;
+
 		} 
 	}
 
 	
-	*arrLen = num_delim + 1;
+	*arrLen = num_delim + 1; // No.of Strings that are Returned.
 
 	return(strArr);
 }	
 		
 		
 
-char* implode(char** strArr,int len,char* glue)
+char* implode(char** strArr,int len,const char* glue)
 {
 	char* str;
 
-	char** strArr_dup = strArr;
-	int length = 0; // The Possible size of the output 
+	//char** strArr_dup = strArr;
+	//int length = 0; // The Possible size of the output 
 
-	while(*strArr != '\0')
+
+	// This loop is used to find the length of the resulting string after adding all the strings in strArr
+	/*while(*strArr != '\0')
 	{
-		length = strlen(*strlen);
-		*strArr++;
+		length = strlen(*strArr);
+		strArr++;
 	}
+
+
+
+	strArr = strArr[0];
 
 	str = malloc(sizeof(char)*(1 + 2*length));
 	str[0] = '\0';
-	strcpy(str,*strArr_dup)
+	strcpy(str,*strArr_dup);
 	strcat(str,glue);	
 
 	while(*strArr_dup != '\0')
 	{
 		strcpy(str,*strArr_dup + 1);
 		strcat(str,glue);
-		*strArr_dup++;		
+		strArr_dup++;		
+	}*/
+		
+	int i = 0;
+	
+	int length = 10;
+
+	str = malloc(sizeof(char)*(length));
+	
+	for(i= 0; i < len;i++)
+	{
+		if(i == (len - 1))
+		{
+			strcat_ex(&str,&length,strArr[i]);
+		}
+		else
+		{	
+			strcat_ex(&str,&length,strArr[i]);			
+			strcat_ex(&str,&length,glue);						
+		}			
 	}
-					
 	return(str);
 } 
 
@@ -131,7 +167,7 @@ char* implode(char** strArr,int len,char* glue)
 
 void sortStringArray(char ** arrString, int len)
 {
-
+	
 }
 
 void sortStringCharacters(char* str)
@@ -143,5 +179,7 @@ void destroyStringArray(char * * strArr, int len)
 {
 
 }
+
+
 
 
