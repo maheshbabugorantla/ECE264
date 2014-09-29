@@ -27,11 +27,27 @@ int main(int argc, char** argv)
 		return(EXIT_FAILURE);
 	}
 
+	
+	// Initially Starting the Matching Patterns
+	
+	c = fgetc(fileptr);
+
+	if(strstr(&c,argv[2]) == NULL)
+		{
+			if(fgets(str,800,fileptr) != NULL)
+			{
+				puts(str);
+			}
+
+		}
+
+	// Continuing to see if there are Any other Similar Matching Patterns
+	
 	while((c = fgetc(fileptr)) != EOF)
 	{
-		if(strstr(&c,argv[2]) != NULL)
+		if(strstr(&c,argv[2]) == NULL)
 		{
-			if(fgets(str,200,fileptr) != NULL)
+			if(fgets(str,800,fileptr) != NULL)
 			{
 				puts(str);
 			}
