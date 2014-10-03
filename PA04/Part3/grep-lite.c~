@@ -15,7 +15,7 @@ int main(int argc, char** argv)
 
 	char* c; // Used to read one line at a time from the input Buffer Stream
 
-	int linecount = 0; // Used to get the Line Numbers where the Given "Pattern" is Found. 
+	int linenumber = 0; // Used to get the Line Numbers where the Given "Pattern" is Found. 
 
 
        /********************************* USED TO CHECK IF THERE ARE INVALID NO.OF ARGUMENTS ARE PASSED *******************************************/
