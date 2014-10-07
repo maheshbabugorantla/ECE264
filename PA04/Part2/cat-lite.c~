@@ -2,6 +2,8 @@
 #include<stdlib.h>
 #include<string.h>
 
+#define TRUE  1
+#define FALSE 0
 
 int main(int argc , char** argv)
 {
@@ -20,7 +22,21 @@ int main(int argc , char** argv)
 
 			return(EXIT_SUCCESS);
 		}
+	}
+
+	index = 0;
+
+	if(argv[1] == NULL)
+	{
+		while((c = fgetc(stdin)) != EOF)
+		{
+			putchar(c);
+		}
+		return(EXIT_SUCCESS);	
+	}
 			
+
+	int flag = FALSE;
 	index = 0;
 
 	for(index = 1; index < argc; index++)
@@ -28,9 +44,19 @@ int main(int argc , char** argv)
 
 		fileptr = fopen(argv[index],"r");
 
-		if(fileptr == NULL)
+		if(!strcmp(argv[index],"-"))
 		{
-			
+			flag = TRUE;
+			while((c =  fgetc(stdin)) != EOF)
+			{
+				putchar(c);
+			}
+		
+		} 
+
+		if(fileptr == NULL && flag == FALSE)
+		{
+			printf("cat Cannot open %s \n\n",argv[index]);
 			return(EXIT_FAILURE);
 		}
 

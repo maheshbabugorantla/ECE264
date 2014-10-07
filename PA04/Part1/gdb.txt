@@ -1,0 +1,13 @@
+No source file named echo-lite.c.
+Make breakpoint pending on future shared library load? (y or [n]) Breakpoint 1 at 0x40058c: file echo.c, line 5.
+The program is not being run.
+Starting program: /home/mahesh/Documents/ECE264/ECE264Assignments/GITHUB/ECE264/PA04/Part1/echo-lite 
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffde58) at echo.c:18
+18			int count = 1;
+20			while(count < argc)
+$1 = 1
+26			printf("\n\n");
+27		return(EXIT_SUCCESS);
+Continuing.
+[Inferior 1 (process 10898) exited normally]
