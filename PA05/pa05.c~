@@ -44,7 +44,7 @@ int main(int argc , char ** argv)
 	partitionOddAndEven(6);  
 	
 	printf("\n\n**************** Prime Partition ***********************\n\n");
-	partitionPrime(6);  
+	partitionPrime(7);  
 	
 	
 	//free(arr);

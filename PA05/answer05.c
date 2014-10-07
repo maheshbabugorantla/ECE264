@@ -2,6 +2,8 @@
 #include<stdlib.h>
 #include"answer05.h"
 
+
+// SOURCE Prof. Yung Hsiang Lu - Course Notes Page No: 
 void printPartition(int*arr, int length)
 {
 	int ind;
@@ -14,12 +16,14 @@ void printPartition(int*arr, int length)
 		}
 	}*/
 	
+	printf("=");
+
 	for(ind = 0; ind <(length - 1); ind++)
 	{
-		printf("%d + ",arr[ind]);
+		printf(" %d + ",arr[ind]);
 	} 
 	
-	printf("%d\n",arr[length - 1]);
+	printf(" %d\n",arr[length - 1]);
 }
 
 void printPartitionDec(int*arr, int length)
@@ -43,12 +47,14 @@ void printPartitionDec(int*arr, int length)
 	
 	}
 	
+	printf("=");
+	
 	for(ind = 0; ind <(length - 1); ind++)
 	{
-		printf("%d + ",arr[ind]);
+		printf(" %d + ",arr[ind]);
 	} 
 	
-	printf("%d\n",arr[length - 1]);
+	printf(" %d\n",arr[length - 1]);
 }
 
 
@@ -322,9 +328,9 @@ void partitionPrime1(int* arr, int ind, int value)
 		return;
 	}	
 	
-	int flag; // Notification if the number is a Composite
+	int flag = 0; // Notification if the number is a Composite
 	
-	int index; // To Check if the Number is Prime
+	int index = 2; // To Check if the Number is Prime
 	
 	for(val = 2; val<=value;val++)
 	{
@@ -333,6 +339,7 @@ void partitionPrime1(int* arr, int ind, int value)
 			if((val % index) == 0)
 			{	
 				flag = 1; // Composite Number Found
+				break;
 			}
 			
 			else
@@ -344,7 +351,7 @@ void partitionPrime1(int* arr, int ind, int value)
 		if(!flag)
 		{	
 			arr[ind] = val;
-			partitionPrime1(arr, ind + 1,value - val);
+			partitionPrime1(arr, ind + 1, value - val);
 		}	
 	}
 	
