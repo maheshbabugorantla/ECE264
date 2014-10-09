@@ -1,65 +1,82 @@
-==7361== Memcheck, a memory error detector
-==7361== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
-==7361== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
-==7361== Command: ./answer05
-==7361== Parent PID: 15984
-==7361== 
---7361-- 
---7361-- Valgrind options:
---7361--    --tool=memcheck
---7361--    --leak-check=full
---7361--    --verbose
---7361--    --log-file=memcheck.log
---7361-- Contents of /proc/version:
---7361--   Linux version 2.6.32-431.29.2.el6.x86_64 (mockbuild@x86-026.build.eng.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-4) (GCC) ) #1 SMP Sun Jul 27 15:55:46 EDT 2014
---7361-- Arch and hwcaps: AMD64, amd64-sse3
---7361-- Page sizes: currently 4096, max supported 4096
---7361-- Valgrind library directory: /usr/lib64/valgrind
---7361-- Reading syms from /home/shay/b/mgorantl/ECE264/solutions/ECE264Solutions/GITHUB/ECE264/PA05/answer05
---7361-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
---7361--    object doesn't have a dynamic symbol table
---7361-- Reading syms from /lib64/ld-2.12.so
---7361-- Scheduler: using generic scheduler lock implementation.
---7361-- Reading suppressions file: /usr/lib64/valgrind/default.supp
-==7361== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-7361-by-mgorantl-on-ecegrid-thin6.ecn.purdue.edu
-==7361== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-7361-by-mgorantl-on-ecegrid-thin6.ecn.purdue.edu
-==7361== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-7361-by-mgorantl-on-ecegrid-thin6.ecn.purdue.edu
-==7361== 
-==7361== TO CONTROL THIS PROCESS USING vgdb (which you probably
-==7361== don't want to do, unless you know exactly what you're doing,
-==7361== or are doing some strange experiment):
-==7361==   /usr/lib64/valgrind/../../bin/vgdb --pid=7361 ...command...
-==7361== 
-==7361== TO DEBUG THIS PROCESS USING GDB: start GDB like this
-==7361==   /path/to/gdb ./answer05
-==7361== and then give GDB the following command
-==7361==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=7361
-==7361== --pid is optional if only one valgrind process is running
-==7361== 
---7361-- REDIR: 0x3937017530 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
---7361-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
---7361-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
---7361-- REDIR: 0x39370173a0 (index) redirected to 0x4a07bf0 (index)
---7361-- REDIR: 0x3937017420 (strcmp) redirected to 0x4a08530 (strcmp)
---7361-- Reading syms from /lib64/libc-2.12.so
---7361-- REDIR: 0x3937484cd0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
---7361-- REDIR: 0x3937486f90 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
---7361-- REDIR: 0x3937482c40 (__GI_strrchr) redirected to 0x4a07a70 (__GI_strrchr)
---7361-- REDIR: 0x3937481160 (__GI_strlen) redirected to 0x4a07f70 (__GI_strlen)
---7361-- REDIR: 0x393747a640 (malloc) redirected to 0x4a0696c (malloc)
---7361-- REDIR: 0x393748aaf0 (strchrnul) redirected to 0x4a09f10 (strchrnul)
---7361-- REDIR: 0x393747b520 (free) redirected to 0x4a06369 (free)
---7361-- REDIR: 0x3937484500 (mempcpy) redirected to 0x4a09f80 (mempcpy)
-==7361== 
-==7361== HEAP SUMMARY:
-==7361==     in use at exit: 0 bytes in 0 blocks
-==7361==   total heap usage: 7 allocs, 7 frees, 164 bytes allocated
-==7361== 
-==7361== All heap blocks were freed -- no leaks are possible
-==7361== 
-==7361== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
---7361-- 
---7361-- used_suppression:      4 U1004-ARM-_dl_relocate_object
---7361-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
-==7361== 
-==7361== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
+==3982== Memcheck, a memory error detector
+==3982== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==3982== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
+==3982== Command: ./answer05
+==3982== Parent PID: 3831
+==3982== 
+--3982-- 
+--3982-- Valgrind options:
+--3982--    --tool=memcheck
+--3982--    --leak-check=full
+--3982--    --verbose
+--3982--    --log-file=memcheck.log
+--3982-- Contents of /proc/version:
+--3982--   Linux version 3.13.0-36-generic (buildd@toyol) (gcc version 4.8.2 (Ubuntu 4.8.2-19ubuntu1) ) #63-Ubuntu SMP Wed Sep 3 21:30:07 UTC 2014
+--3982-- Arch and hwcaps: AMD64, amd64-cx16-rdtscp-sse3-avx
+--3982-- Page sizes: currently 4096, max supported 4096
+--3982-- Valgrind library directory: /usr/lib/valgrind
+--3982-- Reading syms from /home/mahesh/Documents/ECE264/ECE264Assignments/GITHUB/ECE264/PA05/answer05
+--3982-- Reading syms from /lib/x86_64-linux-gnu/ld-2.19.so
+--3982--   Considering /lib/x86_64-linux-gnu/ld-2.19.so ..
+--3982--   .. CRC mismatch (computed 4cbae35e wanted 8d683c31)
+--3982--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/ld-2.19.so ..
+--3982--   .. CRC is valid
+--3982-- Reading syms from /usr/lib/valgrind/memcheck-amd64-linux
+--3982--   Considering /usr/lib/valgrind/memcheck-amd64-linux ..
+--3982--   .. CRC mismatch (computed 37cdde19 wanted adc367dd)
+--3982--    object doesn't have a symbol table
+--3982--    object doesn't have a dynamic symbol table
+--3982-- Scheduler: using generic scheduler lock implementation.
+--3982-- Reading suppressions file: /usr/lib/valgrind/default.supp
+==3982== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-3982-by-mahesh-on-???
+==3982== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-3982-by-mahesh-on-???
+==3982== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-3982-by-mahesh-on-???
+==3982== 
+==3982== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==3982== don't want to do, unless you know exactly what you're doing,
+==3982== or are doing some strange experiment):
+==3982==   /usr/lib/valgrind/../../bin/vgdb --pid=3982 ...command...
+==3982== 
+==3982== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==3982==   /path/to/gdb ./answer05
+==3982== and then give GDB the following command
+==3982==   target remote | /usr/lib/valgrind/../../bin/vgdb --pid=3982
+==3982== --pid is optional if only one valgrind process is running
+==3982== 
+--3982-- REDIR: 0x4019ca0 (strlen) redirected to 0x38068331 (???)
+--3982-- Reading syms from /usr/lib/valgrind/vgpreload_core-amd64-linux.so
+--3982--   Considering /usr/lib/valgrind/vgpreload_core-amd64-linux.so ..
+--3982--   .. CRC mismatch (computed 329d6860 wanted c0186920)
+--3982--    object doesn't have a symbol table
+--3982-- Reading syms from /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so
+--3982--   Considering /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so ..
+--3982--   .. CRC mismatch (computed 1fb85af8 wanted 2e9e3c16)
+--3982--    object doesn't have a symbol table
+==3982== WARNING: new redirection conflicts with existing -- ignoring it
+--3982--     old: 0x04019ca0 (strlen              ) R-> (0000.0) 0x38068331 ???
+--3982--     new: 0x04019ca0 (strlen              ) R-> (2007.0) 0x04c2e1a0 strlen
+--3982-- REDIR: 0x4019a50 (index) redirected to 0x4c2dd50 (index)
+--3982-- REDIR: 0x4019c70 (strcmp) redirected to 0x4c2f2f0 (strcmp)
+--3982-- REDIR: 0x401a9c0 (mempcpy) redirected to 0x4c31da0 (mempcpy)
+--3982-- Reading syms from /lib/x86_64-linux-gnu/libc-2.19.so
+--3982--   Considering /lib/x86_64-linux-gnu/libc-2.19.so ..
+--3982--   .. CRC mismatch (computed e7228afa wanted 93ff6981)
+--3982--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libc-2.19.so ..
+--3982--   .. CRC is valid
+--3982-- REDIR: 0x4ec47e0 (strcasecmp) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
+--3982-- REDIR: 0x4ec6ad0 (strncasecmp) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
+--3982-- REDIR: 0x4ec3fb0 (memcpy@GLIBC_2.2.5) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
+--3982-- REDIR: 0x4ec2240 (rindex) redirected to 0x4c2da30 (rindex)
+--3982-- REDIR: 0x4ec0540 (strlen) redirected to 0x4c2e0e0 (strlen)
+--3982-- REDIR: 0x4eba1d0 (malloc) redirected to 0x4c2ab10 (malloc)
+--3982-- REDIR: 0x4ecb540 (strchrnul) redirected to 0x4c319b0 (strchrnul)
+--3982-- REDIR: 0x4eba870 (free) redirected to 0x4c2bd80 (free)
+==3982== 
+==3982== HEAP SUMMARY:
+==3982==     in use at exit: 0 bytes in 0 blocks
+==3982==   total heap usage: 7 allocs, 7 frees, 168 bytes allocated
+==3982== 
+==3982== All heap blocks were freed -- no leaks are possible
+==3982== 
+==3982== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==3982== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

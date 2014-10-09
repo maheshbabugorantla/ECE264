@@ -3,18 +3,11 @@
 #include"answer05.h"
 
 
-// SOURCE Prof. Yung Hsiang Lu - Course Notes Page No: 
+/******************* Idea taken from SOURCE: Prof. Yung Hsiang Lu - Course Notes Page No: 205   *********************************************************/
+
 void printPartition(int*arr, int length)
 {
 	int ind;
-		
-/*	for(ind = 0;ind < length ; ind++)
-	{
-		if((arr[ind] % 2) != 0)
-		{
-			return;
-		}
-	}*/
 	
 	printf("=");
 
@@ -26,17 +19,11 @@ void printPartition(int*arr, int length)
 	printf(" %d\n",arr[length - 1]);
 }
 
+
+/********************************************** IDEA TAKEN FROM THE ABOVE PARTITION FUNCTION ********************************************************/
 void printPartitionDec(int*arr, int length)
 {
 	int ind;
-	
-/*	for(ind = 0;ind < length ; ind++)
-	{
-		if((arr[ind] % 2) != 0)
-		{
-			return;
-		}
-	}*/
 
 	for(ind = 0; ind < length - 1; ind++)
 	{
@@ -57,6 +44,8 @@ void printPartitionDec(int*arr, int length)
 	printf(" %d\n",arr[length - 1]);
 }
 
+
+/******************* Idea taken from SOURCE Prof. Yung Hsiang Lu - Course Notes Page No: 205   *********************************************************/
 
 void partitionall1(int* arr,int ind,int value)
 {
@@ -90,6 +79,9 @@ void partitionAll(int value)
 
 	free(arr);
 } 
+
+
+/******************* Idea taken from SOURCE Prof. Yung Hsiang Lu - Course Notes Page No: 216  *********************************************************/
 
 void partitionInc1(int* arr,int ind, int value)
 {
@@ -130,6 +122,8 @@ void partitionIncreasing(int value)
 	
 }
 
+/******************* Idea taken from SOURCE Prof. Yung Hsiang Lu - Course Notes Page No: 205  *********************************************************/
+
 
 void partitionDec1(int* arr,int ind,int value)
 {
@@ -153,27 +147,7 @@ void partitionDec1(int* arr,int ind,int value)
 
 void partitionDecreasing(int value)
 {
-	/*int val;
-	
-	if(left == 0)
-	{
-		printPartitionDec(arr,ind);
-		return;
-	}
-
-	int min = 1;
-
-	if(ind != 0)
-	{
-		min = arr[ind - 1] + 1;
-	}
-
-	for(val = min; val <= left; val++)
-	{
-		arr[ind] = val;
-		partitionDec(arr,ind + 1,left - val);
-	} */
-	
+		
 	int ind = 0;
 		
 	int* arr;
@@ -186,7 +160,7 @@ void partitionDecreasing(int value)
 	
 }
 
-	
+/******************* Idea taken from SOURCE Prof. Yung Hsiang Lu - Course Notes Page No: 216   *********************************************************/	
 	
 void partitionOdd1(int* arr,int ind,int value)
 {
@@ -208,9 +182,6 @@ void partitionOdd1(int* arr,int ind,int value)
 
 }
 		
-	
-// SOURCE: Prof. Yung Hsiang Lu Material , Chap: 14 , PageNo: 216
-
 void partitionOdd(int value)
 {
 	int ind = 0;
@@ -224,6 +195,9 @@ void partitionOdd(int value)
 	free(arr);		
 	
 }
+
+/******************* Idea taken from SOURCE Prof. Yung Hsiang Lu - Course Notes Page No: 216  *********************************************************/
+
 
 void partitionEven1(int* arr,int ind, int value)
 {
@@ -243,7 +217,6 @@ void partitionEven1(int* arr,int ind, int value)
 }
 
 
-// Idea Taken from the partitionOdd Function
 void partitionEven(int value)
 {
 	int ind = 0;
@@ -257,9 +230,7 @@ void partitionEven(int value)
 	free(arr);
 }
 
-//  For partitionEven Change the Print Partition (This is an Another Method)
-	
-
+/******************************* Idea taken from SOURCE Prof. Yung Hsiang Lu - Course Notes Page No: 217 ***********************************************************/
 
 void partitionOddAndEven1(int* arr,int ind, int value)
 {
@@ -307,20 +278,12 @@ void partitionOddAndEven(int value)
 	free(arr);	
 } 
 
+/******************************** Idea taken from SOURCE Prof. Yung Hsiang Lu - Course Notes Page No: 205  *********************************************************/
+
 void partitionPrime1(int* arr, int ind, int value)
 {
 
 	int val;
-
-	/*if( value == 2)
-	{
-		return;
-	}
-	
-	if(value == 3)
-	{
-		return;
-	}*/
 	
 	if(value == 0)
 	{
@@ -334,6 +297,11 @@ void partitionPrime1(int* arr, int ind, int value)
 	
 	for(val = 2; val<=value;val++)
 	{
+	
+		// This For Loop is Used to Check if a Number is a Prime Number or not
+		
+		/* I chose with 2 Because the '1' is neither prime not composite And.. Most of the numbers will be divisible by 2 Like For an first 10 multiples of a given Number 5 numbers will be divisible by 2. Hence, Most of our loop checking stops at 2 or might go until 3. */
+				 
 		for( index = 2; index < val;index ++)
 		{
 			if((val % index) == 0)

@@ -1,0 +1,246 @@
+commit b18c095b3a7d29c51c2023e10891405693944a27
+Author: Mahesh Babu Gorantla <mgorantl@ecegrid-thin6.ecn.purdue.edu>
+Date:   Tue Oct 7 11:21:33 2014 -0400
+
+    PA05 Assignment Completed
+
+commit 255d2eead4fae3a14553665a36f3a42edf4432e1
+Author: Mahesh Babu Gorantla <maheshbabugorantla@gmail.com>
+Date:   Tue Oct 7 10:20:33 2014 -0400
+
+    Added HW05
+
+commit 8a0fa64cb8cb4f04baa39bdecb57ab9e018ee3f8
+Author: Mahesh Babu Gorantla <maheshbabugorantla@gmail.com>
+Date:   Fri Oct 3 19:21:26 2014 -0400
+
+    Functions Working as Expected but not complete
+
+commit d740adcae84e4dab856b4afc5c8272b62883b401
+Author: Mahesh Babu Gorantla <maheshbabugorantla@gmail.com>
+Date:   Mon Sep 29 15:01:06 2014 -0400
+
+    Updated grep-lite.c
+
+commit 9408b70039e16a0070ff5c0f42ab6f30a5323e4e
+Author: Mahesh Babu Gorantla <maheshbabugorantla@gmail.com>
+Date:   Sun Sep 28 13:20:09 2014 -0400
+
+    PA05 Part 1 and 2 Working as Expected
+
+commit b0afbd4c291137668eb3265d3531805b97319122
+Author: Mahesh Babu Gorantla <maheshbabugorantla@gmail.com>
+Date:   Fri Sep 26 15:24:46 2014 -0400
+
+    Updated the PA04 Assignment
+
+commit f86dc4237450a49b6f90ea12ec2091774395b519
+Author: Mahesh Babu Gorantla <maheshbabugorantla@gmail.com>
+Date:   Wed Sep 24 20:10:54 2014 -0400
+
+    Zipped PA03 HW files
+
+commit d52f0c6eda7d4dc617130c1e0cc928ca18e8216b
+Author: Mahesh Babu Gorantla <maheshbabugorantla@gmail.com>
+Date:   Wed Sep 24 19:41:24 2014 -0400
+
+    Added the git log File
+
+commit d9181fccb15ed9c2cfe7b0707df8d4fba81a2866
+Merge: 5f4071a 5b3b58b
+Author: Mahesh Babu Gorantla <maheshbabugorantla@gmail.com>
+Date:   Wed Sep 24 19:28:27 2014 -0400
+
+    Merged Chages
+
+commit 5f4071a061c32710eb13cbbba8e93b6f51037ab9
+Author: Mahesh Babu Gorantla <maheshbabugorantla@gmail.com>
+Date:   Wed Sep 24 19:25:43 2014 -0400
+
+    All Changes made
+
+commit dbeb547595080de129f61d0b4dad99f754b9ca5e
+Author: Mahesh Babu Gorantla <maheshbabugorantla@gmail.com>
+Date:   Wed Sep 24 19:11:56 2014 -0400
+
+    Implode Function Working No Errors
+
+commit 797fd799cfd0e5a720ec5bb674189c3c47f77c66
+Author: Mahesh Babu Gorantla <maheshbabugorantla@gmail.com>
+Date:   Wed Sep 24 03:18:48 2014 -0400
+
+    Main Function edited and Working as Expected
+
+commit 5b3b58bcc655823d3e2532cb80109dcd7544384b
+Author: maheshbabugorantla <maheshbabugorantla@users.noreply.github.com>
+Date:   Wed Sep 24 03:09:28 2014 -0400
+
+    Delete pa03
+
+commit 67225e21ead9de3a96fd38a01ffa325f46fc7a38
+Author: maheshbabugorantla <maheshbabugorantla@users.noreply.github.com>
+Date:   Wed Sep 24 03:09:10 2014 -0400
+
+    Delete sample2.c~
+
+commit 4f75792f248957426660efcd6e7b91493b626470
+Author: maheshbabugorantla <maheshbabugorantla@users.noreply.github.com>
+Date:   Wed Sep 24 03:08:57 2014 -0400
+
+    Delete pa03.c~
+
+commit 4f9a4a93d4058d9cccecaa901c84a2fd85e6e434
+Author: maheshbabugorantla <maheshbabugorantla@users.noreply.github.com>
+Date:   Wed Sep 24 03:08:47 2014 -0400
+
+    Delete main
+
+commit f7c18cd5dcff4c9c4a45d541c720c6ca36ebeeab
+Author: maheshbabugorantla <maheshbabugorantla@users.noreply.github.com>
+Date:   Wed Sep 24 03:08:33 2014 -0400
+
+    Delete main.c~
+
+commit 39a730fe7e4bbc4f88bd5a21cb391e29183f1781
+Author: maheshbabugorantla <maheshbabugorantla@users.noreply.github.com>
+Date:   Wed Sep 24 03:08:14 2014 -0400
+
+    Delete answer03.h~
+
+commit 8a6c32118d6b3d7c4600ac653dc17b1e03f4e597
+Author: maheshbabugorantla <maheshbabugorantla@users.noreply.github.com>
+Date:   Wed Sep 24 03:08:02 2014 -0400
+
+    Delete README~
+
+commit 658fe9b6e38d734d384ecae6a4e59b4130c101c7
+Author: maheshbabugorantla <maheshbabugorantla@users.noreply.github.com>
+Date:   Wed Sep 24 03:07:52 2014 -0400
+
+    Delete answer03.c~
+
+commit b2ad8896a4ae00dfc5811940c8a60b1029cea554
+Author: Mahesh Babu Gorantla <maheshbabugorantla@gmail.com>
+Date:   Wed Sep 24 03:05:03 2014 -0400
+
+    pa03 updated and works with no memory leaks so far
+
+commit d11441078735454a6d646cd3f5488c42994fa306
+Author: Mahesh Babu Gorantla <maheshbabugorantla@gmail.com>
+Date:   Wed Sep 24 03:01:29 2014 -0400
+
+    Only Implode works with Segmentation Fault
+
+commit 5c014095626994e491f2f8fdebc5ce3915909857
+Author: Mahesh Babu Gorantla <maheshbabugorantla@gmail.com>
+Date:   Tue Sep 23 23:42:26 2014 -0400
+
+    Explode Working with no valgrind Errors
+
+commit 0af4dc8117c18f932602c6f65e6efe86dcfb743e
+Author: Mahesh Babu Gorantla <maheshbabugorantla@gmail.com>
+Date:   Tue Sep 23 10:56:43 2014 -0400
+
+    Abhishek Solution
+
+commit df39b921e63938094c87ec05e6971481ac4b4498
+Author: Mahesh Babu Gorantla <maheshbabugorantla@gmail.com>
+Date:   Wed Sep 17 18:07:24 2014 -0400
+
+    explode Working with no memory errors
+
+commit c65a604713c8e63dc2f050967c895e484130a463
+Author: Mahesh Babu Gorantla <maheshbabugorantla@gmail.com>
+Date:   Wed Sep 17 15:05:32 2014 -0400
+
+    Made the 'explode' Function
+
+commit c9682576e69bc7558a7d5a26c65937b421678111
+Author: Mahesh Babu Gorantla <maheshbabugorantla@gmail.com>
+Date:   Tue Sep 16 23:04:49 2014 -0400
+
+    Updated the Test Cases for 'strcat_ex' function
+
+commit 0c5a21b7b6b86d0faf1e4ca827fdc22aaf144b00
+Author: Mahesh Babu Gorantla <maheshbabugorantla@gmail.com>
+Date:   Tue Sep 16 23:00:13 2014 -0400
+
+    Test cases Running as expected with a Valgring Error
+
+commit 14295e0f05e5aa10f938bb4a3b0bc7ddb8eb9925
+Author: Mahesh Babu Gorantla <maheshbabugorantla@gmail.com>
+Date:   Sun Sep 14 16:12:20 2014 -0400
+
+    Changed the strcat_ex Function
+
+commit 70de785d99fc1563297f44c1ea28c0cf709a4be3
+Author: maheshbabugorantla <maheshbabugorantla@users.noreply.github.com>
+Date:   Sat Sep 13 02:37:26 2014 -0400
+
+    Delete pa01.zip
+
+commit ec87e434e957f505aa4f9131e51ab628bba9e734
+Author: maheshbabugorantla <maheshbabugorantla@users.noreply.github.com>
+Date:   Sat Sep 13 02:34:15 2014 -0400
+
+    Update README.md
+
+commit 001aa1f1d9b71da165e8b2aa738e2d26a5d09db3
+Author: maheshbabugorantla <maheshbabugorantla@users.noreply.github.com>
+Date:   Sat Sep 13 02:33:28 2014 -0400
+
+    Update README.md
+
+commit 2a8b1cc7684d95199ff2e0fcef16f6291d40f72c
+Author: Mahesh Babu Gorantla <maheshbabugorantla@gmail.com>
+Date:   Fri Sep 12 11:59:52 2014 -0400
+
+    No Code is Written
+
+commit 82fc593e6a0f5b17b414ecd8ff7addde5dcd30a8
+Author: Mahesh Babu Gorantla <maheshbabugorantla@gmail.com>
+Date:   Fri Sep 12 11:56:11 2014 -0400
+
+    Just Started the Assignment 03
+
+commit 845dfbeb5e18aadc6bd82fe756766d636c64dc3b
+Author: Mahesh Babu Gorantla <maheshbabugorantla@gmail.com>
+Date:   Fri Sep 12 11:52:20 2014 -0400
+
+     First 2 Assignments
+
+commit 29da7296912078eaf2529be90da727e867ec111c
+Author: maheshbabugorantla <maheshbabugorantla@users.noreply.github.com>
+Date:   Mon Sep 1 01:04:46 2014 -0400
+
+    Delete sample2.c
+
+commit 9cb3b7009f57867d02e3c2802c7716a3b0a9d822
+Author: maheshbabugorantla <maheshbabugorantla@users.noreply.github.com>
+Date:   Mon Sep 1 01:04:38 2014 -0400
+
+    Delete sample.c
+
+commit 2a765d8d7dc641133ca4a3f954410d332225a4bb
+Author: Mahesh Babu Gorantla <maheshbabugorantla@gmail.com>
+Date:   Mon Sep 1 01:03:27 2014 -0400
+
+    Mahesh
+
+commit 1ac669021409c6aea6bfbcb384d1fad36eb7d78a
+Author: Mahesh Babu Gorantla <maheshbabugorantla@gmail.com>
+Date:   Mon Sep 1 01:01:03 2014 -0400
+
+     SOme Random Program
+
+commit 8ba7d920ec4a4465ea351c47567c551250a5a447
+Author: Mahesh Babu Gorantla <maheshbabugorantla@gmail.com>
+Date:   Mon Sep 1 00:55:39 2014 -0400
+
+    Home work Done
+
+commit 35ab9a2429248e94f1742671b1baf0ba766161a9
+Author: maheshbabugorantla <maheshbabugorantla@users.noreply.github.com>
+Date:   Mon Sep 1 00:53:06 2014 -0400
+
+    Initial commit
