@@ -5,7 +5,7 @@
 
 void print_path(char** maze,int count,int height,int width,int w, int h,char dir);
 
-void print_directions(char** maze, int height, int width)
+void print_directions(char** maze, int width, int height)
 {
 	// This below loop is used to check the Entry point of the Maze  
 	/***************** STATUS : Successfully Finding the Entry Point *********************************************/
@@ -14,21 +14,26 @@ void print_directions(char** maze, int height, int width)
 	//int h = 0; // To iterate through the Height of the Maze
 	//int steps = 0; // No.of steps in Each Direction
 	
+	printf("\n\nHeight: %d\n",height);
+	printf("Width: %d\n",width);
+	
 	for(w = 0; w < width; w++)
 	{
-		if( maze[0][w] == ' ')
+		if( maze[0][w] ==' ')
 		{
 			printf("\n\nEntry Point found at point (0, %d)\n\n",w);
 			break;	
 		}
 	}
 
-	print_path(maze,0,width,height,w,1,'S');
+	//maze[w][1] = '.';
+	print_path(maze,0,height,width,w,1,'S');
+	
 	
 	return;
 } 
 
-char opp ( char dir )
+char opp (char dir )
 {
 	char oppDir;
 	if ( dir == 'S')
@@ -49,6 +54,7 @@ void print_path(char** maze,int count,int height,int width,int w, int h,char dir
 	//int h1 = h;
 	//int w1 = w;
 	
+	maze[h][w] = '.';
 	printf("%c 1\n", dir); 
 	/*if(h == height && w == width && maze[h][w] == 'X')// || maze[w][h] =="")
 	{
@@ -79,18 +85,40 @@ void print_path(char** maze,int count,int height,int width,int w, int h,char dir
 		if (h < height)
 		{
 			
-			count += 1;
 			
 			// Traversing in South Direction
 			
-			//printf("Down %d",(h +1));
-			
-			if((h+1) < height && maze[h+1][w] == ' ' && dir != 'N')
+			if((h+1) < height && maze[h+1][w] != 'X' && dir != 'N')
 			{	
-				print_path(maze,count,height,width,w,h + 1,'S');
-				
+				maze[h+1][w] = '.';			
+				print_path(maze,count,height,width,w,h + 1,'S');	
 			}
-									
+			
+			// Traversing in North Direction If Possible
+				
+			if((h-1) >= 0 && maze[h-1][w]!='X' && dir != 'S')
+			{	
+				maze[h-1][w] = '.';
+				print_path(maze,count,height,width,w,h - 1,'N');
+		
+			}
+			
+			
+			// Traversing in East Direction if Possible
+			if(((w + 1) < width && (w - 1) >=0) && maze[h][w + 1] !='X' && dir != 'W')
+			{
+				maze[h][w+1] = '.';
+				print_path(maze,count,height,width,w + 1,h,'E');
+			}
+			
+			// Traversing in West Direction if Possible
+			if(((w - 1) >= 0 && (w + 1) < width) && maze[h][w - 1]!='X' && dir != 'E')
+			{	
+				maze[h][w-1] = '.';
+				print_path(maze,count,height,width,w - 1,h,'W');
+			}			
+								
+		
 			/*if(h == height||w == width||maze[h][w] == 'X')// || maze[w][h] =="")
 			{
 				printf("\n%c %d\n",dir,count);
@@ -104,14 +132,7 @@ void print_path(char** maze,int count,int height,int width,int w, int h,char dir
 			} */
 						
 			
-			// Traversing in North Direction If Possible
-			
-			if((h-1) >= 0 && maze[h-1][w] == ' ' && dir != 'S')
-			{	
-				print_path(maze,count,height,width,w,h - 1,'N');
-		
-			}
-			
+						
 		/*	if(h == height||w == width||maze[h][w] == 'X')// || maze[w][h] =="")
 			{
 				printf("\n%c %d\n",dir,count);
@@ -124,13 +145,14 @@ void print_path(char** maze,int count,int height,int width,int w, int h,char dir
 				count = 0; // Reinitializing
 			} */
 			
-		        // Traversing in West Direction if Possible
+		      /*  // Traversing in West Direction if Possible
 			
-			if(((w - 1) >= 0 && (w + 1) < width) && maze[h][w - 1] == ' ' && dir != 'E')
+			if(((w - 1) >= 0 && (w + 1) < width) && maze[h][w - 1]!='X' && dir != 'E')
 			{	
+				maze[h][w-1] = '.';
 				print_path(maze,count,height,width,w - 1,h,'W');
 		
-			}
+			} */
 			
 		/*	if(h == height||w == width||maze[h][w] == 'X')// || maze[w][h] =="")
 			{
@@ -144,13 +166,6 @@ void print_path(char** maze,int count,int height,int width,int w, int h,char dir
 				count = 0; // Reinitializing
 			} */
 		
-			
-			// Traversing in East Direction if Possible
-			
-			if(((w + 1) < width && (w - 1) >=0) && maze[h][w + 1] == ' ' && dir != 'W')
-			{
-				print_path(maze,count,height,width,w + 1,h,'E');
-			}
 			
 		/*	if(h == height||w == width||maze[h][w] == 'X')// || maze[w][h] =="")
 			{
