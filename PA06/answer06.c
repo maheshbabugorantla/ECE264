@@ -11,8 +11,6 @@ void print_directions(char** maze, int width, int height)
 	/***************** STATUS : Successfully Finding the Entry Point *********************************************/
 	
 	int w = 0; // To iterate through the Width of the Maze
-	//int h = 0; // To iterate through the Height of the Maze
-	//int steps = 0; // No.of steps in Each Direction
 	
 	printf("\n\nHeight: %d\n",height);
 	printf("Width: %d\n",width);
@@ -26,7 +24,7 @@ void print_directions(char** maze, int width, int height)
 		}
 	}
 
-	//maze[w][1] = '.';
+	// SUB FUNCTION TO TRAVERSE THROUGH THE MAZE  ******** Makes my Work Easier ******** :)
 	print_path(maze,0,height,width,w,1,'S');
 	
 	
@@ -50,43 +48,18 @@ char opp (char dir )
 
 void print_path(char** maze,int count,int height,int width,int w, int h,char dir)
 {
-	
-	//int h1 = h;
-	//int w1 = w;
-	
+	// USED TO SHOW THE PATH TRAVERSED
 	maze[h][w] = '.';
-	printf("%c 1\n", dir); 
-	/*if(h == height && w == width && maze[h][w] == 'X')// || maze[w][h] =="")
-	{
-		printf("\n%c %d\n",dir,count);
-		if(dir == 'S') 
-		{
-			printf("\n%c %d\n",'N',count);
-		}
-	
-		if(dir == 'W') 
-		{
-			printf("\n%c %d\n",'E',count);
-		}
-		
-		if(dir == 'E') 
-		{
-			printf("\n%c %d\n",'W',count);
-		}
-	
-		count = 0;
-			
-		return;
 
-	} */
+	// PRINTING THE FORWARD DIRECTIONS OF THE PATH
+	printf("%c 1\n", dir); 
 	
 	if(w >= 0 && w < width)
 	{
 		if (h < height)
 		{
 			
-			
-			// Traversing in South Direction
+			// Traversing in South Direction If Possible
 			
 			if((h+1) < height && maze[h+1][w] != 'X' && dir != 'N')
 			{	
@@ -117,67 +90,7 @@ void print_path(char** maze,int count,int height,int width,int w, int h,char dir
 				maze[h][w-1] = '.';
 				print_path(maze,count,height,width,w - 1,h,'W');
 			}			
-								
-		
-			/*if(h == height||w == width||maze[h][w] == 'X')// || maze[w][h] =="")
-			{
-				printf("\n%c %d\n",dir,count);
-							
-				if(dir == 'S') 
-				{
-					printf("\n%c %d\n",'N',count);
-				}
-								
-				count = 0; // Reinitializing
-			} */
-						
-			
-						
-		/*	if(h == height||w == width||maze[h][w] == 'X')// || maze[w][h] =="")
-			{
-				printf("\n%c %d\n",dir,count);
-							
-				if(dir == 'N') 
-				{
-					printf("\n%c %d\n",'S',count);
-				}
-								
-				count = 0; // Reinitializing
-			} */
-			
-		      /*  // Traversing in West Direction if Possible
-			
-			if(((w - 1) >= 0 && (w + 1) < width) && maze[h][w - 1]!='X' && dir != 'E')
-			{	
-				maze[h][w-1] = '.';
-				print_path(maze,count,height,width,w - 1,h,'W');
-		
-			} */
-			
-		/*	if(h == height||w == width||maze[h][w] == 'X')// || maze[w][h] =="")
-			{
-				printf("\n%c %d\n",dir,count);
-							
-				if(dir == 'W') 
-				{
-					printf("\n%c %d\n",'E',count);
-				}
-								
-				count = 0; // Reinitializing
-			} */
-		
-			
-		/*	if(h == height||w == width||maze[h][w] == 'X')// || maze[w][h] =="")
-			{
-				printf("\n%c %d\n",dir,count);
-							
-				if(dir == 'E') 
-				{
-					printf("\n%c %d\n",'W',count);
-				}
-								
-				count = 0; // Reinitializing
-			} */
+										
 	
 		}
 	}
@@ -186,5 +99,7 @@ void print_path(char** maze,int count,int height,int width,int w, int h,char dir
 	{
 		return;
 	}
+	
+	// PRINTING THE DIRECTIONS IN THE REVERSE PATH TO MAKE THE BOT MOVE IN THE REVERSE DIRECTION IF REQUIRED
 	printf ( "%c 1\n", opp ( dir ) ); 
 }	
