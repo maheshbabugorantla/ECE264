@@ -28,7 +28,7 @@ void print_directions(char** maze, int width, int height)
 	return;
 } 
 
-char opp(char dir )
+char opp (char dir )
 {
 	char oppDir;
 	if ( dir == 'S')
