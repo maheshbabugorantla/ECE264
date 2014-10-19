@@ -12,11 +12,14 @@ void print_directions(char** maze, int width, int height)
 	
 	int w = 0; // To iterate through the Width of the Maze
 	
+	printf("\n\nHeight: %d\n",height);
+	printf("Width: %d\n",width);
+	
 	for(w = 0; w < width; w++)
 	{
 		if( maze[0][w] ==' ')
 		{
-	//		printf("\n\nEntry Point found at point (0, %d)\n\n",w);
+			printf("\n\nEntry Point found at point (0, %d)\n\n",w);
 			break;	
 		}
 	}
