@@ -57,9 +57,7 @@ int List_length(List * list);
  * If your code is longer than this, then you may save time by rethinking your
  * approach.
  */
-List * List_merge(List * lhs, 
-		  List * rhs, 
-		  int (*compar)(const char *, const char*));
+List * List_merge(List * lhs, List * rhs, int (*compar)(const char *, const char*));
 
 /** 
  * Sorts the list's elements using the merge-sort algorithm.

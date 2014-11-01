@@ -1,0 +1,777 @@
+==9444== Memcheck, a memory error detector
+==9444== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==9444== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
+==9444== Command: ./a.out 26
+==9444== Parent PID: 9443
+==9444== 
+--9444-- 
+--9444-- Valgrind options:
+--9444--    --tool=memcheck
+--9444--    --leak-check=full
+--9444--    --verbose
+--9444--    --log-file=memcheck.log
+--9444-- Contents of /proc/version:
+--9444--   Linux version 3.13.0-39-generic (buildd@toyol) (gcc version 4.8.2 (Ubuntu 4.8.2-19ubuntu1) ) #66-Ubuntu SMP Tue Oct 28 13:30:27 UTC 2014
+--9444-- Arch and hwcaps: AMD64, amd64-cx16-rdtscp-sse3-avx
+--9444-- Page sizes: currently 4096, max supported 4096
+--9444-- Valgrind library directory: /usr/lib/valgrind
+--9444-- Reading syms from /tmp/.cS2iXy/a.out
+--9444-- Reading syms from /lib/x86_64-linux-gnu/ld-2.19.so
+--9444--   Considering /lib/x86_64-linux-gnu/ld-2.19.so ..
+--9444--   .. CRC mismatch (computed 4cbae35e wanted 8d683c31)
+--9444--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/ld-2.19.so ..
+--9444--   .. CRC is valid
+--9444-- Reading syms from /usr/lib/valgrind/memcheck-amd64-linux
+--9444--   Considering /usr/lib/valgrind/memcheck-amd64-linux ..
+--9444--   .. CRC mismatch (computed 37cdde19 wanted adc367dd)
+--9444--    object doesn't have a symbol table
+--9444--    object doesn't have a dynamic symbol table
+--9444-- Scheduler: using generic scheduler lock implementation.
+--9444-- Reading suppressions file: /usr/lib/valgrind/default.supp
+==9444== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-9444-by-mahesh-on-???
+==9444== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-9444-by-mahesh-on-???
+==9444== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-9444-by-mahesh-on-???
+==9444== 
+==9444== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==9444== don't want to do, unless you know exactly what you're doing,
+==9444== or are doing some strange experiment):
+==9444==   /usr/lib/valgrind/../../bin/vgdb --pid=9444 ...command...
+==9444== 
+==9444== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==9444==   /path/to/gdb ./a.out
+==9444== and then give GDB the following command
+==9444==   target remote | /usr/lib/valgrind/../../bin/vgdb --pid=9444
+==9444== --pid is optional if only one valgrind process is running
+==9444== 
+--9444-- REDIR: 0x4019ca0 (strlen) redirected to 0x38068331 (???)
+--9444-- Reading syms from /usr/lib/valgrind/vgpreload_core-amd64-linux.so
+--9444--   Considering /usr/lib/valgrind/vgpreload_core-amd64-linux.so ..
+--9444--   .. CRC mismatch (computed 329d6860 wanted c0186920)
+--9444--    object doesn't have a symbol table
+--9444-- Reading syms from /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so
+--9444--   Considering /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so ..
+--9444--   .. CRC mismatch (computed 1fb85af8 wanted 2e9e3c16)
+--9444--    object doesn't have a symbol table
+==9444== WARNING: new redirection conflicts with existing -- ignoring it
+--9444--     old: 0x04019ca0 (strlen              ) R-> (0000.0) 0x38068331 ???
+--9444--     new: 0x04019ca0 (strlen              ) R-> (2007.0) 0x04c2e1a0 strlen
+--9444-- REDIR: 0x4019a50 (index) redirected to 0x4c2dd50 (index)
+--9444-- REDIR: 0x4019c70 (strcmp) redirected to 0x4c2f2f0 (strcmp)
+--9444-- REDIR: 0x401a9c0 (mempcpy) redirected to 0x4c31da0 (mempcpy)
+--9444-- Reading syms from /lib/x86_64-linux-gnu/libc-2.19.so
+--9444--   Considering /lib/x86_64-linux-gnu/libc-2.19.so ..
+--9444--   .. CRC mismatch (computed e7228afa wanted 93ff6981)
+--9444--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libc-2.19.so ..
+--9444--   .. CRC is valid
+--9444-- REDIR: 0x4ec47e0 (strcasecmp) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
+--9444-- REDIR: 0x4ec6ad0 (strncasecmp) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
+--9444-- REDIR: 0x4ec3fb0 (memcpy@GLIBC_2.2.5) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
+--9444-- REDIR: 0x4ec2240 (rindex) redirected to 0x4c2da30 (rindex)
+--9444-- REDIR: 0x4eba1d0 (malloc) redirected to 0x4c2ab10 (malloc)
+--9444-- REDIR: 0x4ec0540 (strlen) redirected to 0x4c2e0e0 (strlen)
+--9444-- REDIR: 0x4ec9200 (__GI_memcpy) redirected to 0x4c2fc90 (__GI_memcpy)
+--9444-- REDIR: 0x4ecb540 (strchrnul) redirected to 0x4c319b0 (strchrnul)
+--9444-- REDIR: 0x4ebeaf0 (strcmp) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
+--9444-- REDIR: 0x4f77d40 (__strcmp_ssse3) redirected to 0x4c2f1b0 (strcmp)
+--9444-- REDIR: 0x4eba870 (free) redirected to 0x4c2bd80 (free)
+==9444== Invalid read of size 8
+==9444==    at 0x4009EC: List_destroy (answer08.c:55)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd188 is 8 bytes inside a block of size 16 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A0E: List_destroy (answer08.c:57)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x400B9F: List_sort (answer08.c:130)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== Invalid read of size 8
+==9444==    at 0x4009F8: List_destroy (answer08.c:56)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd180 is 0 bytes inside a block of size 16 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A0E: List_destroy (answer08.c:57)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x400B9F: List_sort (answer08.c:130)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== Invalid free() / delete / delete[] / realloc()
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A02: List_destroy (answer08.c:56)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd1d0 is 0 bytes inside a block of size 2 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A02: List_destroy (answer08.c:56)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x400B9F: List_sort (answer08.c:130)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== Invalid free() / delete / delete[] / realloc()
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A0E: List_destroy (answer08.c:57)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd180 is 0 bytes inside a block of size 16 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A0E: List_destroy (answer08.c:57)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x400B9F: List_sort (answer08.c:130)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== Invalid read of size 8
+==9444==    at 0x400F76: List_print (test_support_functions.c:29)
+==9444==    by 0x401E98: test_sort (test_List_sort.c:45)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd0e0 is 0 bytes inside a block of size 16 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A0E: List_destroy (answer08.c:57)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== Invalid read of size 1
+==9444==    at 0x4E828F3: vfprintf (vfprintf.c:1661)
+==9444==    by 0x4E8B388: printf (printf.c:33)
+==9444==    by 0x400F8A: List_print (test_support_functions.c:29)
+==9444==    by 0x401E98: test_sort (test_List_sort.c:45)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd130 is 0 bytes inside a block of size 2 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A02: List_destroy (answer08.c:56)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== Invalid read of size 1
+==9444==    at 0x4EC419B: __GI_mempcpy (memcpy.S:71)
+==9444==    by 0x4EB10CC: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1320)
+==9444==    by 0x4E828B4: vfprintf (vfprintf.c:1661)
+==9444==    by 0x4E8B388: printf (printf.c:33)
+==9444==    by 0x400F8A: List_print (test_support_functions.c:29)
+==9444==    by 0x401E98: test_sort (test_List_sort.c:45)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd130 is 0 bytes inside a block of size 2 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A02: List_destroy (answer08.c:56)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== Invalid read of size 8
+==9444==    at 0x400F8F: List_print (test_support_functions.c:30)
+==9444==    by 0x401E98: test_sort (test_List_sort.c:45)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd0e8 is 8 bytes inside a block of size 16 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A0E: List_destroy (answer08.c:57)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== Invalid read of size 8
+==9444==    at 0x400CC3: List_length_sol (<stdin>:36)
+==9444==    by 0x400CCE: List_length_sol (<stdin>:36)
+==9444==    by 0x401EC9: test_sort (test_List_sort.c:51)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd0e8 is 8 bytes inside a block of size 16 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A0E: List_destroy (answer08.c:57)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== Invalid read of size 8
+==9444==    at 0x400CC3: List_length_sol (<stdin>:36)
+==9444==    by 0x400CCE: List_length_sol (<stdin>:36)
+==9444==    by 0x400CCE: List_length_sol (<stdin>:36)
+==9444==    by 0x401EC9: test_sort (test_List_sort.c:51)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd188 is 8 bytes inside a block of size 16 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A0E: List_destroy (answer08.c:57)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x400B9F: List_sort (answer08.c:130)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== Invalid read of size 8
+==9444==    at 0x401F7C: test_sort (test_List_sort.c:72)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd0e0 is 0 bytes inside a block of size 16 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A0E: List_destroy (answer08.c:57)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== Invalid read of size 1
+==9444==    at 0x4C2F1B1: strcmp (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x401F89: test_sort (test_List_sort.c:72)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd130 is 0 bytes inside a block of size 2 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A02: List_destroy (answer08.c:56)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== Invalid read of size 1
+==9444==    at 0x4C2F1C8: strcmp (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x401F89: test_sort (test_List_sort.c:72)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd131 is 1 bytes inside a block of size 2 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A02: List_destroy (answer08.c:56)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== Invalid read of size 8
+==9444==    at 0x401FAF: test_sort (test_List_sort.c:77)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd0e8 is 8 bytes inside a block of size 16 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A0E: List_destroy (answer08.c:57)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== Invalid read of size 8
+==9444==    at 0x400C83: List_destroy_sol (<stdin>:28)
+==9444==    by 0x400C8E: List_destroy_sol (<stdin>:28)
+==9444==    by 0x401FEC: test_sort (test_List_sort.c:83)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd0e8 is 8 bytes inside a block of size 16 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A0E: List_destroy (answer08.c:57)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== Invalid read of size 8
+==9444==    at 0x400C83: List_destroy_sol (<stdin>:28)
+==9444==    by 0x400C8E: List_destroy_sol (<stdin>:28)
+==9444==    by 0x400C8E: List_destroy_sol (<stdin>:28)
+==9444==    by 0x401FEC: test_sort (test_List_sort.c:83)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd188 is 8 bytes inside a block of size 16 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A0E: List_destroy (answer08.c:57)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x400B9F: List_sort (answer08.c:130)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== Invalid read of size 8
+==9444==    at 0x400C93: List_destroy_sol (<stdin>:29)
+==9444==    by 0x400C8E: List_destroy_sol (<stdin>:28)
+==9444==    by 0x400C8E: List_destroy_sol (<stdin>:28)
+==9444==    by 0x401FEC: test_sort (test_List_sort.c:83)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd180 is 0 bytes inside a block of size 16 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A0E: List_destroy (answer08.c:57)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x400B9F: List_sort (answer08.c:130)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== Invalid free() / delete / delete[] / realloc()
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400C9D: List_destroy_sol (<stdin>:29)
+==9444==    by 0x400C8E: List_destroy_sol (<stdin>:28)
+==9444==    by 0x400C8E: List_destroy_sol (<stdin>:28)
+==9444==    by 0x401FEC: test_sort (test_List_sort.c:83)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd1d0 is 0 bytes inside a block of size 2 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A02: List_destroy (answer08.c:56)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x400B9F: List_sort (answer08.c:130)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== Invalid free() / delete / delete[] / realloc()
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400CA9: List_destroy_sol (<stdin>:30)
+==9444==    by 0x400C8E: List_destroy_sol (<stdin>:28)
+==9444==    by 0x400C8E: List_destroy_sol (<stdin>:28)
+==9444==    by 0x401FEC: test_sort (test_List_sort.c:83)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd180 is 0 bytes inside a block of size 16 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A0E: List_destroy (answer08.c:57)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x400B9F: List_sort (answer08.c:130)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== Invalid read of size 8
+==9444==    at 0x400C93: List_destroy_sol (<stdin>:29)
+==9444==    by 0x400C8E: List_destroy_sol (<stdin>:28)
+==9444==    by 0x401FEC: test_sort (test_List_sort.c:83)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd0e0 is 0 bytes inside a block of size 16 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A0E: List_destroy (answer08.c:57)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== Invalid free() / delete / delete[] / realloc()
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400C9D: List_destroy_sol (<stdin>:29)
+==9444==    by 0x400C8E: List_destroy_sol (<stdin>:28)
+==9444==    by 0x401FEC: test_sort (test_List_sort.c:83)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd130 is 0 bytes inside a block of size 2 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A02: List_destroy (answer08.c:56)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== Invalid free() / delete / delete[] / realloc()
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400CA9: List_destroy_sol (<stdin>:30)
+==9444==    by 0x400C8E: List_destroy_sol (<stdin>:28)
+==9444==    by 0x401FEC: test_sort (test_List_sort.c:83)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd0e0 is 0 bytes inside a block of size 16 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A0E: List_destroy (answer08.c:57)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== 
+==9444== HEAP SUMMARY:
+==9444==     in use at exit: 0 bytes in 0 blocks
+==9444==   total heap usage: 13 allocs, 19 frees, 132 bytes allocated
+==9444== 
+==9444== All heap blocks were freed -- no leaks are possible
+==9444== 
+==9444== ERROR SUMMARY: 32 errors from 22 contexts (suppressed: 0 from 0)
+==9444== 
+==9444== 1 errors in context 1 of 22:
+==9444== Invalid free() / delete / delete[] / realloc()
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400CA9: List_destroy_sol (<stdin>:30)
+==9444==    by 0x400C8E: List_destroy_sol (<stdin>:28)
+==9444==    by 0x401FEC: test_sort (test_List_sort.c:83)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd0e0 is 0 bytes inside a block of size 16 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A0E: List_destroy (answer08.c:57)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== 
+==9444== 1 errors in context 2 of 22:
+==9444== Invalid free() / delete / delete[] / realloc()
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400C9D: List_destroy_sol (<stdin>:29)
+==9444==    by 0x400C8E: List_destroy_sol (<stdin>:28)
+==9444==    by 0x401FEC: test_sort (test_List_sort.c:83)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd130 is 0 bytes inside a block of size 2 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A02: List_destroy (answer08.c:56)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== 
+==9444== 1 errors in context 3 of 22:
+==9444== Invalid read of size 8
+==9444==    at 0x400C93: List_destroy_sol (<stdin>:29)
+==9444==    by 0x400C8E: List_destroy_sol (<stdin>:28)
+==9444==    by 0x401FEC: test_sort (test_List_sort.c:83)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd0e0 is 0 bytes inside a block of size 16 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A0E: List_destroy (answer08.c:57)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== 
+==9444== 1 errors in context 4 of 22:
+==9444== Invalid free() / delete / delete[] / realloc()
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400CA9: List_destroy_sol (<stdin>:30)
+==9444==    by 0x400C8E: List_destroy_sol (<stdin>:28)
+==9444==    by 0x400C8E: List_destroy_sol (<stdin>:28)
+==9444==    by 0x401FEC: test_sort (test_List_sort.c:83)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd180 is 0 bytes inside a block of size 16 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A0E: List_destroy (answer08.c:57)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x400B9F: List_sort (answer08.c:130)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== 
+==9444== 1 errors in context 5 of 22:
+==9444== Invalid free() / delete / delete[] / realloc()
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400C9D: List_destroy_sol (<stdin>:29)
+==9444==    by 0x400C8E: List_destroy_sol (<stdin>:28)
+==9444==    by 0x400C8E: List_destroy_sol (<stdin>:28)
+==9444==    by 0x401FEC: test_sort (test_List_sort.c:83)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd1d0 is 0 bytes inside a block of size 2 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A02: List_destroy (answer08.c:56)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x400B9F: List_sort (answer08.c:130)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== 
+==9444== 1 errors in context 6 of 22:
+==9444== Invalid read of size 8
+==9444==    at 0x400C93: List_destroy_sol (<stdin>:29)
+==9444==    by 0x400C8E: List_destroy_sol (<stdin>:28)
+==9444==    by 0x400C8E: List_destroy_sol (<stdin>:28)
+==9444==    by 0x401FEC: test_sort (test_List_sort.c:83)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd180 is 0 bytes inside a block of size 16 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A0E: List_destroy (answer08.c:57)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x400B9F: List_sort (answer08.c:130)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== 
+==9444== 1 errors in context 7 of 22:
+==9444== Invalid read of size 8
+==9444==    at 0x400C83: List_destroy_sol (<stdin>:28)
+==9444==    by 0x400C8E: List_destroy_sol (<stdin>:28)
+==9444==    by 0x400C8E: List_destroy_sol (<stdin>:28)
+==9444==    by 0x401FEC: test_sort (test_List_sort.c:83)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd188 is 8 bytes inside a block of size 16 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A0E: List_destroy (answer08.c:57)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x400B9F: List_sort (answer08.c:130)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== 
+==9444== 1 errors in context 8 of 22:
+==9444== Invalid read of size 8
+==9444==    at 0x400C83: List_destroy_sol (<stdin>:28)
+==9444==    by 0x400C8E: List_destroy_sol (<stdin>:28)
+==9444==    by 0x401FEC: test_sort (test_List_sort.c:83)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd0e8 is 8 bytes inside a block of size 16 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A0E: List_destroy (answer08.c:57)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== 
+==9444== 1 errors in context 9 of 22:
+==9444== Invalid read of size 8
+==9444==    at 0x400CC3: List_length_sol (<stdin>:36)
+==9444==    by 0x400CCE: List_length_sol (<stdin>:36)
+==9444==    by 0x400CCE: List_length_sol (<stdin>:36)
+==9444==    by 0x401EC9: test_sort (test_List_sort.c:51)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd188 is 8 bytes inside a block of size 16 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A0E: List_destroy (answer08.c:57)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x400B9F: List_sort (answer08.c:130)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== 
+==9444== 1 errors in context 10 of 22:
+==9444== Invalid read of size 8
+==9444==    at 0x400CC3: List_length_sol (<stdin>:36)
+==9444==    by 0x400CCE: List_length_sol (<stdin>:36)
+==9444==    by 0x401EC9: test_sort (test_List_sort.c:51)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd0e8 is 8 bytes inside a block of size 16 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A0E: List_destroy (answer08.c:57)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== 
+==9444== 1 errors in context 11 of 22:
+==9444== Invalid free() / delete / delete[] / realloc()
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A0E: List_destroy (answer08.c:57)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd180 is 0 bytes inside a block of size 16 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A0E: List_destroy (answer08.c:57)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x400B9F: List_sort (answer08.c:130)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== 
+==9444== 1 errors in context 12 of 22:
+==9444== Invalid free() / delete / delete[] / realloc()
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A02: List_destroy (answer08.c:56)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd1d0 is 0 bytes inside a block of size 2 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A02: List_destroy (answer08.c:56)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x400B9F: List_sort (answer08.c:130)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== 
+==9444== 1 errors in context 13 of 22:
+==9444== Invalid read of size 8
+==9444==    at 0x4009F8: List_destroy (answer08.c:56)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd180 is 0 bytes inside a block of size 16 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A0E: List_destroy (answer08.c:57)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x400B9F: List_sort (answer08.c:130)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== 
+==9444== 1 errors in context 14 of 22:
+==9444== Invalid read of size 8
+==9444==    at 0x4009EC: List_destroy (answer08.c:55)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd188 is 8 bytes inside a block of size 16 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A0E: List_destroy (answer08.c:57)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x400B9F: List_sort (answer08.c:130)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== 
+==9444== 2 errors in context 15 of 22:
+==9444== Invalid read of size 8
+==9444==    at 0x401FAF: test_sort (test_List_sort.c:77)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd0e8 is 8 bytes inside a block of size 16 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A0E: List_destroy (answer08.c:57)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== 
+==9444== 2 errors in context 16 of 22:
+==9444== Invalid read of size 1
+==9444==    at 0x4C2F1C8: strcmp (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x401F89: test_sort (test_List_sort.c:72)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd131 is 1 bytes inside a block of size 2 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A02: List_destroy (answer08.c:56)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== 
+==9444== 2 errors in context 17 of 22:
+==9444== Invalid read of size 1
+==9444==    at 0x4C2F1B1: strcmp (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x401F89: test_sort (test_List_sort.c:72)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd130 is 0 bytes inside a block of size 2 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A02: List_destroy (answer08.c:56)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== 
+==9444== 2 errors in context 18 of 22:
+==9444== Invalid read of size 8
+==9444==    at 0x401F7C: test_sort (test_List_sort.c:72)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd0e0 is 0 bytes inside a block of size 16 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A0E: List_destroy (answer08.c:57)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== 
+==9444== 2 errors in context 19 of 22:
+==9444== Invalid read of size 8
+==9444==    at 0x400F8F: List_print (test_support_functions.c:30)
+==9444==    by 0x401E98: test_sort (test_List_sort.c:45)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd0e8 is 8 bytes inside a block of size 16 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A0E: List_destroy (answer08.c:57)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== 
+==9444== 2 errors in context 20 of 22:
+==9444== Invalid read of size 1
+==9444==    at 0x4EC419B: __GI_mempcpy (memcpy.S:71)
+==9444==    by 0x4EB10CC: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1320)
+==9444==    by 0x4E828B4: vfprintf (vfprintf.c:1661)
+==9444==    by 0x4E8B388: printf (printf.c:33)
+==9444==    by 0x400F8A: List_print (test_support_functions.c:29)
+==9444==    by 0x401E98: test_sort (test_List_sort.c:45)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd130 is 0 bytes inside a block of size 2 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A02: List_destroy (answer08.c:56)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== 
+==9444== 2 errors in context 21 of 22:
+==9444== Invalid read of size 8
+==9444==    at 0x400F76: List_print (test_support_functions.c:29)
+==9444==    by 0x401E98: test_sort (test_List_sort.c:45)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd0e0 is 0 bytes inside a block of size 16 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A0E: List_destroy (answer08.c:57)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== 
+==9444== 4 errors in context 22 of 22:
+==9444== Invalid read of size 1
+==9444==    at 0x4E828F3: vfprintf (vfprintf.c:1661)
+==9444==    by 0x4E8B388: printf (printf.c:33)
+==9444==    by 0x400F8A: List_print (test_support_functions.c:29)
+==9444==    by 0x401E98: test_sort (test_List_sort.c:45)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444==  Address 0x51fd130 is 0 bytes inside a block of size 2 free'd
+==9444==    at 0x4C2BDEC: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==9444==    by 0x400A02: List_destroy (answer08.c:56)
+==9444==    by 0x400BC6: List_sort (answer08.c:134)
+==9444==    by 0x401E79: test_sort (test_List_sort.c:41)
+==9444==    by 0x40205B: tests_List_sort (test_List_sort.c:99)
+==9444==    by 0x402328: main (<stdin>:159)
+==9444== 
+==9444== ERROR SUMMARY: 32 errors from 22 contexts (suppressed: 0 from 0)
