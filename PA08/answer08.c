@@ -19,7 +19,8 @@ List * List_createNode(const char * str)
 	}
 	
 	list -> str = strdup(str); // Takes in the String as an Input , strdup allocates memory and puts the String in str 
-	list -> next = NULL;
+	
+	list -> next = NULL; // Has to be initialized to NULL else this will lead to Conditional Jumping which is a Valgrind Error.
 	/* REMEMBER Here list -> str Has to be Free Later Or Else We will see a Valgrind Error */
 
 	return(list);

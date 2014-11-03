@@ -19,7 +19,7 @@ List * List_createNode(const char * str)
 	}
 	
 	list -> str = strdup(str); // Takes in the String as an Input , strdup allocates memory and puts the String in str 
-	
+	list -> next = NULL; // Has to be initialized to NULL else this will lead to Conditional Jumping which is a Valgrind Error.
 	/* REMEMBER Here list -> str Has to be Free Later Or Else We will see a Valgrind Error */
 
 	return(list);
@@ -77,15 +77,87 @@ List* List_Split(List** Main,int length)
 		ptr = ptr -> next;
 	}
 	
-	List* right =  ptr -> next;
-	
+	List* right =  ptr -> next;	
 	ptr -> next = NULL;
 	
 	return(right);
 	   
 }
+
+/*int compar(const void *a, const void *b)
+{
+	const char * const * str1 = (const char **) a;
+	const char * const * str2 = (const char **) b;
+	return strcmp(*str1,*str2);
+}*/
+
+List * List_merge(List * lhs, List * rhs, int (*compar)(const char *, const char*) )
+{
+	List* merge = NULL; // Has to be intialized to NULL 	
+
+	// Base Case
+	if(lhs == NULL) return(rhs);
+	else if(rhs == NULL) return(lhs);
 	
-int main(int argc, char** argv)
+	if(compar(lhs -> str,rhs -> str) <= 0)
+	{
+		merge = lhs;
+		merge -> next = List_merge(lhs -> next,rhs,compar);
+	}
+	
+	else
+	{
+		merge = rhs;
+		merge -> next = List_merge(lhs,rhs -> next,compar);	
+	}
+	
+	return(merge);
+}
+
+List * List_sort(List * list, int (*compar)(const char *, const char*))
+{
+
+	//List* merged = NULL;
+
+	if(list == NULL || list -> next == NULL)
+	{
+		return(list);	
+	}
+	
+	List* rhs = List_Split( &list , List_length(list) / 2 );
+	
+	list = List_sort(list,compar);
+	rhs = List_sort(rhs,compar);			
+	
+	list = List_merge(list,rhs,compar);	
+	
+	//List_destroy(rhs);
+	
+	return list;
+	
+}	
+
+void List_print(List* list)
+{
+	int count = 0; // No.of nodes in the list
+	 
+	if(list == NULL)
+	{
+		printf("\n\nThe list has no Values\n\n");
+		return;
+	} 
+	 
+	while(list != NULL)
+	{
+		printf(" %d : %s \n",count,list -> str);
+		list = list -> next;
+		count += 1;
+	}
+	
+	return;
+}	
+
+/*int main(int argc, char** argv)
 {
 	List* list = NULL;
 	
@@ -96,19 +168,24 @@ int main(int argc, char** argv)
 	list = Create_List(list,"Siva");
 	list = Create_List(list,"Balakishore");
 	list = Create_List(list,"Gangadhar");
-	list = Create_List(list,"Muralidhar");	
+	//list = Create_List(list,"Muralidhar");	
 	
 	printf("The Length of the Original list is %d\n\n", List_length(list));
 	
 	//List* lhs = NULL;
 	List* rhs = NULL; // Has to be initialized to NULL
 	
-	rhs = List_Split(&list,List_length(list) / 2);
+	//rhs = List_Split(&list,List_length(list) / 2);
 	
 	printf("The Length of the Left Half of the list is %d\n\n",List_length(list));
 	printf("The Length of the Right Half of the list is %d\n\n",List_length(rhs));
 	
+	list = List_sort(list,compar);
+	List_print(list);
+	
 	List_destroy(list); // This releases all the memory used by all the nodes in the List
+	//List_destroy(rhs); // This has to be done because we are splitting 'list' into 2 halves and 'list' no more has 2nd Half.
 	
 	return (EXIT_SUCCESS);	
-}	
+} */
+	
