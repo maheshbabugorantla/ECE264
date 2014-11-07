@@ -1,10 +1,28 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#include"answer09.h"
 
 
-char** explode(const char* str, const char* delims)
+int main(int argc, char** argv)
+{
+	FILE* fp = fopen("shortfile.tsv","r");
+	
+	
+	if(fp == NULL)
+	{
+		printf("\nERROR\n\n");
+		return(EXIT_FAILURE);
+	}
+	
+	char* str = malloc(sizeof(char)*2000);
+	
+	while(fgets(str,2000,fp)!= NULL)
+	{
+		printf("\n\n %s \n\n",str);
+	}
+	
+	free(str);
+char** explode(const char* str, const char* delims,int* arrLen)
 {
 	int num_delim = 0; // No. of delimiters in the string 'delims'
 	int str_index = 0; // String Index
@@ -54,53 +72,12 @@ char** explode(const char* str, const char* delims)
 	}
 
 	
-	//*arrLen = num_delim + 1; // No.of Strings that are Returned.
+	*arrLen = num_delim + 1; // No.of Strings that are Returned.
+
+
 	
 	return(strArr);
 }	
-
-int main(int argc, char** argv)
-{
-	FILE* fp = fopen("shortfile.tsv","r");
-	
-	
-	if(fp == NULL)
-	{
-		printf("\nERROR\n\n");
-		return(EXIT_FAILURE);
-	}
-	
-	char* str = malloc(sizeof(char)*2000);
-	char** strArr = NULL;
-	
-	BusinessNode* root = NULL; // The Root Node for the Binary Search Tree
-	BusinessNode* node = NULL; // The Nodes that will be inserted later on.
-	
-	while(fgets(str,2000,fp)!= NULL)
-	{
-		//printf("\n\n %s \n\n",str);
-		
-		strArr = explode((const char*)str,"\t");
-		
-		printf("**************************************\n\nStars: %s\n",strArr[0]);
-		printf("\nName: %s\n",strArr[1]);
-		printf("\nAddress: %s**************************************\n\n",strArr[2]);
-	
-		node = create_node(strArr[0],strArr[1],strArr[2]);
-		root = tree_insert(node,root);
-	
-		//free(strArr[0]);
-		//free(strArr[1]);
-		//free(strArr[2]);
-		free(strArr);
-	}
-	
-	free(str);
-	fclose(fp);
-	
-	print_tree(root);
-	
-	destroy_tree(root);
 	
 	return(EXIT_SUCCESS);
 }

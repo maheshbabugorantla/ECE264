@@ -80,7 +80,7 @@ BusinessNode* tree_insert(BusinessNode * node, BusinessNode * root)
 	return root;
 } 
 	
-BusinessNode* load_tree_from_file(char* filename)
+/*BusinessNode* load_tree_from_file(char* filename)
 {
 	FILE* fp = fopen(filename,"r"); // Open the File and Create a Buffer to Read 
 
@@ -111,10 +111,10 @@ BusinessNode* load_tree_from_file(char* filename)
 		
 	return root;
 	
-} 
+} */
 
 	
-int main(int argc, char** argv)
+/*int main(int argc, char** argv)
 {
 	char* str = strdup("5.0");
 	char* str0 = strdup("Random Name");
@@ -155,6 +155,6 @@ int main(int argc, char** argv)
 	destroy_tree(root);
 	
 	return(EXIT_SUCCESS);
-}
+} */
 	
 	
