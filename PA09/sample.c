@@ -61,7 +61,8 @@ char** explode(const char* str, const char* delims)
 
 int main(int argc, char** argv)
 {
-	FILE* fp = fopen("shortfile.tsv","r");
+	FILE* fp = fopen("yelp_businesses.tsv","r");
+	//FILE* fp = fopen("shortfile.tsv","r");
 	
 	
 	if(fp == NULL)
@@ -70,22 +71,24 @@ int main(int argc, char** argv)
 		return(EXIT_FAILURE);
 	}
 	
-	char* str = malloc(sizeof(char)*2000);
+	char* str = malloc(sizeof(char)*2048);
 	char** strArr = NULL;
+	int count = 0;
 	
 	BusinessNode* root = NULL; // The Root Node for the Binary Search Tree
 	BusinessNode* node = NULL; // The Nodes that will be inserted later on.
 	
-	while(fgets(str,2000,fp)!= NULL)
+	while(fgets(str,2048,fp)!= NULL)
 	{
 		//printf("\n\n %s \n\n",str);
 		
 		strArr = explode((const char*)str,"\t");
 		
-		printf("**************************************\n\nStars: %s\n",strArr[0]);
+		/*printf("**************************************\n\nStars: %s\n",strArr[0]);
 		printf("\nName: %s\n",strArr[1]);
-		printf("\nAddress: %s**************************************\n\n",strArr[2]);
-	
+		printf("\nAddress: %s**************************************\n\n",strArr[2]); */
+		
+		count += 1; 
 		node = create_node(strArr[0],strArr[1],strArr[2]);
 		root = tree_insert(node,root);
 	
@@ -95,10 +98,12 @@ int main(int argc, char** argv)
 		free(strArr);
 	}
 	
+	//printf("The Line Count is %d\n\n",count);
+	
 	free(str);
 	fclose(fp);
 	
-	print_tree(root);
+	//print_tree(root);
 	
 	destroy_tree(root);
 	

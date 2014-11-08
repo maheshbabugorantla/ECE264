@@ -1,0 +1,68 @@
+Breakpoint 1 at 0x400b6f: file sample.c, line 78.
+Starting program: /home/shay/b/mgorantl/ECE264/solutions/ECE264Solutions/GITHUB/ECE264/PA09/sample 
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffe4a8) at sample.c:78
+78		BusinessNode* node = NULL; // The Nodes that will be inserted later on.
+80		while(fgets(str,2048,fp)!= NULL)
+$1 = 0x602250 ""
+84			strArr = explode((const char*)str,"\t");
+$2 = 0x602250 "3.5\tEric Goldberg, MD\t4840 E Indian School Rd, Ste 101, Phoenix, AZ 85018\n"
+$3 = 0x602250 "3.5\tEric Goldberg, MD\t4840 E Indian School Rd, Ste 101, Phoenix, AZ 85018\n"
+90			count += 1; 
+91			node = create_node(strArr[0],strArr[1],strArr[2]);
+92			root = tree_insert(node,root);
+97			free(strArr);
+$4 = (char **) 0x602a60
+$5 = 0x602a80 "3.5"
+__libc_free (mem=0x602a60) at malloc.c:3702
+3702	    = force_reg (__free_hook);
+The program being debugged has been started already.
+Start it from the beginning? (y or n) Starting program: /home/shay/b/mgorantl/ECE264/solutions/ECE264Solutions/GITHUB/ECE264/PA09/sample 
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffe4a8) at sample.c:78
+78		BusinessNode* node = NULL; // The Nodes that will be inserted later on.
+80		while(fgets(str,2048,fp)!= NULL)
+84			strArr = explode((const char*)str,"\t");
+90			count += 1; 
+91			node = create_node(strArr[0],strArr[1],strArr[2]);
+create_node (stars=0x602a80 "3.5", name=0x602aa0 "Eric Goldberg, MD", address=0x602ac0 "4840 E Indian School Rd, Ste 101, Phoenix, AZ 85018\n") at answer09.c:8
+8		BusinessNode* BNode = malloc(sizeof(BusinessNode)); // Allocating the Size First
+10		if(BNode == NULL)
+16		BNode -> stars = stars;
+17		BNode -> name =  name;
+18		BNode -> address = address;
+19		BNode -> left = NULL;
+20		BNode -> right = NULL;
+22		return(BNode);
+23	}
+main (argc=1, argv=0x7fffffffe4a8) at sample.c:92
+92			root = tree_insert(node,root);
+tree_insert (node=0x602b00, root=0x0) at answer09.c:60
+60		if(root	== NULL)
+62			return node;
+81	} 
+$6 = (BusinessNode *) 0x602b00
+$7 = 0x602a80 "3.5"
+$8 = 0x602aa0 "Eric Goldberg, MD"
+$9 = 0x602ac0 "4840 E Indian School Rd, Ste 101, Phoenix, AZ 85018\n"
+main (argc=1, argv=0x7fffffffe4a8) at sample.c:97
+97			free(strArr);
+80		while(fgets(str,2048,fp)!= NULL)
+$10 = (char **) 0x602a60
+$11 = 0x0
+$12 = 0x602aa0 "Eric Goldberg, MD"
+84			strArr = explode((const char*)str,"\t");
+90			count += 1; 
+$13 = 0x602b50 "Pine Cone Restaurant"
+91			node = create_node(strArr[0],strArr[1],strArr[2]);
+92			root = tree_insert(node,root);
+97			free(strArr);
+80		while(fgets(str,2048,fp)!= NULL)
+84			strArr = explode((const char*)str,"\t");
+90			count += 1; 
+91			node = create_node(strArr[0],strArr[1],strArr[2]);
+Undefined command: "nc".  Try "help".
+Continuing.
+
+Program exited normally.
+The program is not being run.
