@@ -25,7 +25,7 @@ HuffNode * HuffNode_create(int value);
 /**
  * Destroy a tree, including all sub-children. Must handle NULL values safely.
  */
-void HuffNode_destroy(HuffNode * tree);
+void HuffNode_destroy(HuffNode* tree);
 
 // ----------------------------------------------------------------------- Stack
 
