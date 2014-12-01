@@ -1,4 +1,5 @@
 Reading file: 'inputs/11-prefixcodes.bit-huff', textmode = FALSE.
-Huffman coding tree is:
 
-  
+
+ Cannot add ASCII please check the Header of your Compressed File
+

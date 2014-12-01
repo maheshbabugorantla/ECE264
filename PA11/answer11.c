@@ -198,13 +198,26 @@ HuffNode* HuffTree_readBinaryHeader(FILE* fp)
 	
 	int flag = 0;
 	
+	int whichbit = 0;
+	
 	while(flag != 1)
 	{
+		if(whichbit == 7)
+		{
+			whichbit = 0;
+		}	
+		
 		char ch = fgetc(fp);
+		
+		unsigned char mask[] = {0x80,0x40,0x20,0x10,0x08,0x04,0x02,0x01};
+		
+		unsigned char masked = ch & mask[whichbit]; 
 					
-		if(ch == '1')
+		if(masked != 0)
 		{
 		
+			whichbit += 1;
+			
 			char val = fgetc(fp);
 		
 			if(!isascii(val))
@@ -222,6 +235,9 @@ HuffNode* HuffTree_readBinaryHeader(FILE* fp)
 		
 		else 
 		{
+		
+			whichbit += 1;
+		
 			if(st -> head -> next == NULL) // Means the Stack has only one Node
 			{
 				flag = 1;				

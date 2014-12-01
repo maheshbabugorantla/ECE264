@@ -1,96 +1,120 @@
-==6141== Memcheck, a memory error detector
-==6141== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
-==6141== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
-==6141== Command: ./student.out b inputs/13-woods.bit-huff
-==6141== Parent PID: 6140
-==6141== 
---6141-- 
---6141-- Valgrind options:
---6141--    --tool=memcheck
---6141--    --leak-check=full
---6141--    --verbose
---6141--    --log-file=memcheck.log
---6141-- Contents of /proc/version:
---6141--   Linux version 3.13.0-40-generic (buildd@comet) (gcc version 4.8.2 (Ubuntu 4.8.2-19ubuntu1) ) #69-Ubuntu SMP Thu Nov 13 17:53:56 UTC 2014
---6141-- Arch and hwcaps: AMD64, amd64-cx16-rdtscp-sse3-avx
---6141-- Page sizes: currently 4096, max supported 4096
---6141-- Valgrind library directory: /usr/lib/valgrind
---6141-- Reading syms from /tmp/.yOpVmP/student.out
---6141-- Reading syms from /lib/x86_64-linux-gnu/ld-2.19.so
---6141--   Considering /lib/x86_64-linux-gnu/ld-2.19.so ..
---6141--   .. CRC mismatch (computed 4cbae35e wanted 8d683c31)
---6141--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/ld-2.19.so ..
---6141--   .. CRC is valid
---6141-- Reading syms from /usr/lib/valgrind/memcheck-amd64-linux
---6141--   Considering /usr/lib/valgrind/memcheck-amd64-linux ..
---6141--   .. CRC mismatch (computed 37cdde19 wanted adc367dd)
---6141--    object doesn't have a symbol table
---6141--    object doesn't have a dynamic symbol table
---6141-- Scheduler: using generic scheduler lock implementation.
---6141-- Reading suppressions file: /usr/lib/valgrind/default.supp
-==6141== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-6141-by-mahesh-on-???
-==6141== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-6141-by-mahesh-on-???
-==6141== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-6141-by-mahesh-on-???
-==6141== 
-==6141== TO CONTROL THIS PROCESS USING vgdb (which you probably
-==6141== don't want to do, unless you know exactly what you're doing,
-==6141== or are doing some strange experiment):
-==6141==   /usr/lib/valgrind/../../bin/vgdb --pid=6141 ...command...
-==6141== 
-==6141== TO DEBUG THIS PROCESS USING GDB: start GDB like this
-==6141==   /path/to/gdb ./student.out
-==6141== and then give GDB the following command
-==6141==   target remote | /usr/lib/valgrind/../../bin/vgdb --pid=6141
-==6141== --pid is optional if only one valgrind process is running
-==6141== 
---6141-- REDIR: 0x4019ca0 (strlen) redirected to 0x38068331 (???)
---6141-- Reading syms from /usr/lib/valgrind/vgpreload_core-amd64-linux.so
---6141--   Considering /usr/lib/valgrind/vgpreload_core-amd64-linux.so ..
---6141--   .. CRC mismatch (computed 329d6860 wanted c0186920)
---6141--    object doesn't have a symbol table
---6141-- Reading syms from /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so
---6141--   Considering /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so ..
---6141--   .. CRC mismatch (computed 1fb85af8 wanted 2e9e3c16)
---6141--    object doesn't have a symbol table
-==6141== WARNING: new redirection conflicts with existing -- ignoring it
---6141--     old: 0x04019ca0 (strlen              ) R-> (0000.0) 0x38068331 ???
---6141--     new: 0x04019ca0 (strlen              ) R-> (2007.0) 0x04c2e1a0 strlen
---6141-- REDIR: 0x4019a50 (index) redirected to 0x4c2dd50 (index)
---6141-- REDIR: 0x4019c70 (strcmp) redirected to 0x4c2f2f0 (strcmp)
---6141-- REDIR: 0x401a9c0 (mempcpy) redirected to 0x4c31da0 (mempcpy)
---6141-- Reading syms from /lib/x86_64-linux-gnu/libc-2.19.so
---6141--   Considering /lib/x86_64-linux-gnu/libc-2.19.so ..
---6141--   .. CRC mismatch (computed e7228afa wanted 93ff6981)
---6141--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libc-2.19.so ..
---6141--   .. CRC is valid
---6141-- REDIR: 0x4ec47e0 (strcasecmp) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
---6141-- REDIR: 0x4ec6ad0 (strncasecmp) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
---6141-- REDIR: 0x4ec3fb0 (memcpy@GLIBC_2.2.5) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
---6141-- REDIR: 0x4ec2240 (rindex) redirected to 0x4c2da30 (rindex)
---6141-- REDIR: 0x4ebeaf0 (strcmp) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
---6141-- REDIR: 0x4f77d40 (__strcmp_ssse3) redirected to 0x4c2f1b0 (strcmp)
---6141-- REDIR: 0x4ecb540 (strchrnul) redirected to 0x4c319b0 (strchrnul)
---6141-- REDIR: 0x4eba1d0 (malloc) redirected to 0x4c2ab10 (malloc)
---6141-- REDIR: 0x4ec2e90 (__GI_strstr) redirected to 0x4c32030 (__strstr_sse2)
---6141-- REDIR: 0x4ec0540 (strlen) redirected to 0x4c2e0e0 (strlen)
---6141-- REDIR: 0x4ebaca0 (calloc) redirected to 0x4c2cbf0 (calloc)
---6141-- REDIR: 0x4eba870 (free) redirected to 0x4c2bd80 (free)
-==6141== 
-==6141== HEAP SUMMARY:
-==6141==     in use at exit: 568 bytes in 1 blocks
-==6141==   total heap usage: 3 allocs, 2 frees, 600 bytes allocated
-==6141== 
-==6141== Searching for pointers to 1 not-freed blocks
-==6141== Checked 83,080 bytes
-==6141== 
-==6141== LEAK SUMMARY:
-==6141==    definitely lost: 0 bytes in 0 blocks
-==6141==    indirectly lost: 0 bytes in 0 blocks
-==6141==      possibly lost: 0 bytes in 0 blocks
-==6141==    still reachable: 568 bytes in 1 blocks
-==6141==         suppressed: 0 bytes in 0 blocks
-==6141== Reachable blocks (those to which a pointer was found) are not shown.
-==6141== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==6141== 
-==6141== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==6141== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==8717== Memcheck, a memory error detector
+==8717== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==8717== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
+==8717== Command: ./student.out b inputs/13-woods.bit-huff
+==8717== Parent PID: 8716
+==8717== 
+--8717-- 
+--8717-- Valgrind options:
+--8717--    --tool=memcheck
+--8717--    --leak-check=full
+--8717--    --verbose
+--8717--    --log-file=memcheck.log
+--8717-- Contents of /proc/version:
+--8717--   Linux version 3.13.0-40-generic (buildd@comet) (gcc version 4.8.2 (Ubuntu 4.8.2-19ubuntu1) ) #69-Ubuntu SMP Thu Nov 13 17:53:56 UTC 2014
+--8717-- Arch and hwcaps: AMD64, amd64-cx16-rdtscp-sse3-avx
+--8717-- Page sizes: currently 4096, max supported 4096
+--8717-- Valgrind library directory: /usr/lib/valgrind
+--8717-- Reading syms from /tmp/.KG3FI5/student.out
+--8717-- Reading syms from /lib/x86_64-linux-gnu/ld-2.19.so
+--8717--   Considering /lib/x86_64-linux-gnu/ld-2.19.so ..
+--8717--   .. CRC mismatch (computed 4cbae35e wanted 8d683c31)
+--8717--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/ld-2.19.so ..
+--8717--   .. CRC is valid
+--8717-- Reading syms from /usr/lib/valgrind/memcheck-amd64-linux
+--8717--   Considering /usr/lib/valgrind/memcheck-amd64-linux ..
+--8717--   .. CRC mismatch (computed 37cdde19 wanted adc367dd)
+--8717--    object doesn't have a symbol table
+--8717--    object doesn't have a dynamic symbol table
+--8717-- Scheduler: using generic scheduler lock implementation.
+--8717-- Reading suppressions file: /usr/lib/valgrind/default.supp
+==8717== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-8717-by-mahesh-on-???
+==8717== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-8717-by-mahesh-on-???
+==8717== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-8717-by-mahesh-on-???
+==8717== 
+==8717== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==8717== don't want to do, unless you know exactly what you're doing,
+==8717== or are doing some strange experiment):
+==8717==   /usr/lib/valgrind/../../bin/vgdb --pid=8717 ...command...
+==8717== 
+==8717== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==8717==   /path/to/gdb ./student.out
+==8717== and then give GDB the following command
+==8717==   target remote | /usr/lib/valgrind/../../bin/vgdb --pid=8717
+==8717== --pid is optional if only one valgrind process is running
+==8717== 
+--8717-- REDIR: 0x4019ca0 (strlen) redirected to 0x38068331 (???)
+--8717-- Reading syms from /usr/lib/valgrind/vgpreload_core-amd64-linux.so
+--8717--   Considering /usr/lib/valgrind/vgpreload_core-amd64-linux.so ..
+--8717--   .. CRC mismatch (computed 329d6860 wanted c0186920)
+--8717--    object doesn't have a symbol table
+--8717-- Reading syms from /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so
+--8717--   Considering /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so ..
+--8717--   .. CRC mismatch (computed 1fb85af8 wanted 2e9e3c16)
+--8717--    object doesn't have a symbol table
+==8717== WARNING: new redirection conflicts with existing -- ignoring it
+--8717--     old: 0x04019ca0 (strlen              ) R-> (0000.0) 0x38068331 ???
+--8717--     new: 0x04019ca0 (strlen              ) R-> (2007.0) 0x04c2e1a0 strlen
+--8717-- REDIR: 0x4019a50 (index) redirected to 0x4c2dd50 (index)
+--8717-- REDIR: 0x4019c70 (strcmp) redirected to 0x4c2f2f0 (strcmp)
+--8717-- REDIR: 0x401a9c0 (mempcpy) redirected to 0x4c31da0 (mempcpy)
+--8717-- Reading syms from /lib/x86_64-linux-gnu/libc-2.19.so
+--8717--   Considering /lib/x86_64-linux-gnu/libc-2.19.so ..
+--8717--   .. CRC mismatch (computed e7228afa wanted 93ff6981)
+--8717--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libc-2.19.so ..
+--8717--   .. CRC is valid
+--8717-- REDIR: 0x4ec47e0 (strcasecmp) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
+--8717-- REDIR: 0x4ec6ad0 (strncasecmp) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
+--8717-- REDIR: 0x4ec3fb0 (memcpy@GLIBC_2.2.5) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
+--8717-- REDIR: 0x4ec2240 (rindex) redirected to 0x4c2da30 (rindex)
+--8717-- REDIR: 0x4ebeaf0 (strcmp) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
+--8717-- REDIR: 0x4f77d40 (__strcmp_ssse3) redirected to 0x4c2f1b0 (strcmp)
+--8717-- REDIR: 0x4ecb540 (strchrnul) redirected to 0x4c319b0 (strchrnul)
+--8717-- REDIR: 0x4eba1d0 (malloc) redirected to 0x4c2ab10 (malloc)
+--8717-- REDIR: 0x4ec2e90 (__GI_strstr) redirected to 0x4c32030 (__strstr_sse2)
+--8717-- REDIR: 0x4ec0540 (strlen) redirected to 0x4c2e0e0 (strlen)
+==8717== Invalid read of size 8
+==8717==    at 0x401023: HuffTree_readBinaryHeader (answer11.c:254)
+==8717==    by 0x40205E: process_file (example.c:29)
+==8717==    by 0x402203: main (example.c:81)
+==8717==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==8717== 
+==8717== 
+==8717== Process terminating with default action of signal 11 (SIGSEGV)
+==8717==  Access not within mapped region at address 0x0
+==8717==    at 0x401023: HuffTree_readBinaryHeader (answer11.c:254)
+==8717==    by 0x40205E: process_file (example.c:29)
+==8717==    by 0x402203: main (example.c:81)
+==8717==  If you believe this happened as a result of a stack
+==8717==  overflow in your program's main thread (unlikely but
+==8717==  possible), you can try to increase the size of the
+==8717==  main thread stack using the --main-stacksize= flag.
+==8717==  The main thread stack size used in this run was 8388608.
+--8717-- REDIR: 0x4eba870 (free) redirected to 0x4c2bd80 (free)
+==8717== 
+==8717== HEAP SUMMARY:
+==8717==     in use at exit: 576 bytes in 2 blocks
+==8717==   total heap usage: 2 allocs, 0 frees, 576 bytes allocated
+==8717== 
+==8717== Searching for pointers to 2 not-freed blocks
+==8717== Checked 83,032 bytes
+==8717== 
+==8717== LEAK SUMMARY:
+==8717==    definitely lost: 0 bytes in 0 blocks
+==8717==    indirectly lost: 0 bytes in 0 blocks
+==8717==      possibly lost: 0 bytes in 0 blocks
+==8717==    still reachable: 576 bytes in 2 blocks
+==8717==         suppressed: 0 bytes in 0 blocks
+==8717== Reachable blocks (those to which a pointer was found) are not shown.
+==8717== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==8717== 
+==8717== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==8717== 
+==8717== 1 errors in context 1 of 1:
+==8717== Invalid read of size 8
+==8717==    at 0x401023: HuffTree_readBinaryHeader (answer11.c:254)
+==8717==    by 0x40205E: process_file (example.c:29)
+==8717==    by 0x402203: main (example.c:81)
+==8717==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==8717== 
+==8717== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
