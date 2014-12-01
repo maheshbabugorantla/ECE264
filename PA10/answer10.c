@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+#include<math.h>
 #include"answer10.h"
 #include<inttypes.h>
 
@@ -99,21 +100,21 @@ BusinessNode* create_business(char* businessname)
 	return(busNode);
 }
 
-LocationNode* create_Location(long int bus_offset, long int rev_offset int count,int business_id)
+LocationNode* create_Location(long int bus_offset, long int rev_offset, int count,int business_id)
 {
 	LocationNode* locNode = malloc(sizeof(LocationNode));	
-	locNode -> offset = offset;
+	locNode -> offset = bus_offset;
 	locNode -> next = NULL;
 	locNode -> bus_id = business_id;
 	(locNode -> reviews).offset = rev_offset;
-	(locNode -> reviews).no_reviews = count
+	(locNode -> reviews).no_reviews = count;
 	
 	return locNode;
 }
 
-/* The Below Function is Used to insert the entering node at the Beginning. */
+/* The Below Function is Used to insert the entering node at the End. */
 
-LocationNode* Location_list(LocationNode* head,long int bus_offset, long int rev_offset, int count,int business_id)
+LocationNode* Location_list(LocationNode* head,long int bus_offset,long int rev_offset,int count,int business_id)
 {
 	if(head == NULL)
 	{
@@ -127,28 +128,51 @@ LocationNode* Location_list(LocationNode* head,long int bus_offset, long int rev
 
 
 // Change this to print the Reviews of the Each Independent Business location.
-void print_Locations(LocationNode* head, const char* filename)
+void print_Locations(LocationNode* head, const char* filename_bus,const char* filename_rev)
 {
-	FILE* fp = fopen(filename,"r");
+	FILE* fp_bus = fopen(filename_bus,"r"); // for Businesses.tsv
+	FILE* fp_rev = fopen(filename_rev,"r"); // For Reviews.tsv 
 
-	char* str = malloc(sizeof(char)* 2048); // Used to read and Print the address of the business Location.
+	char* str_bus = malloc(sizeof(char)* 2048); // Used to read and Print the address of the business Location.
+	char* str_rev = malloc(sizeof(char)* 2048); // Used to read and print the 
+	int count_rev = 0; // For printing all the reviews.
+	//long int offset_rev = 
 	
 	while(head != NULL)
 	{
-		fseek(fp,head -> offset,SEEK_SET); // makes the File Pointer Read at the offset from the beginning of the file.
+		fseek(fp_bus,head -> offset,SEEK_SET); // makes the File Pointer Read at the offset from the beginning of the file.
  	
- 		if(fgets(str,2048,fp) != NULL)
+ 		if(fgets(str_bus,2048,fp_bus) != NULL)
  		{
- 			printf(" %s \n\n",str);
- 		}
+ 			printf(" %s \n\n",str_bus); // Prints the Business Name 
+ 			
+ 			count_rev = (head -> reviews).no_reviews; // Gets the no.of reviews. 				
+ 		
+ 			fseek(fp_rev,(head -> reviews).offset,SEEK_SET);
+ 			
+ 			if(fgets(str_rev,2048,fp_rev) != NULL)
+ 			{
+ 			
+ 				// This Below loop is used to print the reviews of a business Location.
+ 				while(count_rev > 0)
+ 				{
+ 					printf("\n	%s\n",str_rev); // Prints review from a specific Customer.
+ 					fseek(fp_rev,1 + (int)(floor(log10(head -> bus_id)) + 1),SEEK_CUR); 
+ 					fgets(str_rev,2048,fp_rev);
+ 					count_rev -= 1;
+ 				}	 
+ 			}
  		
  	//	printf("Offset is %ld",head -> offset);
+ 		}
  		
  		head = head -> next;
 	}
 
-	free(str);
-	fclose(fp);
+	free(str_bus); // Have to free this
+	free(str_rev); // Have to free this...
+	fclose(fp_bus);
+	fclose(fp_rev);
 }
 
 // CREATING THE BUSINESS BINARY TREE
@@ -181,7 +205,7 @@ BusinessNode* create_BST(char* business, BusinessNode* root,long int bus_offset,
 	return(root);	
 }
 
-void print_tree(BusinessNode* Root,const char* filename)
+void print_tree(BusinessNode* Root,const char* filename1,const char* filename2)
 {
 	if(Root == NULL)
 	{
@@ -189,13 +213,13 @@ void print_tree(BusinessNode* Root,const char* filename)
 	}
 	
 
-	print_tree(Root -> Left,filename); // Prints the Left Side of the Tree
+	print_tree(Root -> Left,filename1,filename2); // Prints the Left Side of the Tree
 
 	printf("\n\nThe Business Name is %s at ",Root -> BusinessName);
 
-	print_Locations(Root -> location,filename);
+	print_Locations(Root -> location,filename1,filename2);
 
-	print_tree(Root -> Right,filename); // Print the Right Side of the Tree
+	print_tree(Root -> Right,filename1,filename2); // Print the Right Side of the Tree
 
 	//fclose(fp);	
 
@@ -233,15 +257,15 @@ void destroy_BST(BusinessNode* Root)
 	return;
 }
 
-BusinessNode* readfile(const char* filename1, const char* filename2)
+BusinessNode* readfile(const char* busfilename, const char* revfilename)
 {
-	FILE* fp1 = fopen(filename1,"r");
-	FILE* fp2 = fopen(filename2,"r");
+	FILE* fp1 = fopen(busfilename,"r");
+	FILE* fp2 = fopen(revfilename,"r");
 	
 	//fclose(fp2); // Shift it to the Bottom Once Done Constructing the Whole BST and Location Nodes Pointing. 
 	
-	char* str1 = malloc(sizeof(char)*2048);
-	char* str2 = malloc(sizeof(char)*2048); // For Reviews.tsv
+	char* str1 = malloc(sizeof(char)*20000);
+	char* str2 = malloc(sizeof(char)*20000); // For Reviews.tsv
 	
 	BusinessNode* BST = NULL; // Initialize it to NULL.
 
@@ -255,21 +279,27 @@ BusinessNode* readfile(const char* filename1, const char* filename2)
 	int ind2 = 0; // For Reviews
 	int count = 0; // No.of Reviews
 	
-	while(fgets(str1, 2048, fp1)!= NULL)
-	{
+	while(!feof(fp1))
+	{			
+		 fgets(str1,20000,fp1);
+		 
+		 if(!feof(fp1))
+		 {
+		 	break;
+		 }
+		 
 		 char** strArr1 = explode(str1,"\t",&len1);
-		 
 		 		 
-		 //char* business = strArr[1]; // This gives the Business Name and Need not malloc the 'business' because malloc is done in explode.
-		 
+		 //char* business = strArr[1]; // This gives the Business Name and Need not malloc the 'business' because malloc is done in explode. 
 		 int business_id = atoi(strArr1[0]); // To get the business ID
 		 long int bus_offset = posbus + strlen(strArr1[0]) + strlen(strArr1[1]) + 2; // Used to get the Offset of the Address Location in the File.
+		 long int rev_offset = 0;	
 		
 		// This Below Loop is used to get the offset the review and the no.of reviews.
-		 while(fgets(str2,2048,fp2)!= NULL)
+		 while(fgets(str2,20000,fp2)!= NULL)
 		 { 	
 		 	char** strArr2 = explode(str2,"\t",&len2);
-		 	long int rev_offset = posrev + strlen(strArr2[0]) + 1;
+		 	rev_offset = posrev + strlen(strArr2[0]) + 1;
 		 	
 		 	/*if(atoi(strArr1[0]) > atoi(strArr2[0])) // If the businessID is less than the required businessID
 		 	{
@@ -298,7 +328,17 @@ BusinessNode* readfile(const char* filename1, const char* filename2)
 			 // This is used to break if the Business ID is greater than the Required BusinessID 
 			 else
 			 {
+			 
+			 	//if(strlen(str2) > 0)
+			 	//{
 			 	fseek(fp2,-strlen(str2),SEEK_CUR); // This Brings the File Pointer to the beginning of the Reviews of a Business Location.
+				//}
+				
+				/*else
+				{
+					break;
+				}*/
+				
 				posrev = ftell(fp2);
 				
 				for(ind2 = 0; ind2 < len2; ind2++)
@@ -343,7 +383,7 @@ int main(int argc, char** argv)
 {
 		
 	BusinessNode* Root = readfile("samplebus.tsv","samplerev.tsv");
-	print_tree(Root,"samplebus.tsv");
+	//print_tree(Root,"samplebus.tsv","samplerev.tsv");
 
 	destroy_BST(Root);
 
