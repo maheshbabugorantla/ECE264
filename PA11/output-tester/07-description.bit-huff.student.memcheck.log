@@ -1,86 +1,86 @@
-==8988== Memcheck, a memory error detector
-==8988== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
-==8988== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
-==8988== Command: ./student.out b inputs/07-description.bit-huff
-==8988== Parent PID: 8987
-==8988== 
---8988-- 
---8988-- Valgrind options:
---8988--    --tool=memcheck
---8988--    --leak-check=full
---8988--    --verbose
---8988--    --log-file=memcheck.log
---8988-- Contents of /proc/version:
---8988--   Linux version 3.13.0-40-generic (buildd@comet) (gcc version 4.8.2 (Ubuntu 4.8.2-19ubuntu1) ) #69-Ubuntu SMP Thu Nov 13 17:53:56 UTC 2014
---8988-- Arch and hwcaps: AMD64, amd64-cx16-rdtscp-sse3-avx
---8988-- Page sizes: currently 4096, max supported 4096
---8988-- Valgrind library directory: /usr/lib/valgrind
---8988-- Reading syms from /tmp/.RhvOnH/student.out
---8988-- Reading syms from /lib/x86_64-linux-gnu/ld-2.19.so
---8988--   Considering /lib/x86_64-linux-gnu/ld-2.19.so ..
---8988--   .. CRC mismatch (computed 4cbae35e wanted 8d683c31)
---8988--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/ld-2.19.so ..
---8988--   .. CRC is valid
---8988-- Reading syms from /usr/lib/valgrind/memcheck-amd64-linux
---8988--   Considering /usr/lib/valgrind/memcheck-amd64-linux ..
---8988--   .. CRC mismatch (computed 37cdde19 wanted adc367dd)
---8988--    object doesn't have a symbol table
---8988--    object doesn't have a dynamic symbol table
---8988-- Scheduler: using generic scheduler lock implementation.
---8988-- Reading suppressions file: /usr/lib/valgrind/default.supp
-==8988== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-8988-by-mahesh-on-???
-==8988== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-8988-by-mahesh-on-???
-==8988== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-8988-by-mahesh-on-???
-==8988== 
-==8988== TO CONTROL THIS PROCESS USING vgdb (which you probably
-==8988== don't want to do, unless you know exactly what you're doing,
-==8988== or are doing some strange experiment):
-==8988==   /usr/lib/valgrind/../../bin/vgdb --pid=8988 ...command...
-==8988== 
-==8988== TO DEBUG THIS PROCESS USING GDB: start GDB like this
-==8988==   /path/to/gdb ./student.out
-==8988== and then give GDB the following command
-==8988==   target remote | /usr/lib/valgrind/../../bin/vgdb --pid=8988
-==8988== --pid is optional if only one valgrind process is running
-==8988== 
---8988-- REDIR: 0x4019ca0 (strlen) redirected to 0x38068331 (???)
---8988-- Reading syms from /usr/lib/valgrind/vgpreload_core-amd64-linux.so
---8988--   Considering /usr/lib/valgrind/vgpreload_core-amd64-linux.so ..
---8988--   .. CRC mismatch (computed 329d6860 wanted c0186920)
---8988--    object doesn't have a symbol table
---8988-- Reading syms from /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so
---8988--   Considering /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so ..
---8988--   .. CRC mismatch (computed 1fb85af8 wanted 2e9e3c16)
---8988--    object doesn't have a symbol table
-==8988== WARNING: new redirection conflicts with existing -- ignoring it
---8988--     old: 0x04019ca0 (strlen              ) R-> (0000.0) 0x38068331 ???
---8988--     new: 0x04019ca0 (strlen              ) R-> (2007.0) 0x04c2e1a0 strlen
---8988-- REDIR: 0x4019a50 (index) redirected to 0x4c2dd50 (index)
---8988-- REDIR: 0x4019c70 (strcmp) redirected to 0x4c2f2f0 (strcmp)
---8988-- REDIR: 0x401a9c0 (mempcpy) redirected to 0x4c31da0 (mempcpy)
---8988-- Reading syms from /lib/x86_64-linux-gnu/libc-2.19.so
---8988--   Considering /lib/x86_64-linux-gnu/libc-2.19.so ..
---8988--   .. CRC mismatch (computed e7228afa wanted 93ff6981)
---8988--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libc-2.19.so ..
---8988--   .. CRC is valid
---8988-- REDIR: 0x4ec47e0 (strcasecmp) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
---8988-- REDIR: 0x4ec6ad0 (strncasecmp) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
---8988-- REDIR: 0x4ec3fb0 (memcpy@GLIBC_2.2.5) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
---8988-- REDIR: 0x4ec2240 (rindex) redirected to 0x4c2da30 (rindex)
---8988-- REDIR: 0x4ebeaf0 (strcmp) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
---8988-- REDIR: 0x4f77d40 (__strcmp_ssse3) redirected to 0x4c2f1b0 (strcmp)
---8988-- REDIR: 0x4ecb540 (strchrnul) redirected to 0x4c319b0 (strchrnul)
---8988-- REDIR: 0x4eba1d0 (malloc) redirected to 0x4c2ab10 (malloc)
---8988-- REDIR: 0x4ec2e90 (__GI_strstr) redirected to 0x4c32030 (__strstr_sse2)
---8988-- REDIR: 0x4ec9200 (__GI_memcpy) redirected to 0x4c2fc90 (__GI_memcpy)
---8988-- REDIR: 0x4eba870 (free) redirected to 0x4c2bd80 (free)
---8988-- REDIR: 0x4ec0540 (strlen) redirected to 0x4c2e0e0 (strlen)
-==8988== 
-==8988== HEAP SUMMARY:
-==8988==     in use at exit: 0 bytes in 0 blocks
-==8988==   total heap usage: 165 allocs, 165 frees, 4,644 bytes allocated
-==8988== 
-==8988== All heap blocks were freed -- no leaks are possible
-==8988== 
-==8988== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==8988== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==10741== Memcheck, a memory error detector
+==10741== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==10741== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
+==10741== Command: ./student.out b inputs/07-description.bit-huff
+==10741== Parent PID: 10740
+==10741== 
+--10741-- 
+--10741-- Valgrind options:
+--10741--    --tool=memcheck
+--10741--    --leak-check=full
+--10741--    --verbose
+--10741--    --log-file=memcheck.log
+--10741-- Contents of /proc/version:
+--10741--   Linux version 3.13.0-40-generic (buildd@comet) (gcc version 4.8.2 (Ubuntu 4.8.2-19ubuntu1) ) #69-Ubuntu SMP Thu Nov 13 17:53:56 UTC 2014
+--10741-- Arch and hwcaps: AMD64, amd64-cx16-rdtscp-sse3-avx
+--10741-- Page sizes: currently 4096, max supported 4096
+--10741-- Valgrind library directory: /usr/lib/valgrind
+--10741-- Reading syms from /tmp/.OUEngh/student.out
+--10741-- Reading syms from /lib/x86_64-linux-gnu/ld-2.19.so
+--10741--   Considering /lib/x86_64-linux-gnu/ld-2.19.so ..
+--10741--   .. CRC mismatch (computed 4cbae35e wanted 8d683c31)
+--10741--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/ld-2.19.so ..
+--10741--   .. CRC is valid
+--10741-- Reading syms from /usr/lib/valgrind/memcheck-amd64-linux
+--10741--   Considering /usr/lib/valgrind/memcheck-amd64-linux ..
+--10741--   .. CRC mismatch (computed 37cdde19 wanted adc367dd)
+--10741--    object doesn't have a symbol table
+--10741--    object doesn't have a dynamic symbol table
+--10741-- Scheduler: using generic scheduler lock implementation.
+--10741-- Reading suppressions file: /usr/lib/valgrind/default.supp
+==10741== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-10741-by-mahesh-on-???
+==10741== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-10741-by-mahesh-on-???
+==10741== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-10741-by-mahesh-on-???
+==10741== 
+==10741== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==10741== don't want to do, unless you know exactly what you're doing,
+==10741== or are doing some strange experiment):
+==10741==   /usr/lib/valgrind/../../bin/vgdb --pid=10741 ...command...
+==10741== 
+==10741== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==10741==   /path/to/gdb ./student.out
+==10741== and then give GDB the following command
+==10741==   target remote | /usr/lib/valgrind/../../bin/vgdb --pid=10741
+==10741== --pid is optional if only one valgrind process is running
+==10741== 
+--10741-- REDIR: 0x4019ca0 (strlen) redirected to 0x38068331 (???)
+--10741-- Reading syms from /usr/lib/valgrind/vgpreload_core-amd64-linux.so
+--10741--   Considering /usr/lib/valgrind/vgpreload_core-amd64-linux.so ..
+--10741--   .. CRC mismatch (computed 329d6860 wanted c0186920)
+--10741--    object doesn't have a symbol table
+--10741-- Reading syms from /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so
+--10741--   Considering /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so ..
+--10741--   .. CRC mismatch (computed 1fb85af8 wanted 2e9e3c16)
+--10741--    object doesn't have a symbol table
+==10741== WARNING: new redirection conflicts with existing -- ignoring it
+--10741--     old: 0x04019ca0 (strlen              ) R-> (0000.0) 0x38068331 ???
+--10741--     new: 0x04019ca0 (strlen              ) R-> (2007.0) 0x04c2e1a0 strlen
+--10741-- REDIR: 0x4019a50 (index) redirected to 0x4c2dd50 (index)
+--10741-- REDIR: 0x4019c70 (strcmp) redirected to 0x4c2f2f0 (strcmp)
+--10741-- REDIR: 0x401a9c0 (mempcpy) redirected to 0x4c31da0 (mempcpy)
+--10741-- Reading syms from /lib/x86_64-linux-gnu/libc-2.19.so
+--10741--   Considering /lib/x86_64-linux-gnu/libc-2.19.so ..
+--10741--   .. CRC mismatch (computed e7228afa wanted 93ff6981)
+--10741--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libc-2.19.so ..
+--10741--   .. CRC is valid
+--10741-- REDIR: 0x4ec47e0 (strcasecmp) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
+--10741-- REDIR: 0x4ec6ad0 (strncasecmp) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
+--10741-- REDIR: 0x4ec3fb0 (memcpy@GLIBC_2.2.5) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
+--10741-- REDIR: 0x4ec2240 (rindex) redirected to 0x4c2da30 (rindex)
+--10741-- REDIR: 0x4ebeaf0 (strcmp) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
+--10741-- REDIR: 0x4f77d40 (__strcmp_ssse3) redirected to 0x4c2f1b0 (strcmp)
+--10741-- REDIR: 0x4ecb540 (strchrnul) redirected to 0x4c319b0 (strchrnul)
+--10741-- REDIR: 0x4eba1d0 (malloc) redirected to 0x4c2ab10 (malloc)
+--10741-- REDIR: 0x4ec2e90 (__GI_strstr) redirected to 0x4c32030 (__strstr_sse2)
+--10741-- REDIR: 0x4ec9200 (__GI_memcpy) redirected to 0x4c2fc90 (__GI_memcpy)
+--10741-- REDIR: 0x4eba870 (free) redirected to 0x4c2bd80 (free)
+--10741-- REDIR: 0x4ec0540 (strlen) redirected to 0x4c2e0e0 (strlen)
+==10741== 
+==10741== HEAP SUMMARY:
+==10741==     in use at exit: 0 bytes in 0 blocks
+==10741==   total heap usage: 165 allocs, 165 frees, 4,644 bytes allocated
+==10741== 
+==10741== All heap blocks were freed -- no leaks are possible
+==10741== 
+==10741== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==10741== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

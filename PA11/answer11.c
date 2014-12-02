@@ -3,7 +3,7 @@
 #include<ctype.h>
 #include"answer11.h"
 
-int readBit(FILE* fptr, unsigned char* bit, unsigned char* whichbit, unsigned char* currentbyte);
+int readBit(FILE* fptr, unsigned char* bit, unsigned char* bitcount, unsigned char* currentbyte);
 
 HuffNode * HuffNode_create(int value)
 {
@@ -189,11 +189,11 @@ HuffNode* HuffTree_readTextHeader(FILE* fp)
 }
 
 // This Function is taken from Yung Lu's Book
-int readBit(FILE* fptr, unsigned char* bit, unsigned char* whichbit, unsigned char* currentbyte)
+int readBit(FILE* fptr, unsigned char* bit, unsigned char* bitcount, unsigned char* currentbyte)
 {
 	int ret = 1; 
 	
-	if(*whichbit == 0)
+	if(*bitcount == 0)
 	{
 		ret = fread(currentbyte, sizeof(unsigned char),1,fptr);
 	}	
@@ -206,10 +206,10 @@ int readBit(FILE* fptr, unsigned char* bit, unsigned char* whichbit, unsigned ch
 	}	
 	
 	// Shift the Bit to the correct Location
-	unsigned char temp = (* currentbyte) >> (7 - (*whichbit)); 
+	unsigned char temp = (* currentbyte) >> (7 - (*bitcount)); 
 	temp = temp & 0X01; // Get only 1 bit and ignore the other bits
 		
-	*whichbit = ((*whichbit) + 1) % 8;
+	*bitcount = ((*bitcount) + 1) % 8;
 	
 	*bit = temp;
 	
@@ -227,7 +227,7 @@ HuffNode* HuffTree_readBinaryHeader(FILE* fp)
 	Stack* st = Stack_create(); 
 	
 	int status = 1; 	
-	unsigned char whichbit = 0; 
+	unsigned char bitcount = 0; 
 	unsigned char currentbyte = 0; 
 	unsigned char onebit = 0; 
 	
@@ -235,19 +235,19 @@ HuffNode* HuffTree_readBinaryHeader(FILE* fp)
 	
 	while(status == 1) 
 	{ 
-		readBit(fp,&onebit,&whichbit,&currentbyte); 
+		readBit(fp,&onebit,&bitcount,&currentbyte); 
 		
 		if(onebit == 1) 
 		{ 	// a leaf node , get 7 move bits
 		 
-			int bitcount ; 
+			int count; 
 			unsigned char val = 0; 
 			
-			for(bitcount = 0; bitcount < 8; bitcount ++) 
+			for(count = 0; count < 8; count++) 
 			{ 
 				val <<= 1; // shift left by one 
 				
-				readBit(fp,&onebit,&whichbit,&currentbyte); 
+				readBit(fp,&onebit,&bitcount,&currentbyte); 
 				
 				val |= onebit; 
 			} // push a tree node into the list 
@@ -264,8 +264,9 @@ HuffNode* HuffTree_readBinaryHeader(FILE* fp)
 			} 
 			
 			if((st -> head -> next) == NULL ) 
-			{ // the tree has been completely built 
+			{ 
 			
+				// the tree has been completely built 
 				status = 0; 
 			} 
 			
