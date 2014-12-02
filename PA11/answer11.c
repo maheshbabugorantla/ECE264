@@ -226,14 +226,14 @@ HuffNode* HuffTree_readBinaryHeader(FILE* fp)
 	
 	Stack* st = Stack_create(); 
 	
-	int status = 0; 	
+	int status = 1; 	
 	unsigned char whichbit = 0; 
 	unsigned char currentbyte = 0; 
 	unsigned char onebit = 0; 
 	
 	// decreasing to ensure the list is a stack 
 	
-	while(status == 0) 
+	while(status == 1) 
 	{ 
 		readBit(fp,&onebit,&whichbit,&currentbyte); 
 		
@@ -266,7 +266,7 @@ HuffNode* HuffTree_readBinaryHeader(FILE* fp)
 			if((st -> head -> next) == NULL ) 
 			{ // the tree has been completely built 
 			
-				status = 1; 
+				status = 0; 
 			} 
 			
 			else 
