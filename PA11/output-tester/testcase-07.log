@@ -1,20 +1,89 @@
 
 Testcase 7 :: 07-description.bit-huff
    Reading file: 'inputs/07-description.bit-huff', textmode = FALSE.
+   Huffman coding tree is:
+   0
+        0
+             0
+                  i
+                  0
+                       r
+                       0
+                            c
+                            p
+             0
+                  0
+                       a
+                       0
+                            0
+                                 0
+                                      0
+                                           Y
+                                           j
+                                      .
+                                 w
+                            d
+                  0
+                       n
+                       0
+                            m
+                            0
+                                 0
+                                      P
+                                      k
+                                 f
+        0
+             0
+                  0
+                       o
+                       s
+                  0
+                       e
+                       0
+                            0
+                                 y
+                                 0
+                                      z
+                                      ,
+                            l
+             0
+                  ' '
+                  0
+                       0
+                            u
+                            0
+                                 g
+                                 0
+                                      0
+                                           b
+                                           q
+                                      0
+                                           0
+                                                (
+                                                )
+                                           0
+                                                3
+                                                E
+                       0
+                            t
+                            0
+                                 0
+                                      0
+                                           0
+                                                G
+                                                H
+                                           0
+                                                I
+                                                J
+                                      0
+                                           0
+                                                M
+                                                R
+                                           0
+                                                T
+                                                V
+                                 h
    
-   
-    Cannot add ASCII please check the Header of your Compressed File
-   
-   Program received signal SIGSEGV, Segmentation fault.
-   0x0000000000401023 in HuffTree_readBinaryHeader (fp=0x604010) at answer11.c:254
-   254		HuffNode* FinalTree = st -> head -> tree;
-   #0  0x0000000000401023 in HuffTree_readBinaryHeader (fp=0x604010)
-       at answer11.c:254
-   #1  0x000000000040205f in process_file (
-       filename=0x7fffffffe2a1 "inputs/07-description.bit-huff", is_textmode=0)
-       at example.c:29
-   #2  0x0000000000402204 in main (argc=3, argv=0x7fffffffdf18) at example.c:81
-   Your solution is different to the expected solution.
-   Review the files "/home/mahesh/Documents/ECE264/GITHUB/ECE264/PA11/output-tester/07-description.bit-huff.student.output" "/home/mahesh/Documents/ECE264/GITHUB/ECE264/PA11/output-tester/07-description.bit-huff.solution.output"
-   to see where you went wrong. The 'diff' command may be useful.
-Testcase FAILED. Log file saved to testcase-07.log
+   Message is:
+   The description is mainly taken from Professor Vijay Raghunathan. In this assignment, you will utilize your knowledge about priority queues, stacks, and trees to design a file compression program and file decompression program (similar to zip and unzip). You will base your utilities on the widely used algorithmic technique of Huffman coding, which is used in JPEG compression as well as in MP3 audio compression.
+Pass.

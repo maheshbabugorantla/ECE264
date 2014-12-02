@@ -1,20 +1,55 @@
 
 Testcase 13 :: 13-woods.bit-huff
    Reading file: 'inputs/13-woods.bit-huff', textmode = FALSE.
+   Huffman coding tree is:
+   0
+        0
+             0
+                  0
+                       i
+                       l
+                  0
+                       0
+                            m
+                            n
+                       s
+             ' '
+        0
+             0
+                  0
+                       0
+                            0
+                                 f
+                                 g
+                            0
+                                 h
+                                 k
+                       0
+                            0
+                                 v
+                                 0
+                                      .
+                                      u
+                            ,
+                  e
+             0
+                  0
+                       0
+                            p
+                            r
+                       0
+                            t
+                            0
+                                 0
+                                      w
+                                      y
+                                 b
+                  0
+                       o
+                       0
+                            a
+                            d
    
-   
-    Cannot add ASCII please check the Header of your Compressed File
-   
-   Program received signal SIGSEGV, Segmentation fault.
-   0x0000000000401023 in HuffTree_readBinaryHeader (fp=0x604010) at answer11.c:254
-   254		HuffNode* FinalTree = st -> head -> tree;
-   #0  0x0000000000401023 in HuffTree_readBinaryHeader (fp=0x604010)
-       at answer11.c:254
-   #1  0x000000000040205f in process_file (
-       filename=0x7fffffffe2a7 "inputs/13-woods.bit-huff", is_textmode=0)
-       at example.c:29
-   #2  0x0000000000402204 in main (argc=3, argv=0x7fffffffdf18) at example.c:81
-   Your solution is different to the expected solution.
-   Review the files "/home/mahesh/Documents/ECE264/GITHUB/ECE264/PA11/output-tester/13-woods.bit-huff.student.output" "/home/mahesh/Documents/ECE264/GITHUB/ECE264/PA11/output-tester/13-woods.bit-huff.solution.output"
-   to see where you went wrong. The 'diff' command may be useful.
-Testcase FAILED. Log file saved to testcase-13.log
+   Message is:
+   the woods are lovely, dark, and deep, but i have promises to keep, and miles to go before i sleep, and miles to go before i sleep.
+Pass.

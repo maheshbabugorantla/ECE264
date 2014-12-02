@@ -1,20 +1,105 @@
 
 Testcase 11 :: 11-prefixcodes.bit-huff
    Reading file: 'inputs/11-prefixcodes.bit-huff', textmode = FALSE.
+   Huffman coding tree is:
+   0
+        0
+             0
+                  e
+                  0
+                       r
+                       s
+             0
+                  0
+                       0
+                            l
+                            0
+                                 0
+                                      -
+                                      T
+                                 y
+                       i
+                  0
+                       0
+                            c
+                            d
+                       n
+        0
+             0
+                  0
+                       o
+                       0
+                            0
+                                 b
+                                 m
+                            0
+                                 0
+                                      x
+                                      v
+                                 u
+                  0
+                       a
+                       t
+             0
+                  0
+                       0
+                            0
+                                 g
+                                 0
+                                      0
+                                           ,
+                                           0
+                                                "
+                                                1
+                                      0
+                                           0
+                                                D
+                                                H
+                                           0
+                                                k
+                                                q
+                            h
+                       0
+                            0
+                                 0
+                                      0
+                                           0
+                                                0
+                                                     (
+                                                     )
+                                                0
+                                                     /
+                                                     0
+                                           0
+                                                0
+                                                     2
+                                                     3
+                                                0
+                                                     5
+                                                     7
+                                      0
+                                           0
+                                                0
+                                                     9
+                                                     ;
+                                                0
+                                                     A
+                                                     I
+                                           0
+                                                0
+                                                     M
+                                                     N
+                                                0
+                                                     P
+                                                     W
+                                 p
+                            0
+                                 0
+                                      .
+                                      w
+                                 f
+                  ' '
    
-   
-    Cannot add ASCII please check the Header of your Compressed File
-   
-   Program received signal SIGSEGV, Segmentation fault.
-   0x0000000000401023 in HuffTree_readBinaryHeader (fp=0x604010) at answer11.c:254
-   254		HuffNode* FinalTree = st -> head -> tree;
-   #0  0x0000000000401023 in HuffTree_readBinaryHeader (fp=0x604010)
-       at answer11.c:254
-   #1  0x000000000040205f in process_file (
-       filename=0x7fffffffe2a1 "inputs/11-prefixcodes.bit-huff", is_textmode=0)
-       at example.c:29
-   #2  0x0000000000402204 in main (argc=3, argv=0x7fffffffdf18) at example.c:81
-   Your solution is different to the expected solution.
-   Review the files "/home/mahesh/Documents/ECE264/GITHUB/ECE264/PA11/output-tester/11-prefixcodes.bit-huff.student.output" "/home/mahesh/Documents/ECE264/GITHUB/ECE264/PA11/output-tester/11-prefixcodes.bit-huff.solution.output"
-   to see where you went wrong. The 'diff' command may be useful.
-Testcase FAILED. Log file saved to testcase-11.log
+   Message is:
+   When all characters are stored in leaves, and every interior (non-leaf) node has two children, the coding induced by the 0/1 convention outlined above satisfies a very important property called the prefix property which states that no bit-sequence encoding of a character is the prefix of the bit-sequence encoding of any other character. This makes it possible to decode a bitstream using the coding tree by following root-to-leaf paths. The tree shown above for "go go gophers" satisfies this prefix property and is an optimal tree. There are other trees that use 37 bits; for example you can simply swap any sibling nodes and get a different encoding that uses the same number of bits. Next, we look at an algorithm for constructing such an optimal tree. This algorithm is called Huffman coding, and was invented by David A. Huffman in 1952 when he was a Ph.D. student at MIT.
+Pass.

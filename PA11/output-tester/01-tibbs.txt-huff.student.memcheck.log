@@ -1,86 +1,86 @@
-==8150== Memcheck, a memory error detector
-==8150== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
-==8150== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
-==8150== Command: ./student.out t inputs/01-tibbs.txt-huff
-==8150== Parent PID: 8149
-==8150== 
---8150-- 
---8150-- Valgrind options:
---8150--    --tool=memcheck
---8150--    --leak-check=full
---8150--    --verbose
---8150--    --log-file=memcheck.log
---8150-- Contents of /proc/version:
---8150--   Linux version 3.13.0-40-generic (buildd@comet) (gcc version 4.8.2 (Ubuntu 4.8.2-19ubuntu1) ) #69-Ubuntu SMP Thu Nov 13 17:53:56 UTC 2014
---8150-- Arch and hwcaps: AMD64, amd64-cx16-rdtscp-sse3-avx
---8150-- Page sizes: currently 4096, max supported 4096
---8150-- Valgrind library directory: /usr/lib/valgrind
---8150-- Reading syms from /tmp/.KG3FI5/student.out
---8150-- Reading syms from /lib/x86_64-linux-gnu/ld-2.19.so
---8150--   Considering /lib/x86_64-linux-gnu/ld-2.19.so ..
---8150--   .. CRC mismatch (computed 4cbae35e wanted 8d683c31)
---8150--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/ld-2.19.so ..
---8150--   .. CRC is valid
---8150-- Reading syms from /usr/lib/valgrind/memcheck-amd64-linux
---8150--   Considering /usr/lib/valgrind/memcheck-amd64-linux ..
---8150--   .. CRC mismatch (computed 37cdde19 wanted adc367dd)
---8150--    object doesn't have a symbol table
---8150--    object doesn't have a dynamic symbol table
---8150-- Scheduler: using generic scheduler lock implementation.
---8150-- Reading suppressions file: /usr/lib/valgrind/default.supp
-==8150== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-8150-by-mahesh-on-???
-==8150== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-8150-by-mahesh-on-???
-==8150== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-8150-by-mahesh-on-???
-==8150== 
-==8150== TO CONTROL THIS PROCESS USING vgdb (which you probably
-==8150== don't want to do, unless you know exactly what you're doing,
-==8150== or are doing some strange experiment):
-==8150==   /usr/lib/valgrind/../../bin/vgdb --pid=8150 ...command...
-==8150== 
-==8150== TO DEBUG THIS PROCESS USING GDB: start GDB like this
-==8150==   /path/to/gdb ./student.out
-==8150== and then give GDB the following command
-==8150==   target remote | /usr/lib/valgrind/../../bin/vgdb --pid=8150
-==8150== --pid is optional if only one valgrind process is running
-==8150== 
---8150-- REDIR: 0x4019ca0 (strlen) redirected to 0x38068331 (???)
---8150-- Reading syms from /usr/lib/valgrind/vgpreload_core-amd64-linux.so
---8150--   Considering /usr/lib/valgrind/vgpreload_core-amd64-linux.so ..
---8150--   .. CRC mismatch (computed 329d6860 wanted c0186920)
---8150--    object doesn't have a symbol table
---8150-- Reading syms from /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so
---8150--   Considering /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so ..
---8150--   .. CRC mismatch (computed 1fb85af8 wanted 2e9e3c16)
---8150--    object doesn't have a symbol table
-==8150== WARNING: new redirection conflicts with existing -- ignoring it
---8150--     old: 0x04019ca0 (strlen              ) R-> (0000.0) 0x38068331 ???
---8150--     new: 0x04019ca0 (strlen              ) R-> (2007.0) 0x04c2e1a0 strlen
---8150-- REDIR: 0x4019a50 (index) redirected to 0x4c2dd50 (index)
---8150-- REDIR: 0x4019c70 (strcmp) redirected to 0x4c2f2f0 (strcmp)
---8150-- REDIR: 0x401a9c0 (mempcpy) redirected to 0x4c31da0 (mempcpy)
---8150-- Reading syms from /lib/x86_64-linux-gnu/libc-2.19.so
---8150--   Considering /lib/x86_64-linux-gnu/libc-2.19.so ..
---8150--   .. CRC mismatch (computed e7228afa wanted 93ff6981)
---8150--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libc-2.19.so ..
---8150--   .. CRC is valid
---8150-- REDIR: 0x4ec47e0 (strcasecmp) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
---8150-- REDIR: 0x4ec6ad0 (strncasecmp) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
---8150-- REDIR: 0x4ec3fb0 (memcpy@GLIBC_2.2.5) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
---8150-- REDIR: 0x4ec2240 (rindex) redirected to 0x4c2da30 (rindex)
---8150-- REDIR: 0x4ebeaf0 (strcmp) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
---8150-- REDIR: 0x4f77d40 (__strcmp_ssse3) redirected to 0x4c2f1b0 (strcmp)
---8150-- REDIR: 0x4ecb540 (strchrnul) redirected to 0x4c319b0 (strchrnul)
---8150-- REDIR: 0x4eba1d0 (malloc) redirected to 0x4c2ab10 (malloc)
---8150-- REDIR: 0x4ec2e90 (__GI_strstr) redirected to 0x4c32030 (__strstr_sse2)
---8150-- REDIR: 0x4eba870 (free) redirected to 0x4c2bd80 (free)
---8150-- REDIR: 0x4ec0540 (strlen) redirected to 0x4c2e0e0 (strlen)
---8150-- REDIR: 0x4ebaca0 (calloc) redirected to 0x4c2cbf0 (calloc)
-==8150== 
-==8150== HEAP SUMMARY:
-==8150==     in use at exit: 0 bytes in 0 blocks
-==8150==   total heap usage: 133 allocs, 133 frees, 2,974 bytes allocated
-==8150== 
-==8150== All heap blocks were freed -- no leaks are possible
-==8150== 
-==8150== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==8150== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==8712== Memcheck, a memory error detector
+==8712== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==8712== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
+==8712== Command: ./student.out t inputs/01-tibbs.txt-huff
+==8712== Parent PID: 8711
+==8712== 
+--8712-- 
+--8712-- Valgrind options:
+--8712--    --tool=memcheck
+--8712--    --leak-check=full
+--8712--    --verbose
+--8712--    --log-file=memcheck.log
+--8712-- Contents of /proc/version:
+--8712--   Linux version 3.13.0-40-generic (buildd@comet) (gcc version 4.8.2 (Ubuntu 4.8.2-19ubuntu1) ) #69-Ubuntu SMP Thu Nov 13 17:53:56 UTC 2014
+--8712-- Arch and hwcaps: AMD64, amd64-cx16-rdtscp-sse3-avx
+--8712-- Page sizes: currently 4096, max supported 4096
+--8712-- Valgrind library directory: /usr/lib/valgrind
+--8712-- Reading syms from /tmp/.RhvOnH/student.out
+--8712-- Reading syms from /lib/x86_64-linux-gnu/ld-2.19.so
+--8712--   Considering /lib/x86_64-linux-gnu/ld-2.19.so ..
+--8712--   .. CRC mismatch (computed 4cbae35e wanted 8d683c31)
+--8712--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/ld-2.19.so ..
+--8712--   .. CRC is valid
+--8712-- Reading syms from /usr/lib/valgrind/memcheck-amd64-linux
+--8712--   Considering /usr/lib/valgrind/memcheck-amd64-linux ..
+--8712--   .. CRC mismatch (computed 37cdde19 wanted adc367dd)
+--8712--    object doesn't have a symbol table
+--8712--    object doesn't have a dynamic symbol table
+--8712-- Scheduler: using generic scheduler lock implementation.
+--8712-- Reading suppressions file: /usr/lib/valgrind/default.supp
+==8712== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-8712-by-mahesh-on-???
+==8712== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-8712-by-mahesh-on-???
+==8712== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-8712-by-mahesh-on-???
+==8712== 
+==8712== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==8712== don't want to do, unless you know exactly what you're doing,
+==8712== or are doing some strange experiment):
+==8712==   /usr/lib/valgrind/../../bin/vgdb --pid=8712 ...command...
+==8712== 
+==8712== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==8712==   /path/to/gdb ./student.out
+==8712== and then give GDB the following command
+==8712==   target remote | /usr/lib/valgrind/../../bin/vgdb --pid=8712
+==8712== --pid is optional if only one valgrind process is running
+==8712== 
+--8712-- REDIR: 0x4019ca0 (strlen) redirected to 0x38068331 (???)
+--8712-- Reading syms from /usr/lib/valgrind/vgpreload_core-amd64-linux.so
+--8712--   Considering /usr/lib/valgrind/vgpreload_core-amd64-linux.so ..
+--8712--   .. CRC mismatch (computed 329d6860 wanted c0186920)
+--8712--    object doesn't have a symbol table
+--8712-- Reading syms from /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so
+--8712--   Considering /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so ..
+--8712--   .. CRC mismatch (computed 1fb85af8 wanted 2e9e3c16)
+--8712--    object doesn't have a symbol table
+==8712== WARNING: new redirection conflicts with existing -- ignoring it
+--8712--     old: 0x04019ca0 (strlen              ) R-> (0000.0) 0x38068331 ???
+--8712--     new: 0x04019ca0 (strlen              ) R-> (2007.0) 0x04c2e1a0 strlen
+--8712-- REDIR: 0x4019a50 (index) redirected to 0x4c2dd50 (index)
+--8712-- REDIR: 0x4019c70 (strcmp) redirected to 0x4c2f2f0 (strcmp)
+--8712-- REDIR: 0x401a9c0 (mempcpy) redirected to 0x4c31da0 (mempcpy)
+--8712-- Reading syms from /lib/x86_64-linux-gnu/libc-2.19.so
+--8712--   Considering /lib/x86_64-linux-gnu/libc-2.19.so ..
+--8712--   .. CRC mismatch (computed e7228afa wanted 93ff6981)
+--8712--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libc-2.19.so ..
+--8712--   .. CRC is valid
+--8712-- REDIR: 0x4ec47e0 (strcasecmp) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
+--8712-- REDIR: 0x4ec6ad0 (strncasecmp) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
+--8712-- REDIR: 0x4ec3fb0 (memcpy@GLIBC_2.2.5) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
+--8712-- REDIR: 0x4ec2240 (rindex) redirected to 0x4c2da30 (rindex)
+--8712-- REDIR: 0x4ebeaf0 (strcmp) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
+--8712-- REDIR: 0x4f77d40 (__strcmp_ssse3) redirected to 0x4c2f1b0 (strcmp)
+--8712-- REDIR: 0x4ecb540 (strchrnul) redirected to 0x4c319b0 (strchrnul)
+--8712-- REDIR: 0x4eba1d0 (malloc) redirected to 0x4c2ab10 (malloc)
+--8712-- REDIR: 0x4ec2e90 (__GI_strstr) redirected to 0x4c32030 (__strstr_sse2)
+--8712-- REDIR: 0x4eba870 (free) redirected to 0x4c2bd80 (free)
+--8712-- REDIR: 0x4ec0540 (strlen) redirected to 0x4c2e0e0 (strlen)
+--8712-- REDIR: 0x4ebaca0 (calloc) redirected to 0x4c2cbf0 (calloc)
+==8712== 
+==8712== HEAP SUMMARY:
+==8712==     in use at exit: 0 bytes in 0 blocks
+==8712==   total heap usage: 133 allocs, 133 frees, 2,974 bytes allocated
+==8712== 
+==8712== All heap blocks were freed -- no leaks are possible
+==8712== 
+==8712== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==8712== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
