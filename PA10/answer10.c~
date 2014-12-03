@@ -434,7 +434,7 @@ struct Business* Get_Reviews(FILE* bus_file, FILE* rev_file, BusinessNode* bst,c
 				 
 				 	2) sort the Reviews Array using qsort with "stars" as a parameter. ( Remember to write the comparison functions for the 'qsort' )
 				
-					REMEMBER: Free the Arr_Bus Once U insert the Address and other details of a location using strdup. Also look at the error made in reading the reviews of the file for Business ID '0'.				
+					REMEMBER: Free the Arr_Bus Once U insert the Address and other details of a location using strdup. Also look at the error made in reading the reviews of the file for Business ID '0'				
 				*/	 
 			}
 			
