@@ -90,8 +90,11 @@ typedef struct business
 
 
 typedef struct YelpDataBST
-{
-	BusinessNode* BNode;		
+{	
+	char* BusFile;
+	char* RevFile; 
+	BusinessNode* BNode;			
+
 }YelpData;
 
 
@@ -151,7 +154,7 @@ void print_Locations(LocationNode* head, const char* filename_bus,const char* fi
  	
  		if(fgets(str_bus,6000,fp_bus) != NULL)
  		{
- 			printf(" %s \n\n",str_bus); // Prints the Business Name 
+ 			printf(" %s \n\n",str_bus); // Prints the Business Name and Address
  			
  			count_rev = (head -> reviews).no_reviews; // Gets the no.of reviews. 				
  		
@@ -271,6 +274,9 @@ YelpData* readfile(const char* busfilename, const char* revfilename)
 	
 	YelpData* BusinessData = malloc(sizeof(YelpData));
 	
+	BusinessData -> BusFile = strdup(busfilename);
+	BusinessData -> RevFile = strdup(revfilename);
+	
 	//fclose(fp2); // Shift it to the Bottom Once Done Constructing the Whole BST and Location Nodes Pointing. 
 	
 	char* str1 = malloc(sizeof(char)*6000);
@@ -386,12 +392,48 @@ struct YelpDataBST* create_business_bst(const char* businesses_path,const char* 
 }
 
 
-// GET THE REVIEWS OF A GIVEN BUSINESS LOCATION ( By Giving a Name 
+struct Business* Get_Reviews(BusinessNode* bst,char* name,char* state,char* zip_code)
+{
+	//This is the Case where we haven't found any BusinessName
+	if(bst == NULL)
+	{
+		printf("\n\nCannot find the BusinessName U asked for...??? Please try an another Business Name\n\n"); 
+		return(NULL);
+	} 
 
+	//Here I need to create the business Reviews and return the Business 
+	if(strcmp(name, bst -> BusinessName) == 0)
+	{
+		// Checking with Location Nodes for the required state and zip_code	
+		
+		
+	}
+	
+	if(strcmp(name,bst -> BusinessName) < 0)
+	{
+		Get_Reviews(bst -> Left,name,state,zip_code);
+	} 	
+	
+	if(strcmp(name,bst -> BusinessName) > 0)
+	{
+		Get_Reviews(bst -> Right,name,state,zip_code);
+	}
+
+// GET THE REVIEWS OF A GIVEN BUSINESS LOCATION (By Giving a Business Name, State and ZipCode)
+struct Business* get_business_reviews(struct YelpDataBST* bst,char* name, char* state, char* zip_code) 
+{
+		
+
+	return(Get_Reviews(bst -> BNode,name,state,zip_code));
+}
+	
 
 void destroy_business_bst(struct YelpDataBST* bst)
 {
 	destroy_BST(bst -> BNode);
+	
+	free(bst -> BusFile); // Freeing the Businesses File Name 
+	free(bst -> RevFile); // Freeing the Reviews File Name
 	free(bst); // Freeing the YelpData
 	
 	return;
@@ -401,7 +443,7 @@ int main(int argc, char** argv)
 {
 		
 	YelpData* Root = create_business_bst("samplebus.tsv","samplerev.tsv");
-	print_tree(Root -> BNode,"samplebus.tsv","samplerev.tsv");
+	//print_tree(Root -> BNode,"/home/mahesh/Documents/ECE264/businesses.tsv","/home/mahesh/Documents/ECE264/reviews.tsv");
 	destroy_business_bst(Root);
 
 	return(EXIT_SUCCESS);
