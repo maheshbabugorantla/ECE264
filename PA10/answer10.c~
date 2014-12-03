@@ -386,7 +386,7 @@ struct YelpDataBST* create_business_bst(const char* businesses_path,const char* 
 }
 
 
-// GET THE REVIEWS OF A GIVEN BUSINESS LOCATION ( By Giving a Name 
+// GET THE REVIEWS OF A GIVEN BUSINESS LOCATION
 
 
 void destroy_business_bst(struct YelpDataBST* bst)
