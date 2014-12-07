@@ -3,8 +3,8 @@
 #include <string.h>
 #include "answer10.h"
 
-const char businesses_path[] = "/home/shay/a/ece264p0/share/yelp_data/businesses.tsv";
-const char reviews_path[] = "/home/shay/a/ece264p0/share/yelp_data/reviews.tsv";
+const char businesses_path[] = "/home/mahesh/Documents/ECE264/businesses.tsv";
+const char reviews_path[] = "/home/mahesh/Documents/ECE264/reviews.tsv";
 //const char businesses_path[] = "/home/shay/a/ece264p0/share/yelp_data/businesses.short.tsv";
 //const char reviews_path[] = "/home/shay/a/ece264p0/share/yelp_data/reviews.short.tsv";
 
@@ -49,10 +49,12 @@ int main(int argc, char *argv[]) {
 			printf("RESULTS:  \"%s\"  (%d locations)\n\n", b->name, b->num_locations);
 
 			int location_idx;
+			
 			for(location_idx=0; location_idx<b->num_locations; location_idx++) {
-
+				
 				// Print LOCATION
 				struct Location loc = b->locations[location_idx];
+				
 				printf("LOCATION #%d:  address=\"%s\"  city=\"%s\"  state=\"%s\"  zip_code=\"%s\"  (%d reviews)\n\n",
 					   location_idx + 1, loc.address, loc.city, loc.state, loc.zip_code, loc.num_reviews);
 				num_address_chars += strlen(loc.address) + strlen(loc.state) + strlen(loc.zip_code);
@@ -73,9 +75,12 @@ int main(int argc, char *argv[]) {
 				if(location_idx + 1 < b->num_locations) {
 					printf("................................................................................\n");
 				}
+				
+				
 			}
+			
 			printf("\n");
-
+			
 			// Destroy (free) the result object
 			destroy_business_result(b);
 		}

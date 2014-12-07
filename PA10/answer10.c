@@ -3,6 +3,7 @@
 #include<string.h>
 #include<math.h>
 #include"answer10.h"
+#include<strings.h>
 #include<inttypes.h>
 
 char** explode(const char* str, const char* delims,int* arrLen)
@@ -136,9 +137,23 @@ LocationNode* Location_list(LocationNode* head,long int bus_offset,long int rev_
 	return(head);
 }
 
+uint32_t Loclist_length(LocationNode* loclist)
+{
+	uint32_t length = 0;
+	
+	LocationNode* list = loclist;
+	
+	while(list != NULL)
+	{
+		length += 1;
+		list = list -> next;
+	}
+	
+	return(length);
+} 
 
 // This is to print the Reviews of the Each Independent Business location.
-void print_Locations(LocationNode* head, const char* filename_bus,const char* filename_rev)
+/*void print_Locations(LocationNode* head, const char* filename_bus,const char* filename_rev)
 {
 	FILE* fp_bus = fopen(filename_bus,"r"); // for Businesses.tsv
 	FILE* fp_rev = fopen(filename_rev,"r"); // For Reviews.tsv 
@@ -154,7 +169,7 @@ void print_Locations(LocationNode* head, const char* filename_bus,const char* fi
  	
  		if(fgets(str_bus,6000,fp_bus) != NULL)
  		{
- 			printf(" %s \n\n",str_bus); // Prints the Business Name and Address
+ 			printf(" %.80s\n",str_bus); // Prints the Business Name and Address
  			
  			count_rev = (head -> reviews).no_reviews; // Gets the no.of reviews. 				
  		
@@ -166,7 +181,7 @@ void print_Locations(LocationNode* head, const char* filename_bus,const char* fi
  				// This Below loop is used to print the reviews of a business Location.
  				while(count_rev > 0)
  				{
- 					printf("\n	%s\n",str_rev); // Prints review from a specific Customer.
+ 					printf("      %.70s\n",str_rev); // Prints review from a specific Customer.
  					fseek(fp_rev,1 + (int)(floor(log10(head -> bus_id)) + 1),SEEK_CUR); 
  					fgets(str_rev,6000,fp_rev);
  					count_rev -= 1;
@@ -183,7 +198,7 @@ void print_Locations(LocationNode* head, const char* filename_bus,const char* fi
 	free(str_rev); // Have to free this...
 	fclose(fp_bus);
 	fclose(fp_rev);
-}
+} */
 
 // CREATING THE BUSINESS BINARY TREE
 BusinessNode* create_BST(char* business, BusinessNode* root,long int bus_offset,long int rev_offset, int count,int business_id)
@@ -191,23 +206,23 @@ BusinessNode* create_BST(char* business, BusinessNode* root,long int bus_offset,
 	if(root == NULL)
 	{
 		BusinessNode* bus_node = create_business(business); // This Business Node has to created first.
-		bus_node -> location = Location_list(bus_node -> location,bus_offset,rev_offset,count,business_id); // Location is created pointing from that Business Location.
+		bus_node -> location = create_Location(bus_offset,rev_offset,count,business_id); // Location is created pointing from that Business Location.
 		return bus_node; // Creates and Inserts the Node at the NULL.
 	}
 	
 	// Here We add the Address of the Business Location(Offset in businesses.tsv File) to the location linked list (Because We do not need to add the same business name)
 	
-	if(strcmp(business , root -> BusinessName) == 0) 
+	if(strcasecmp(business , root -> BusinessName) == 0) 
 	{ 
 		root -> location = Location_list(root -> location,bus_offset,rev_offset,count,business_id);	
 	} 
 	
-	if(strcmp(business , root -> BusinessName) < 0)
+	if(strcasecmp(business , root -> BusinessName) < 0)
 	{
 		root -> Left = create_BST(business,root -> Left,bus_offset,rev_offset,count,business_id); // Inserts the Node in the Left Side of the Binary Tree.
 	}
 	
-	if(strcmp(business , root -> BusinessName) > 0)
+	if(strcasecmp(business , root -> BusinessName) > 0)
 	{
 		root -> Right = create_BST(business, root -> Right,bus_offset,rev_offset,count,business_id); // Inserts the Node in the Right Side of the Binary Tree.
 	}
@@ -215,7 +230,7 @@ BusinessNode* create_BST(char* business, BusinessNode* root,long int bus_offset,
 	return(root);	
 }
 
-void print_tree(BusinessNode* Root,const char* filename1,const char* filename2)
+/*void print_tree(BusinessNode* Root,const char* filename1,const char* filename2)
 {
 	if(Root == NULL)
 	{
@@ -233,7 +248,7 @@ void print_tree(BusinessNode* Root,const char* filename1,const char* filename2)
 
 	//fclose(fp);	
 
-}
+} */
 
 // Destroying the Location List
 
@@ -272,6 +287,11 @@ YelpData* readfile(const char* busfilename, const char* revfilename)
 	FILE* fp1 = fopen(busfilename,"r");
 	FILE* fp2 = fopen(revfilename,"r");
 	
+	if(fp1 == NULL || fp2 == NULL) {
+		fprintf(stderr, "Failed to open %s, or %s, or both\n", busfilename, revfilename);
+		return NULL;
+	}
+	
 	YelpData* BusinessData = malloc(sizeof(YelpData));
 	
 	BusinessData -> BusFile = strdup(busfilename);
@@ -295,13 +315,14 @@ YelpData* readfile(const char* busfilename, const char* revfilename)
 	int count = 0; // No.of Reviews
 	
 	while(!feof(fp1))
-	{			
-		 fgets(str1,6000,fp1);
-		 
+	{	
+			
 		 if(feof(fp1))
 		 {
 		 	break;
 		 }
+		 
+		 fgets(str1,6000,fp1);
 		 
 		 char** strArr1 = explode(str1,"\t",&len1);
 		 		 
@@ -383,13 +404,90 @@ YelpData* readfile(const char* busfilename, const char* revfilename)
 	return BusinessData;
 }
 
-
-
 // CREATING YELP DATA BUSINESS TREE		 	
 struct YelpDataBST* create_business_bst(const char* businesses_path,const char* reviews_path)
 {
 	return(readfile(businesses_path,reviews_path));
 }
+
+int comparfunc_rev(const void* arg1,const void* arg2)
+{
+	const struct Review* ptr1 = (const struct Review *)arg1;
+	const struct Review* ptr2 = (const struct Review *)arg2;
+	
+	uint8_t val1 = (*ptr1).stars;
+	uint8_t val2 = (*ptr2).stars;
+	
+	if(val1 < val2) { return 1; }
+	if(val1 == val2) 
+	{ 
+		if(strlen((*ptr1).text) > strlen((*ptr2).text))
+		{
+			return(-1);
+		}
+		
+		if(strlen((*ptr1).text) < strlen((*ptr2).text))
+		{
+			return(1);
+		}
+		
+		return 0; 
+	}
+	
+	return(-1);
+} 
+
+int comparfunc_loc(const void* arg1,const void* arg2)
+{
+	const struct Location* ptr1 = (const struct Location *)arg1;
+	const struct Location* ptr2 = (const struct Location *)arg2;
+	
+	// Comparing the States
+	if(strcasecmp((*ptr1).state,(*ptr2).state) < 0)
+	{
+		return(-1);
+	}
+	
+	if(strcasecmp((*ptr1).state,(*ptr2).state) > 0)
+	{
+		return(1);
+	}
+	
+	// Same State
+	else
+	{
+		if(strcasecmp((*ptr1).city,(*ptr2).city) < 0)
+		{
+			return(-1);
+		}
+		
+		if(strcasecmp((*ptr1).city,(*ptr2).city) > 0)
+		{
+			return(1);
+		}
+		
+		// Same City
+		else
+		{
+			// Comparing the Addresses
+			if(strcasecmp((*ptr1).address,(*ptr2).address) < 0)
+			{
+				return(-1);
+			}
+			
+			if(strcasecmp((*ptr1).address,(*ptr2).address) > 0)
+			{
+				return(1);
+			}
+			
+			else
+			{
+				return(0);
+			}
+		}
+	}	
+}
+
 
 // A DUPLICATE FUNCTION TO GET THE REVIEWS OF A BUSINESS FUNCTION.
 struct Business* Get_Reviews(FILE* bus_file, FILE* rev_file, BusinessNode* bst,char* name,char* state,char* zip_code)
@@ -398,80 +496,141 @@ struct Business* Get_Reviews(FILE* bus_file, FILE* rev_file, BusinessNode* bst,c
 	//This is the Case where we haven't found any BusinessName
 	if(bst == NULL)
 	{
-		printf("\n\nCannot find the BusinessName U asked for...??? Please try an another Business Name\n\n"); 
+		//printf("\n\nCannot find the Business Name U asked for...??? Please try an another Business Name\n\n"); 
 		return(NULL);
 	} 
 
-	//Here I need to create the business Reviews and return the Business 
-	if(strcmp(name, bst -> BusinessName) == 0)
+	if(strcasecmp(name,bst -> BusinessName) < 0)
 	{
-		struct Business* bus_loc = malloc(sizeof(struct Business)); // Have to Allocate Memory. ( DO NOT DO IT Outside this 'if' Statement
+		return(Get_Reviews(bus_file,rev_file,bst -> Left,name,state,zip_code));
+	} 	
+	
+	if(strcasecmp(name,bst -> BusinessName) > 0)
+	{
+		return(Get_Reviews(bus_file,rev_file,bst -> Right,name,state,zip_code));
+	}
+
+	//Here I need to create the business Reviews and return the Business 
+	else
+	{
+		struct Business* bus_loc = malloc(sizeof(struct Business)); // Have to Allocate Memory. ( DO NOT DO IT Outside this 'if' Statement )
 	
 		char* str_bus = malloc(sizeof(char)*6000); // For the Business Address and related Data
 		char* str_rev = malloc(sizeof(char)*6000); // For the Reviews of a specific Location.
+	
+		bus_loc -> name = strdup(bst -> BusinessName);
 			
 		// Checking with Location Nodes for the required state and zip_code
 		LocationNode* new_loc = bst -> location;	
 	
-		int len = 0; // For the "explode" Function
+		int len = 0; // For the "explode" Function on str_bus.
 	
-		while(new_loc != NULL)
+		uint32_t length_list = Loclist_length(new_loc); // Used for allocating the Memory for storing all the details of the Locations of a Business.
+	
+		bus_loc -> num_locations = length_list;
+		
+		// HERE WE CREATE ENOUGH MEMORY for an Array of type "Location" to STORE ALL THE LOCATIONS of a Business.
+		bus_loc -> locations = malloc(sizeof(struct Location)*length_list);  
+		
+		int ind_null = 0; 
+	
+		for(ind_null = 0;ind_null<length_list;ind_null++)
+		{
+			bus_loc -> locations[ind_null].address = NULL;
+		}	
+	
+		int count = 0; // For 'Location' array index
+	
+		while(new_loc != NULL) // || length_list != 0)
 		{
 			fseek(bus_file,new_loc -> offset,SEEK_SET); // Takes the File Pointer to the offset of a Specified Address Location of a Business in the file. 	
 			
 			fgets(str_bus,6000,bus_file); // Getting all the details of a Business (Business Location).
 			
 			char** Arr_Bus = explode(str_bus,"\t",&len);
-		
-			// Which means that Address Location Found
-			if((strcmp(Arr_Bus[3],state) == 0) && (strcmp(Arr_Bus[4],zip_code) == 0))
+						 
+			//printf("\n\n State: %s\n Zip_Code: %s \n %d \nZip_Code_File: %s\n",state,zip_code,(state == NULL && strcasecmp(Arr_Bus[3],zip_code) == 0),Arr_Bus[3]);
+			if(((state == NULL) && (zip_code == NULL)) || (state == NULL && strcasecmp(Arr_Bus[3],zip_code) == 0) || (zip_code == NULL && strcasecmp(Arr_Bus[2],state) == 0) || (state != NULL && zip_code != NULL && ((strcasecmp(Arr_Bus[2],state) == 0) && (strcasecmp(Arr_Bus[3],zip_code) == 0))))
 			{
-			 	/*	
-			 	
-			 		?? HOW TO GET THE LENGTH OF THE LOCATION ARRAY ?? 
-			 	        
-			 	        1) Now Create Location Array with the Addresses, City, State, Zip Code and Reviews of the Location. 			 
-				 
-				 	2) sort the Reviews Array using qsort with "stars" as a parameter. ( Remember to write the comparison functions for the 'qsort' )
+				bus_loc -> locations[count].address = strdup(Arr_Bus[0]); // Address Location.
+				bus_loc -> locations[count].city = strdup(Arr_Bus[1]); // City
+				bus_loc -> locations[count].state = strdup(Arr_Bus[2]); // State
+				bus_loc -> locations[count].zip_code = strdup(Arr_Bus[3]); // Zip_Code
+				bus_loc -> locations[count].num_reviews = (new_loc -> reviews).no_reviews;
+				bus_loc -> locations[count].reviews = malloc(sizeof(struct Review)*(bus_loc -> locations[count].num_reviews));
+			
+				// Now input all the reviews into the Reviews list.
+			
+				int reviews_count = 0; // Have to Create a Duplicate Variable.
+			
+				fseek(rev_file,(new_loc -> reviews).offset,SEEK_SET); // To Move Reviews File Pointer into specified business Reviews Location.
+			
+				while(reviews_count < (bus_loc -> locations[count].num_reviews))
+				{
+					fgets(str_rev,6000,rev_file);
 				
-					REMEMBER: Free the Arr_Bus Once U insert the Address and other details of a location using strdup. Also look at the error made in reading the reviews of the file for Business ID '0'.				
-				*/	 
+					int len_rev = 0; // for 'explode' on rev string
+				
+					char** Arr_Rev = explode(str_rev,"\t",&len_rev);
+				
+					if(len_rev == 5)
+					{
+						((bus_loc -> locations[count].reviews)[reviews_count]).stars = atoi(Arr_Rev[0]); // Input the Star Rating.
+						((bus_loc -> locations[count].reviews)[reviews_count]).text = strdup(Arr_Rev[4]); // Input the Review text.
+				        }
+				        
+				        else
+				        {
+				        	((bus_loc -> locations[count].reviews)[reviews_count]).stars = atoi(Arr_Rev[1]); // Input the Star Rating.
+						((bus_loc -> locations[count].reviews)[reviews_count]).text = strdup(Arr_Rev[5]); // Input the Review text.
+				        }	
+				        
+					//fseek(rev_file,1 + (int)(floor(log10(new_loc -> bus_id)) + 1),SEEK_CUR); // Put the File Pointer pointing from the Star Rating in the line.
+					int ind_rev = 0; // Index to free Arr_rev		
+				
+					// Freeing the Arr_Rev
+					for(ind_rev = 0; ind_rev < len_rev;ind_rev++)
+					{
+						free(Arr_Rev[ind_rev]);
+					}
+					free(Arr_Rev);
+						
+					reviews_count += 1;					
+		 		}		 	
+		 		
+		 			 	
+		 		// SORT THE REVIEWS ARRAY ACCORDING TO THE STAR RATING IN DESCENDING ORDER.
+				qsort(&(bus_loc -> locations[count]).reviews[0],bus_loc -> locations[count].num_reviews,sizeof(struct Review),comparfunc_rev); 
+				
+				count += 1;
+							
 			}
-			
-			int index = 0;
-			
-			for(index = 0; index < len;index++)
-			{
-				free(Arr_Bus[index]);
-			}
-			
-			free(Arr_Bus);
-			
-			len = 0; // Reinitialising the Array Length to Zero.
-			new_loc = new_loc -> next; // Moving onto the Next Location Node.
+				
+				int ind_bus = 0;
+					
+				for(ind_bus = 0; ind_bus < len;ind_bus++)
+				{
+					free(Arr_Bus[ind_bus]);
+				}					
+				free(Arr_Bus);				
+				
+				new_loc = new_loc -> next;
+					 	
 		}	
 		
-		printf("\n\n Cannot the Business Name U asked for ....?? At the given Location ... Please try an another location...\n\n");
+		//printf("\nNo_Locations: %d\n",bus_loc -> num_locations);
+		bus_loc -> num_locations = count;
+		//printf("\nCount: %d\n",count);
+		
+		qsort(&(bus_loc -> locations[0]),bus_loc -> num_locations,sizeof(struct Location),comparfunc_loc);
 		
 		free(str_bus);
 		free(str_rev);
 		
-		return(NULL); // In Case We Don't find a new Location Entry.
-
+		return(bus_loc);
+		
 	}
-	
-	if(strcmp(name,bst -> BusinessName) < 0)
-	{
-		Get_Reviews(bus_file,rev_file,bst -> Left,name,state,zip_code);
-	} 	
-	
-	if(strcmp(name,bst -> BusinessName) > 0)
-	{
-		Get_Reviews(bus_file,rev_file,bst -> Right,name,state,zip_code);
-	}
-
 }
-
 
 // GET THE REVIEWS OF A GIVEN BUSINESS LOCATION (By Giving a Business Name, State and ZipCode)
 struct Business* get_business_reviews(struct YelpDataBST* bst,char* name, char* state, char* zip_code) 
@@ -486,7 +645,44 @@ struct Business* get_business_reviews(struct YelpDataBST* bst,char* name, char* 
 	
 	return(bus_struct);
 }
+
+void destroy_business_result(struct Business* b)
+{
+	free(b -> name); // Freeing the Business Name
+	int ind_loc = 0;
+
+	// This Loop is used to free the locations Array
+	for(ind_loc = 0;ind_loc < (b -> num_locations);ind_loc++)
+	{
+		if(b -> locations[ind_loc].address == NULL)
+		{
+			break;
+		}
+
+		free((b -> locations[ind_loc]).address);	
+		free((b -> locations[ind_loc]).city);
+		free((b -> locations[ind_loc]).state);
+		free((b -> locations[ind_loc]).zip_code);
+		
+		// Now Free the Reviews Array
+		int ind_rev = 0;
+		
+		for(ind_rev = 0; ind_rev < (b -> locations[ind_loc]).num_reviews; ind_rev++)
+		{
+			free(((b -> locations[ind_loc]).reviews[ind_rev]).text);
+		}
+		
+		free((b -> locations[ind_loc]).reviews);
+		
+		//free(b -> locations[ind_loc]);
+	}	
+	 
+	//Finally Free the Memory of the Location struct
+	free(b -> locations);
 	
+	//Free Business
+	free(b);	 
+}	
 
 void destroy_business_bst(struct YelpDataBST* bst)
 {
@@ -499,15 +695,20 @@ void destroy_business_bst(struct YelpDataBST* bst)
 	return;
 }
 	
-int main(int argc, char** argv)
+/*int main(int argc, char** argv)
 {
 		
 	YelpData* Root = create_business_bst("samplebus.tsv","samplerev.tsv");
-	//print_tree(Root -> BNode,"/home/mahesh/Documents/ECE264/businesses.tsv","/home/mahesh/Documents/ECE264/reviews.tsv");
+	//print_tree(Root -> BNode,"bus.tsv","rev.tsv");
+	
+	struct Business* business_rev = get_business_reviews(Root,"Starbucks",NULL,"12345");
+	
+	destroy_business_result(business_rev);
+	
 	destroy_business_bst(Root);
 
 	return(EXIT_SUCCESS);
-}
+}*/
 	
 	
 	
