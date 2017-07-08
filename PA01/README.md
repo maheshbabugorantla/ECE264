@@ -1,5 +1,5 @@
 
-Please read the ENTIRE readme. Please do not ask for help until AFTER
+Please read the ***ENTIRE*** readme. Please do not ask for help until ***AFTER***
 reading this document, and the relevant sections from the course
 notes. Do not be surprised if you are asked to do some reading before
 receiving help. Failing to read is an extremely common problem that we
@@ -12,7 +12,7 @@ In this assignment, you will implement five different array processing
 functions. Your solution should be short: between 50 and 150 lines of
 code, including lines used for spacing.
 
-// ~ Learning Goals ~ //
+# ~ Learning Goals ~
 
 The main learning goals are five-fold, and all of them equally
 important. You must learn:
@@ -23,7 +23,7 @@ errors.
 (4) How to "iterate" over arrays in C.
 (5) How to use Version Control.
 
-// ~ Getting Started ~ //
+# ~ Getting Started ~
 
 The PA01 folder contains five files:
 (1) answer01.c: this is the file that you hand in. It has the skeleton
@@ -47,7 +47,7 @@ the answer01.c file.
 Follow the discussions below on how to compile and run your code, as
 well as test and submit it.
 
-// ~ Submitting Your Assignment ~ //
+# ~ Submitting Your Assignment ~
 
 You must submit one zip file to blackboard. This zip file must contain
 precisely three files:
@@ -58,8 +58,8 @@ program.
 
 Notes on creating each of these files are included in this readme.
 You create the zip file using the following command.
- 
- > zip pa01.zip answer01.c memcheck.log gdb.txt 
+
+ > zip pa01.zip answer01.c memcheck.log gdb.txt
 
 If your zip file does not meet the above specification, then you may
 get zero for the assignment. In particular, right-clicking and
@@ -70,7 +70,7 @@ getting the assignment correct. So please follow the instructions.
 
 Submit "pa01.zip" to blackboard.
 
-// ~ Determining Your Mark ~ //
+# ~ Determining Your Mark ~
 
 This assignment is pass or fail. You pass if everything works, and
 fail if there is one or more things wrong. You can determine your mark
@@ -89,7 +89,7 @@ Getting a passing grade from the tester only ensures a passing grade
 for the assignment when you submit the assignment correctly, including
 all auxiliary files listed above.
 
-// ~ (1a) Compiling Your Program ~ //
+# ~ (1a) Compiling Your Program# ~
 
 The remainder of this document is to help you figure out how to meet
 the learning goals of this assignment. Firstly, you must compile, run
@@ -111,7 +111,7 @@ the assignment if your solution has 1 or more compilation warnings.
 declaration "shadows" the declaration of another variable.
 (3) -g, turn on debugging symbols. This produces a larger executable
 program; however, you can use this program in a debugger. You will
-need to learn how to use the debugger "gdb" in order to pass this 
+need to learn how to use the debugger "gdb" in order to pass this
 course.
 (4) pa01.c answer01.c. These are the files that you are compiling and
 linking into a computer program. You only ever compile ".c" files. You
@@ -129,7 +129,7 @@ main is present in an executable.)
 a file called "a.out", and we are just telling gcc to name that file
 "pa01" instead.
 
-// ~ (1b) Running Your Program ~ //
+## ~ (1b) Running Your Program ~
 
 To run your program, simply type into the terminal:
 
@@ -145,7 +145,7 @@ the behavior of the functions you are writing in "answer01.c".
 
 The file (technically: compilation unit) pa01.c "knows" about the
 functions in answer01.c, because it "includes" the declarations for
-those functions, which are written in the file "answer01.h". 
+those functions, which are written in the file "answer01.h".
 Declarations and are not compiled into code, but instead, they merely
 describe the existence of some compilable function in some compilation
 unit somewhere. In this case, the functions declared in answer01.h are
@@ -156,7 +156,7 @@ header file, with declarations. You will need to write your answerXY.c
 file from scratch, and write your own test-cases and main function in
 a separate compilation unit.
 
-// ~ (1c) Testing Your Program ~ //
+## ~ (1c) Testing Your Program ~
 
 It is your responsibility to test your program and ensure that it
 works. A program that is 99% correct is still 100% wrong. Many
@@ -176,7 +176,7 @@ A "tester" program exists, which will tell you the mark you will
 receive when you submit your assignment. (Assuming you submit it
 correctly with all auxiliary files.) Receiving a pass does not mean
 your assignment is perfect, but it does mean that your assignment
-passes the tests we thought to put it through. 
+passes the tests we thought to put it through.
 
 This tester program is provided as a courtesy -- it is up to you to
 think about your program, and test it. This is a fundamental skill for
@@ -199,7 +199,7 @@ developing, and then you have to write code that *demonstrates* that
 it *always* works. This is a core skill to develop if you are
 interested in being a competent computer programmer.
 
-// ~ (2a) Running ./pa01 Under Valgrind ~ //
+# ~ (2a) Running ./pa01 Under Valgrind ~
 
 Valgrind is an extremely useful tool for finding problems in C
 programs. It is free-software, and (for C) as good as any software
@@ -246,7 +246,7 @@ operating systems together. In short: don't worry about suppressed
 errors. Google is your friend if you are interested in more
 information; however, it will not be tested in this course.
 
-// ~ (2b) Debugging Valgrind Errors ~ //
+# ~ (2b) Debugging Valgrind Errors ~
 
 Look for the *first* error, and debug that error. Sometimes you will
 get hundreds (or even hundreds of thousands) or errors; however, they
@@ -274,13 +274,13 @@ These memory errors can be difficult to solve, but it is much easier
 if you think precisely about your code. This is necessary skill, and
 expect to spend much time over this semester learning to do just that.
 
-// ~ (2c) Submitting a Valgrind Log ~ //
+# ~ (2c) Submitting a Valgrind Log ~
 
 In order to pass this assignment, you must submit a log file produced
 by valgrind. See the section on submitting your assignment (above) for
 information on how to do that.
 
-// ~ (3) Using Gdb ~ //
+# ~ (3) Using Gdb ~
 
 Gdb is easily one of the world's most important debuggers. A debugger
 is a virtual environment that you run your code within. This
@@ -302,7 +302,7 @@ do this), step through your code, print the values of some variables,
 and then quit gdb. You submit the file "gdb.txt". See the submission
 guidelines for more information.
 
-// ~ (4) Iterating Over Arrays in C ~ //
+# ~ (4) Iterating Over Arrays in C ~
 
 In computer science, iterating means visiting every element of a
 "collection" once, and only once. An array is the most fundamental
@@ -310,32 +310,35 @@ type of collection, having a fixed size, and storing the elements
 sequentially. The easiest way to iterate over an array is to use an
 "index" variable in a for-loop:
 
-   // Assume we have an array "array", with length "len"
+```C
+// Assume we have an array "array", with length "len"
    int ind; // the index variable
    for(ind = 0; ind < len; ++ind) {
       // do something with array[ind]
    }
+```
 
 You should already be familiar with this programming motif from
 earlier courses. Please refer to the class notes and course materials
 in order to understand how to iterate over arrays in C.
 
-// ~ Summary ~ //
+# ~ Summary ~
 
-# Compile 
+## Compile
  > gcc -Wall -Wshadow -g pa01.c answer01.c -o pa01
 
-# Run -- you must write your own tests
+## Run -- you must write your own tests
  > ./pa01
 
-# Run under valgrind
+## Run under valgrind
  > valgrind --tool=memcheck --leak-check=full --verbose --log-file=memcheck.log ./pa01
 
-# Don't forget to *LOOK* at the log-file "memcheck.log"
+## ***Don't forget to *LOOK* at the log-file "memcheck.log"***
 
-# Run under gdb -- this is an *example*. You will need to adjust these
-# commands to your situation.
+## Run under gdb -- this is an *example*. You will need to adjust these
+## commands to your situation.
  > gdb -ex "set logging overwrite on" -ex "set logging on" ./pa01
+```gdb
 (gdb) b pa01.c:59
 (gdb) run
 (gdb) p argc
@@ -343,15 +346,14 @@ in order to understand how to iterate over arrays in C.
 (gdb) n
 (gdb) c
 (gdb) quit
+```
 
-# See what your grade should be (providing you submit everything
-# correctly):
+## See what your grade should be (providing you submit everything correctly):
  > ./tester answer01.c
 
-# Create a zip file of your solution:
- > zip pa01.zip answer01.c memcheck.log gdb.txt 
+## Create a zip file of your solution:
+ > zip pa01.zip answer01.c memcheck.log gdb.txt
 
-# Upload pa01.zip to blackboard.
+## Upload pa01.zip to blackboard.
 
-# Please read all instructions before asking for help.
-
+## Please read all instructions before asking for help.
