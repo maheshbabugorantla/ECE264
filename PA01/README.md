@@ -59,7 +59,7 @@ program.
 Notes on creating each of these files are included in this readme.
 You create the zip file using the following command.
 
- > zip pa01.zip answer01.c memcheck.log gdb.txt
+ > ***zip pa01.zip answer01.c memcheck.log gdb.txt***
 
 If your zip file does not meet the above specification, then you may
 get zero for the assignment. In particular, right-clicking and
@@ -77,7 +77,7 @@ fail if there is one or more things wrong. You can determine your mark
 before submitting your assignment. To test your program, you must run
 the "tester" program. You run the tester program as follows:
 
- > ./tester answer01.c
+ > ***./tester answer01.c***
 
 You can write your assignments on any computer, using any development
 tools; however, they will be marked on the lab computers, and so you
@@ -100,7 +100,7 @@ best and most important C compilers. You can compile your program by
 typing the following into the terminal (make sure you are in your PA01
 directory):
 
- > gcc -Wall -Wshadow -g pa01.c answer01.c -o pa01
+ > ***gcc -Wall -Wshadow -g pa01.c answer01.c -o pa01***
 
 Gcc takes a wide variety of arguments, and these are the most
 important arguments that we will use, and re-use in this course. The
@@ -133,7 +133,7 @@ a file called "a.out", and we are just telling gcc to name that file
 
 To run your program, simply type into the terminal:
 
- > ./pa01
+ > ***./pa01***
 
 Note that this should print:
 
@@ -226,7 +226,7 @@ problems.
 To run your code under Valgrind, you must first compile your code, and
 then type the following into the terminal:
 
- > valgrind --tool=memcheck --leak-check=full --verbose --log-file=memcheck.log ./pa01
+ > ***valgrind --tool=memcheck --leak-check=full --verbose --log-file=memcheck.log ./pa01***
 
 This *runs* your program, but to check for errors, you must check the
 log file that you just generated: "memcheck.log". This file
@@ -294,7 +294,7 @@ logfile you must turn logging on. My preferred way of doing this is to
 use command-line switches to tell gdb to set logging on. The command
 looks as follows:
 
- > gdb -ex "set logging overwrite on" -ex "set logging on" ./pa01
+ > ***gdb -ex "set logging overwrite on" -ex "set logging on" ./pa01***
  ...
 
 You must then set a breakpoint (read the documentation to learn how to
@@ -325,19 +325,20 @@ in order to understand how to iterate over arrays in C.
 # ~ Summary ~
 
 ## Compile
- > gcc -Wall -Wshadow -g pa01.c answer01.c -o pa01
+ > ***gcc -Wall -Wshadow -g pa01.c answer01.c -o pa01***
 
 ## Run -- you must write your own tests
- > ./pa01
+ > ***./pa01***
 
 ## Run under valgrind
- > valgrind --tool=memcheck --leak-check=full --verbose --log-file=memcheck.log ./pa01
+ > ***valgrind --tool=memcheck --leak-check=full --verbose --log-file=memcheck.log ./pa01***
 
 ## ***Don't forget to *LOOK* at the log-file "memcheck.log"***
 
 ## Run under gdb -- this is an *example*. You will need to adjust these
 ## commands to your situation.
- > gdb -ex "set logging overwrite on" -ex "set logging on" ./pa01
+ > ***gdb -ex "set logging overwrite on" -ex "set logging on" ./pa01***
+
 ```gdb
 (gdb) b pa01.c:59
 (gdb) run
@@ -349,10 +350,10 @@ in order to understand how to iterate over arrays in C.
 ```
 
 ## See what your grade should be (providing you submit everything correctly):
- > ./tester answer01.c
+ > ***./tester answer01.c***
 
 ## Create a zip file of your solution:
- > zip pa01.zip answer01.c memcheck.log gdb.txt
+ > ***zip pa01.zip answer01.c memcheck.log gdb.txt***
 
 ## Upload pa01.zip to blackboard.
 
